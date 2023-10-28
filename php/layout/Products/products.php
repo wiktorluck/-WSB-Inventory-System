@@ -40,15 +40,14 @@ require_once("../../../includes/authorized.php");
           echo<<<END
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nazwa</th>
-              <th scope="col">Ilość</th>
-              <th scope="col">Kategoria</th>
-              <th scope="col">Nr seryjny</th>
-              <th scope="col">Nr ewidencyjny</th>
-              <!-- Kategoria -->
-              <!-- Nr seryjny -->
-              <!-- Nr ewidencyjny -->
+              <th>#ID</th>
+              <th>Nazwa</th>
+              <th>Ilość</th>
+              <th>Kategoria</th>
+              <th>Nr seryjny</th>
+              <th>Nr ewidencyjny</th>
+              <th colspan="2">Czynność</th>
+
             </tr>
           </thead>
           END;
@@ -63,6 +62,8 @@ require_once("../../../includes/authorized.php");
                 echo "<td>" . $row["categoryp"] . "</td>";
                 echo "<td>" . $row["serialp"] . "</td>";
                 echo "<td>" . $row["registrationp"] . "</td>";
+                echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
+                echo "<td>Usuń</td>";
 
                 echo "</tr>";
             }

@@ -17,6 +17,7 @@ require_once("../../../includes/authorized.php");
       <a href="dashboard.php"><button>Dashboard</button></a>
       <a href="../Products/products.php"><button>Products</button></a>
       <a href="../Users/users.php"><button>Users</button></a>
+      <a href=""><button>Raports</button></a>
 
       <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </body>

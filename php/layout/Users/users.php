@@ -18,7 +18,9 @@ require_once("../../../includes/authorized.php");
 
 
   <h2>Użytkownicy</h2>
-      <div class="table-responsive small">
+<div>
+
+
 <?php
     require_once "../../../includes/connect.php";
 
@@ -38,9 +40,9 @@ require_once("../../../includes/authorized.php");
           echo<<<END
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nazwa</th>
-              <th scope="col">Czynność</th>
+              <th>#ID</th>
+              <th>Nazwa</th>
+              <th colspan="2">Czynność</th>
             </tr>
           </thead>
           END;
@@ -51,7 +53,8 @@ require_once("../../../includes/authorized.php");
                 echo "<tr>";
                 echo "<td>" . $row["id"] . "</td>";
                 echo "<td>" . $row["login"] . "</td>";
-                echo '<td><a href="edituser.php?id=' . $row["id"] . '"><i class="fa fa-pencil"></i> Edytuj</a></td>';
+                echo '<td><a href="edituser.php?id=' . $row["id"] . '">Edytuj</a></td>';
+                echo '<td>Usuń</td>';
                 echo "</tr>";
             }
         } else {
