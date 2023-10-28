@@ -354,7 +354,7 @@
           else
         {
 
-          $sql = "SELECT id, user FROM uzytkownicy";
+          $sql = "SELECT id, login FROM uzytkownicy";
           $result = $polaczenie->query($sql);
 
           echo'<table class="table table-striped table-sm">';
@@ -372,7 +372,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["id"] . "</td>";
-                echo "<td>" . $row["user"] . "</td>";
+                echo "<td>" . $row["login"] . "</td>";
                 echo "</tr>";
             }
         } else {

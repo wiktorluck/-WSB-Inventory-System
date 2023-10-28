@@ -354,7 +354,7 @@
           else
         {
 
-          $sql = "SELECT id, namep, quantityp FROM produkty";
+          $sql = "SELECT * FROM produkty";
           $result = $polaczenie->query($sql);
 
           echo'<table class="table table-striped table-sm">';
@@ -364,6 +364,9 @@
               <th scope="col">#</th>
               <th scope="col">Nazwa</th>
               <th scope="col">Ilość</th>
+              <th scope="col">Kategoria</th>
+              <th scope="col">Nr seryjny</th>
+              <th scope="col">Nr ewidencyjny</th>
               <!-- Kategoria -->
               <!-- Nr seryjny -->
               <!-- Nr ewidencyjny -->
@@ -375,9 +378,13 @@
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["idp"] . "</td>";
                 echo "<td>" . $row["namep"] . "</td>";
                 echo "<td>" . $row["quantityp"] . "</td>";
+                echo "<td>" . $row["categoryp"] . "</td>";
+                echo "<td>" . $row["serialp"] . "</td>";
+                echo "<td>" . $row["registrationp"] . "</td>";
+
                 echo "</tr>";
             }
         } else {
