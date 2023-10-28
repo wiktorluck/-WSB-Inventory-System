@@ -39,7 +39,7 @@ if ($polaczenie->connect_errno!=0)
 				
 				unset($_SESSION['blad']);
 				$rezultat->free_result();
-				header('Location: ../layout/dashboard.php');
+				header('Location: ../layout/Dashboard/dashboard.php');
 				
 			} else {
 				
