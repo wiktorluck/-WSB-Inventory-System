@@ -18,7 +18,32 @@ require_once("../../../includes/authorized.php");
 
 
   <h2>Użytkownicy</h2>
-<div>
+
+
+  <div style="width:200px; height:300px; border: 1px solid black">
+  <h4>Nowy użytkownik</h4>
+  
+  <form action="adduser.php" method="POST">
+    <label for="login">Login</label>
+    <input type="text" name="login" id="login"/>
+    <label for="password">Hasło</label>
+    <input type="password" name="password" id="password"/>
+    
+    <label for="permission">Uprawnienie</label></br>
+    <select name="permission" id="permission">
+      <option value="0">Pracownik</option>
+      <option value="1">Administrator</option>
+    </select>
+
+    <input type="submit" value="Dodaj użytkownika"/>
+    </br>
+    <?php
+      if(isset($_SESSION['error']))	echo $_SESSION['error'];
+      unset($_SESSION['error']);
+    ?>
+  </form>
+  </div>
+
 
 
 <?php

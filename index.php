@@ -1,13 +1,12 @@
 <?php
-
-	session_start();
+  
+  session_start();
 	
 	if ((isset($_SESSION['authorized'])) && ($_SESSION['authorized']==true))
 	{
 		header('Location: index.php');
 		exit();
 	}
-
 ?>
 
 
@@ -36,7 +35,7 @@
   <button type="submit">Zaloguj się</button>
 
 <?php
-  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+  if(isset($_SESSION['error']))	echo $_SESSION['error'];
 ?>
 </form>
 
