@@ -22,6 +22,7 @@
   <meta name="author" content="">
   <meta name="generator" content="">
   <link rel="stylesheet" href="css/loginform.css">
+  <link rel="stylesheet" href="css/body_style.css">
   <title>INVENTURA</title>
 </head>
 

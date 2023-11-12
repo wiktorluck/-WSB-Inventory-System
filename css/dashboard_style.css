@@ -1,0 +1,132 @@
+.svg-icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 8px; /* Odstęp między ikoną a tekstem */
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: #FFFFFF;
+  }
+
+
+
+
+button
+{
+    align-items: center; /* Centrowanie w pionie */
+    justify-content: center; /* Centrowanie w poziomie */
+    font-size: large;
+    cursor: pointer;
+   
+    background-color: #3484FF;
+    color: white;
+    border: solid 0px;
+    width: 90%;
+    height: 6vh;
+    transition-duration: 0.2s;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 2vh;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
+}
+
+button:hover
+{
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.25);
+    background-color: #4597FF;
+}
+
+
+.nav 
+{
+    display: flex;
+    justify-content: start;
+    box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.25);
+    padding: 0.5em;
+    width: 15vw;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.nav a img
+{
+    width: 15vw;
+    color: #fff;
+
+
+}
+.mainbox
+{
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 1em;
+        
+}
+
+
+.welcometext 
+{
+    font-size: 2.5vh;
+}
+
+.tabletext
+{
+    padding-top: 5%;
+    font-size: 2vh;
+}
+
+.summaryboxes
+{
+    flex-direction: row;
+    display: flex;
+    padding: 1em; 
+
+}
+
+
+.box1
+{
+    background-color: #E6F0FF;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #3484FF;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box2
+{
+    background-color: #FFFAEB;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #DC6803;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box3
+{
+    background-color: #FEF3F2;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #B42318;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+p
+{
+    font-size: 5vh;
+    font-weight: bold;
+
+}
