@@ -10,16 +10,13 @@ require_once("../../../includes/authorized.php");
     <title>PRODUCTS</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
+     <link rel="stylesheet" href="../../../css/products_style.css">
   </head>
 
   <body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
-    <a href="../Dashboard/dashboard.php"><button>
-    <svg class="svg-icon" viewBox="0 0 20 20">
-							<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
-						</svg>
-            Strona główna</button></a>
+    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
     <a href="../Products/products.php"><button>Produkty</button></a>
     <a href="../Users/users.php"><button>Użytkownicy</button></a>
     <a href=""><button>Raporty</button></a>
@@ -28,62 +25,119 @@ require_once("../../../includes/authorized.php");
 
 
   <h2>Produkty</h2>
-      <div class="table-responsive small">
+  <br>
+      <div class="tableOfProducts">
 <?php
-      require_once "../../../includes/connect.php";
+require_once "../../../includes/connect.php";
 
-     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
-      if ($polaczenie->connect_errno!=0)
-        {
-          echo "Error: ".$polaczenie->connect_errno;
+if ($polaczenie->connect_errno != 0) {
+    echo "Error: " . $polaczenie->connect_errno;
+} else {
+    $rowsPerPage = 20; // Adjust the number of rows per page as needed
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+    $start = ($currentPage - 1) * $rowsPerPage;
+
+    $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
+    $result = $polaczenie->query($sql);
+
+    echo '<table class="table_products">';
+    echo <<<END
+      <thead>
+        <tr>
+          <th>#ID</th>
+          <th>Nazwa</th>
+          <th>Ilość</th>
+          <th>Kategoria</th>
+          <th>Nr seryjny</th>
+          <th>Nr ewidencyjny</th>
+          <th colspan="2">Czynność</th>
+        </tr>
+      </thead>
+      END;
+
+    echo "<tbody>";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["idp"] . "</td>";
+            echo "<td>" . $row["namep"] . "</td>";
+            echo "<td>" . $row["quantityp"] . "</td>";
+            echo "<td>" . $row["categoryp"] . "</td>";
+            echo "<td>" . $row["serialp"] . "</td>";
+            echo "<td>" . $row["registrationp"] . "</td>";
+            echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
+            echo "<td>Usuń</td>";
+
+            echo "</tr>";
         }
-          else
-        {
 
-          $sql = "SELECT * FROM produkty";
-          $result = $polaczenie->query($sql);
+        // Add pagination links
+        $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
+        $totalPages = ceil($totalRows / $rowsPerPage);
 
-          echo'<table class="table table-striped table-sm">';
-          echo<<<END
-          <thead>
-            <tr>
-              <th>#ID</th>
-              <th>Nazwa</th>
-              <th>Ilość</th>
-              <th>Kategoria</th>
-              <th>Nr seryjny</th>
-              <th>Nr ewidencyjny</th>
-              <th colspan="2">Czynność</th>
-
-            </tr>
-          </thead>
-          END;
-
-          echo"  <tbody>";
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["idp"] . "</td>";
-                echo "<td>" . $row["namep"] . "</td>";
-                echo "<td>" . $row["quantityp"] . "</td>";
-                echo "<td>" . $row["categoryp"] . "</td>";
-                echo "<td>" . $row["serialp"] . "</td>";
-                echo "<td>" . $row["registrationp"] . "</td>";
-                echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
-                echo "<td>Usuń</td>";
-
-                echo "</tr>";
-            }
-        } else {
-            echo "Brak rekordów w tabeli.";
-        }   
-          $polaczenie->close();
+        echo '<tr>';
+        echo '<td colspan="8">';
+        echo '<div class="pagination">';
+        for ($i = 1; $i  <= $totalPages; $i++) {
+            echo '<a href="?page=' . $i . '">' . $i . '</a>';
         }
-  ?>
+        echo '</div>';
+        echo '</td>';
+        echo '</tr>';
+    } else {
+        echo "<tr><td colspan='8'>Brak rekordów w tabeli.</td></tr>";
+    }
+
+    echo "</tbody>";
+    echo "</table>";
+
+    $polaczenie->close();
+}
+?>
             </tr>
           </tbody>
         </table>
+
+
+
+        <<script>
+    var table = document.getElementById('table_products');
+    var rowsPerPage = 2; // Adjust the number of rows per page as needed
+
+    function showPage(page) {
+        var startIndex = (page - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        var rows = Array.from(table.getElementsByTagName('tbody')[0].rows);
+
+        rows.forEach(function(row, index) {
+            row.style.display = (index >= startIndex && index < endIndex) ? '' : 'none';
+        });
+    }
+
+    function setupPagination() {
+        var totalRows = table.getElementsByTagName('tbody')[0].rows.length;
+        var totalPages = Math.ceil(totalRows / rowsPerPage);
+        var paginationContainer = document.getElementById('pagination-container');
+
+        // Create pagination links
+        for (var i = 1; i <= totalPages; i++) {
+            var li = document.createElement('li');
+            li.textContent = i;
+            li.addEventListener('click', function() {
+                showPage(parseInt(this.textContent));
+            });
+            paginationContainer.appendChild(li);
+        }
+    }
+
+    // Initialize pagination
+    showPage(1);
+    setupPagination();
+</script>
+
   </body>
 
 </html>
