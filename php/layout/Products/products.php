@@ -74,6 +74,7 @@ if ($polaczenie->connect_errno != 0) {
             echo "</tr>";
         }
 
+
         // Add pagination links
         $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);

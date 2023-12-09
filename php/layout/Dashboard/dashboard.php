@@ -13,6 +13,7 @@ require_once("../../../includes/authorized.php");
   </head>
 
   <body>
+
    <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
@@ -43,5 +44,6 @@ require_once("../../../includes/authorized.php");
 
 </div>
 </body>
+
 
 </html>

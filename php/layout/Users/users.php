@@ -28,6 +28,8 @@ require_once("../../../includes/authorized.php");
 <div class="tableOfProducts">
 
 
+
+
 <?php
 require_once "../../../includes/connect.php";
 
