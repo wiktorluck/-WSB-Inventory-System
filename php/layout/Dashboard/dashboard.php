@@ -42,10 +42,6 @@ require_once("../../../includes/authorized.php");
 
 
 </div>
-  
-
-     
-
-  </body>
+</body>
 
 </html>

@@ -6,6 +6,7 @@ require_once("../../../includes/authorized.php");
 <!doctype html>
 <html lang="pl">
   <head>
+
   <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
     <title>USERS</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
@@ -88,6 +89,7 @@ if ($polaczenie->connect_errno != 0) {
     $polaczenie->close();
 }
 ?>
+
             </tr>
           </tbody>
         </table>

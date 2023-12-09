@@ -103,7 +103,7 @@ if ($polaczenie->connect_errno != 0) {
 
 
 
-        <<script>
+      <script>
     var table = document.getElementById('table_products');
     var rowsPerPage = 2; // Adjust the number of rows per page as needed
 
@@ -137,6 +137,7 @@ if ($polaczenie->connect_errno != 0) {
     showPage(1);
     setupPagination();
 </script>
+
 
   </body>
 
