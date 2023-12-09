@@ -9,11 +9,14 @@ require_once("../../includes/authorized.php");
     <title>Dashboard</title>
   </head>
   <body>
-       <a href="dashboard.php"><button>Dashboard</button></a>
-      <a href="products.php"><button>Products</button></a>
-      <a href="users.php"><button>Users</button></a>
-
-      <a href="../auth/logout.php"><button>Wyloguj się</button></a>
+    <div class="nav">
+    <img src="../../../images/inventura_logo_full.png"/>
+    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
+    <a href="../Products/products.php"><button>Produkty</button></a>
+    <a href="../Users/users.php"><button>Użytkownicy</button></a>
+    <a href=""><button>Raporty</button></a>
+    <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
+  </div>
 
 
       

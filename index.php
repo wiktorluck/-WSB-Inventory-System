@@ -16,30 +16,38 @@
 <html>
 
 <head>
+  <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
   <meta charset="utf-8">
-  <meta name="description" content="">
+  <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
   <meta name="author" content="">
   <meta name="generator" content="">
-
-  <title>Nazwa Systemu</title>
+  <link rel="stylesheet" href="css/loginform.css">
+  <link rel="stylesheet" href="css/body_style.css">
+  <title>INVENTURA</title>
 </head>
 
-</main>
-
-
-
-<main>
-
-<form action="php/auth/signin.php" method="POST">
-  Login: <input type="text" name="login">
-  Hasło: <input type="password" name="password">
-  <button type="submit">Zaloguj się</button>
-
-<?php
-  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
-?>
-</form>
-
+<div class="logform">
+  <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300xp"/>   </div>
+  <form action="php/auth/signin.php" method="POST">
+    <br>
+      Login<br>
+      <input type="text" name="login" placeholder="wprowadź swój login">
+      <br><br>
+      Hasło<br>
+      <input type="password" name="password" placeholder="wprowadź swoje hasło">
+      <br><br>
+        <div class="loginbutton"><button type="submit" >Zaloguj się</button> </div>
+        <br>
+        
+          <div class="login_error">
+            <?php
+            if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+          ?>
+          </div>
+          
+  </form>
+  <div class="footer">INVENTURA @ 2023</div>
+</div>
 
 </main>
 
