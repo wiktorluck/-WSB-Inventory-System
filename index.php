@@ -41,7 +41,7 @@
         
           <div class="login_error">
             <?php
-            if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+            if(isset($_SESSION['error']))	echo $_SESSION['error'];
           ?>
           </div>
           

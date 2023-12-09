@@ -1,12 +1,12 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/authorized_perm.php");
 ?>
 
 
 <!doctype html>
 <html lang="pl">
   <head>
-
   <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
     <title>USERS</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
@@ -15,6 +15,7 @@ require_once("../../../includes/authorized.php");
   </head>
 
   <body>
+
  <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
@@ -24,10 +25,9 @@ require_once("../../../includes/authorized.php");
     <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </div>
 
+  <div class="mainbox">
   <h2>Użytkownicy</h2>
 <div class="tableOfProducts">
-
-
 
 
 <?php
@@ -38,12 +38,7 @@ $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 if ($polaczenie->connect_errno != 0) {
     echo "Error: " . $polaczenie->connect_errno;
 } else {
-    $rowsPerPage = 10; // Adjust the number of rows per page as needed
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-    $start = ($currentPage - 1) * $rowsPerPage;
-
-    $sql = "SELECT id, login FROM uzytkownicy LIMIT $start, $rowsPerPage";
+    $sql = "SELECT id, login FROM uzytkownicy";
     $result = $polaczenie->query($sql);
 
     echo '<table class="table_products">';
@@ -52,7 +47,7 @@ if ($polaczenie->connect_errno != 0) {
         <tr>
           <th>#ID</th>
           <th>Nazwa</th>
-          <th colspan="2">Czynność</th>
+          <th colspan="2">Modyfikacja użytkownika</th>
         </tr>
       </thead>
       END;
@@ -63,24 +58,10 @@ if ($polaczenie->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
             echo "<td>" . $row["login"] . "</td>";
-            echo '<td><a href="edituser.php?id=' . $row["id"] . '">Edytuj</a></td>';
+            echo '<td><a href=""myBtn"?id=' . $row["id"] . '">Edytuj</a></td>';
             echo '<td>Usuń</td>';
             echo "</tr>";
         }
-
-        // Add pagination links
-        $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM uzytkownicy")->fetch_assoc()['total'];
-        $totalPages = ceil($totalRows / $rowsPerPage);
-
-        echo '<tr>';
-        echo '<td colspan="3">';
-        echo '<div class="pagination">';
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<a href="?page=' . $i . '">' . $i . '</a>';
-        }
-        echo '</div>';
-        echo '</td>';
-        echo '</tr>';
     } else {
         echo "<tr><td colspan='3'>Brak rekordów w tabeli.</td></tr>";
     }
@@ -95,6 +76,45 @@ if ($polaczenie->connect_errno != 0) {
             </tr>
           </tbody>
         </table>
-  </body>
 
+        <button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>edycja użytkownika siabalabamba</h4>
+  </div>
+
+</div>
+
+</div>
+  </body>
+  <script>
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </html>

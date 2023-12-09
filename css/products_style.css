@@ -1,29 +1,28 @@
 .tableOfProducts  {
-    margin-top: 55px;
-    margin-left: -25px;
+   margin: 0;
 }
 
 .table_products {
-    border: solid 1px #DDEEEE;
+    border: solid 1px #dde4ee;
     border-collapse: collapse;
     border-spacing: 0;
-    font: normal 13px Arial, sans-serif;
+    font: normal 13px Helvetica;
+    width: 100%;
 }
 
     .table_products thead th {
-        background-color: #D3D3D3;
+        background-color: #3484FF;
         border: solid 1px #EBEBEB;
-        color: #336B6B;
-        padding: 10px;
-        text-align: left;
-        text-shadow: 1px 1px 1px #fff;
+        color: #FFFFFF;
+        padding: 5px;
+        text-align: center;
     }
 
     .table_products tbody td {
         border: solid 1px #EBEBEB;
         color: #333;
-        padding: 10px;
-        text-shadow: 1px 1px 1px #fff;
+        padding: 5px;
+        
     }
 
 
@@ -46,10 +45,16 @@
     }
 
         .pagination a:hover {
-            background-color: #ddd;
+            background-color: #c0c0c0;
         }
 
     .pagination .active {
         background-color: #007bff;
         color: #fff;
     }
+
+    
+.welcometext 
+{
+    font-size: 2.5vh;
+}

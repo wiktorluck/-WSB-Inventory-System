@@ -22,9 +22,9 @@ require_once("../../../includes/authorized.php");
     <a href=""><button>Raporty</button></a>
     <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </div>
+  <div class="mainbox">
 
-
-  <h2>Produkty</h2>
+  <div class="welcometext">Produkty</div>
   <br>
       <div class="tableOfProducts">
 <?php
@@ -47,13 +47,12 @@ if ($polaczenie->connect_errno != 0) {
     echo <<<END
       <thead>
         <tr>
-          <th>#ID</th>
-          <th>Nazwa</th>
-          <th>Ilość</th>
+         <th style="width: 3vw;">ID</th>
+          <th style="width: 25vw;">Nazwa</th>
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>
-          <th colspan="2">Czynność</th>
+          <th colspan="2">Zmodyfikuj</th>
         </tr>
       </thead>
       END;
@@ -64,7 +63,6 @@ if ($polaczenie->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["idp"] . "</td>";
             echo "<td>" . $row["namep"] . "</td>";
-            echo "<td>" . $row["quantityp"] . "</td>";
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
@@ -73,7 +71,6 @@ if ($polaczenie->connect_errno != 0) {
 
             echo "</tr>";
         }
-
 
         // Add pagination links
         $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
@@ -104,7 +101,7 @@ if ($polaczenie->connect_errno != 0) {
 
 
 
-      <script>
+        <script>
     var table = document.getElementById('table_products');
     var rowsPerPage = 2; // Adjust the number of rows per page as needed
 
@@ -138,8 +135,7 @@ if ($polaczenie->connect_errno != 0) {
     showPage(1);
     setupPagination();
 </script>
-
-
+  </div>
   </body>
 
 </html>
