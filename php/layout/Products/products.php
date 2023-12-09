@@ -47,8 +47,8 @@ if ($polaczenie->connect_errno != 0) {
     echo <<<END
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nazwa</th>
+         <th style="width: 3vw;">ID</th>
+          <th style="width: 25vw;">Nazwa</th>
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>

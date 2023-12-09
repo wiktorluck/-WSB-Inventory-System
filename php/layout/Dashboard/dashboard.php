@@ -6,6 +6,7 @@ require_once("../../../includes/authorized.php");
 <!doctype html>
 <html lang="pl">
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
     <title>INVENTURA</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
@@ -28,13 +29,13 @@ require_once("../../../includes/authorized.php");
 
   <div class="summaryboxes">
     <div class="box1"> Wszystkich przedmiotów 
-            <p> 312 </p>
+            <p class="count">321</p>
     </div>
     <div class="box2"> Wszystkich kategorii 
-            <p> 15 </p>
+            <p class="count">21</p>
     </div>
     <div class="box3"> Wszystkich komputerów 
-            <p> 52 </p>
+            <p class="count">63</p>
     </div>
   </div>
 
@@ -63,7 +64,6 @@ if ($polaczenie->connect_errno != 0) {
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>
-          <th colspan="2">Zmodyfikuj</th>
         </tr>
       </thead>
       END;
@@ -77,8 +77,6 @@ if ($polaczenie->connect_errno != 0) {
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
-            echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
-            echo "<td>Usuń</td>";
 
             echo "</tr>";
         }
@@ -95,7 +93,19 @@ if ($polaczenie->connect_errno != 0) {
 
 
 </div>
-  
+  <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
 
      
 
