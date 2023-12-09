@@ -1,13 +1,12 @@
 <?php
-
-	session_start();
+  
+  session_start();
 	
 	if ((isset($_SESSION['authorized'])) && ($_SESSION['authorized']==true))
 	{
 		header('Location: index.php');
 		exit();
 	}
-
 ?>
 
 
@@ -25,6 +24,7 @@
   <link rel="stylesheet" href="css/body_style.css">
   <title>INVENTURA</title>
 </head>
+
 
 <div class="logform">
   <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300xp"/>   </div>
@@ -47,8 +47,5 @@
           
   </form>
   <div class="footer">INVENTURA @ 2023</div>
-</div>
-
-</main>
-
+  </div>
 </html>

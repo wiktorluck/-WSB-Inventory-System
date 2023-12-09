@@ -1,6 +1,5 @@
 .tableOfProducts  {
-    margin-top: 55px;
-    margin-left: -25px;
+   margin: 0;
 }
 
 .table_products {
@@ -11,12 +10,11 @@
 }
 
     .table_products thead th {
-        background-color: #D3D3D3;
+        background-color: #3484FF;
         border: solid 1px #EBEBEB;
-        color: #336B6B;
+        color: #FFFFFF;
         padding: 10px;
         text-align: left;
-        text-shadow: 1px 1px 1px #fff;
     }
 
     .table_products tbody td {
@@ -53,3 +51,9 @@
         background-color: #007bff;
         color: #fff;
     }
+
+    
+.welcometext 
+{
+    font-size: 2.5vh;
+}
