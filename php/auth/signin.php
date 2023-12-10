@@ -36,6 +36,7 @@ if ($polaczenie->connect_errno!=0)
 					$_SESSION['authorized'] = true;
 					$_SESSION['id'] = $wiersz['id'];
 					$_SESSION['login'] = $wiersz['login'];
+					$_SESSION['permission'] = $wiersz['permission'];
 					unset($_SESSION['error']);
 					$rezultat->free_result();
 					header('Location: ../layout/Dashboard/dashboard.php');

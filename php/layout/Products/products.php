@@ -10,22 +10,38 @@ require_once("../../../includes/authorized.php");
     <title>PRODUCTS</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
-     <link rel="stylesheet" href="../../../css/products_style.css">
   </head>
 
+  <body>
   <body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
     <a href="../Products/products.php"><button>Produkty</button></a>
-    <a href="../Users/users.php"><button>Użytkownicy</button></a>
-    <a href=""><button>Raporty</button></a>
+    <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   <button>Użytkownicy</button></a>'; echo '<a href="../Reports/reports.php">   <button>Raporty</button></a>'; } ?>
     <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </div>
-  <div class="mainbox">
 
+
+
+<div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/> 
+
+<div class="dropdown">
+  <span> <img src="../../../images/more.png"> </span>
+  <div class="dropdown-content">
+      <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
+      <ul> <a href="../Products/products.php">Produkty</a> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
+      <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+  </div>
+</div>
+</div>
+
+
+<div class="mainbox">
+  <div class="topLogo">  <img name="menuBurger" src="../../../images/inventura_logo_full.png"/> </div>
   <div class="welcometext">Produkty</div>
-  <br>
       <div class="tableOfProducts">
 <?php
 require_once "../../../includes/connect.php";
@@ -35,7 +51,7 @@ $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 if ($polaczenie->connect_errno != 0) {
     echo "Error: " . $polaczenie->connect_errno;
 } else {
-    $rowsPerPage = 20; // Adjust the number of rows per page as needed
+    $rowsPerPage = 20; 
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 
     $start = ($currentPage - 1) * $rowsPerPage;
@@ -43,7 +59,7 @@ if ($polaczenie->connect_errno != 0) {
     $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
     $result = $polaczenie->query($sql);
 
-    echo '<table class="table_products">';
+    echo '<table class="table_productsAll">';
     echo <<<END
       <thead>
         <tr>
@@ -72,7 +88,6 @@ if ($polaczenie->connect_errno != 0) {
             echo "</tr>";
         }
 
-        // Add pagination links
         $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);
 
@@ -95,6 +110,8 @@ if ($polaczenie->connect_errno != 0) {
     $polaczenie->close();
 }
 ?>
+
+
             </tr>
           </tbody>
         </table>

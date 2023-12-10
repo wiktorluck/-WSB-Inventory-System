@@ -1,5 +1,6 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/authorized_perm.php");
 ?>
 
 
