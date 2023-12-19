@@ -37,16 +37,16 @@ if ($polaczenie->connect_errno!=0)
 					$_SESSION['id'] = $wiersz['id'];
 					$_SESSION['login'] = $wiersz['login'];
 					$_SESSION['permission'] = $wiersz['permission'];
-					unset($_SESSION['error']);
+					$_SESSION['notification'] = 3;
 					$rezultat->free_result();
 					header('Location: ../layout/Dashboard/dashboard.php');
 				} else {
-					$_SESSION['error'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-					header('Location: ../../index.php');
+					$_SESSION['notification'] = 2;
+					header('Location:../../index.php');
 				}
 			} else {
-				$_SESSION['error'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-				header('Location: ../../index.php');
+				$_SESSION['notification'] = 2;
+				header('Location:../../index.php');
 			}
 		}	
 		$polaczenie->close();

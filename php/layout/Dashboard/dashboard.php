@@ -1,5 +1,6 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/modal_info.php");
 ?>
 
 
@@ -59,29 +60,7 @@ require_once("../../../includes/authorized.php");
 
   <div class="tabletext"> Ostatnio dodane przedmioty</div>
 
-  <div id="myModal" class="modalAlert">
-    <div class="modalAlert-content">
-        <p>Nie masz do tego uprawnień!</p>
-    </div>
-  </div>
 
-<?php
-if(isset($_SESSION['error1']) && $_SESSION['error1'] == 1) {
-  echo '
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          var modal = document.getElementById("myModal");
-          modal.style.display = "block";
-          setTimeout(function() {
-              modal.style.display = "none";
-          }, 3000);
-      });
-  </script>
-  ';
-}
-
-unset($_SESSION['error1']);
-?>
 
 <?php
 require_once "../../../includes/connect.php";

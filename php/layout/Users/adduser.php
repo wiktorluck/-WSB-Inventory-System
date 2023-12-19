@@ -13,13 +13,13 @@
 
 
         if (empty($login)) {
-            $_SESSION['error'] = '<span style="color:red">Wpisz nazwę użytkownika!</span>';
+            $_SESSION['notification'] = 3;
             header('Location: users.php');
             $polaczenie->close();
         }
 
         if (empty($password)) {
-            $_SESSION['error'] = '<span style="color:red">Wpisz hasło!</span>';
+            $_SESSION['notification'] = 4;
             header('Location: users.php');
             $polaczenie->close();
         }
@@ -29,7 +29,7 @@
     
         if ($rezultat) {
             if ($rezultat->num_rows > 0) {
-                $_SESSION['error'] = '<span style="color:red">Login zajęty!</span>';
+                $_SESSION['notification'] = '<span style="color:red">Login zajęty!</span>';
             } else {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $insert_query = "INSERT INTO uzytkownicy (login, password, permission) VALUES ('" . mysqli_real_escape_string($polaczenie, $login) . "', '" . $hashed_password . "', '" . $permission . "')";
@@ -40,7 +40,7 @@
             }
         }
         } else {
-            $_SESSION['error'] = '<span style="color:red">Błąd zapytania SQL!</span>';
+            $_SESSION['notification'] = '<span style="color:red">Błąd zapytania SQL!</span>';
         }
     
         header('Location: users.php');

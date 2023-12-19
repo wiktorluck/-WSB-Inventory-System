@@ -1,12 +1,12 @@
 <?php
-  
   session_start();
-	
 	if ((isset($_SESSION['authorized'])) && ($_SESSION['authorized']==true))
 	{
 		header('Location: index.php');
 		exit();
 	}
+
+  require_once("includes/modal_info.php");
 ?>
 
 
@@ -16,12 +16,14 @@
 
 <head>
   <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+  
   <meta charset="utf-8">
   <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
   <meta name="author" content="">
   <meta name="generator" content="">
   <link rel="stylesheet" href="css/loginform.css">
   <link rel="stylesheet" href="css/body_style.css">
+  <link rel="stylesheet" href="css/dashboard_style.css">
   <title>INVENTURA</title>
 </head>
 
@@ -39,11 +41,7 @@
         <div class="loginbutton"><button type="submit" >Zaloguj się</button> </div>
         <br>
         
-          <div class="login_error">
-            <?php
-            if(isset($_SESSION['error']))	echo $_SESSION['error'];
-          ?>
-          </div>
+      
           
   </form>
   <div class="footer">INVENTURA @ 2023</div>
