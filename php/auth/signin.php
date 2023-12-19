@@ -9,11 +9,11 @@ if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
 
 require_once "../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno!=0)
+if ($conn->connect_errno!=0)
 	{
-		echo "Error: ".$polaczenie->connect_errno;
+		echo "Error: ".$conn->connect_errno;
 	}
     else
 	{
@@ -22,8 +22,8 @@ if ($polaczenie->connect_errno!=0)
 		
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
 	
-		if ($rezultat = @$polaczenie->query(
-			sprintf("SELECT * FROM uzytkownicy WHERE login='%s'", mysqli_real_escape_string($polaczenie, $login))
+		if ($rezultat = @$conn->query(
+			sprintf("SELECT * FROM uzytkownicy WHERE login='%s'", mysqli_real_escape_string($conn, $login))
 		))
 		{
 			$ilu_userow = $rezultat->num_rows;
@@ -49,5 +49,5 @@ if ($polaczenie->connect_errno!=0)
 				header('Location:../../index.php');
 			}
 		}	
-		$polaczenie->close();
+		$conn->close();
 	}

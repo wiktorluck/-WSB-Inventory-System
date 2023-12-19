@@ -50,10 +50,10 @@ require_once("../../../includes/authorized.php");
 <?php
 require_once "../../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-    echo "Error: " . $polaczenie->connect_errno;
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
 } else {
     $rowsPerPage = 20; 
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -61,7 +61,7 @@ if ($polaczenie->connect_errno != 0) {
     $start = ($currentPage - 1) * $rowsPerPage;
 
     $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
-    $result = $polaczenie->query($sql);
+    $result = $conn->query($sql);
 
     echo '<table class="table_productsAll">';
     echo <<<END
@@ -92,7 +92,7 @@ if ($polaczenie->connect_errno != 0) {
             echo "</tr>";
         }
 
-        $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
+        $totalRows = $conn->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);
 
         echo '<tr>';
@@ -111,7 +111,7 @@ if ($polaczenie->connect_errno != 0) {
     echo "</tbody>";
     echo "</table>";
 
-    $polaczenie->close();
+    $conn->close();
 }
 ?>
 

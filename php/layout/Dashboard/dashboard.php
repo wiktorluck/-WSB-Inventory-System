@@ -50,22 +50,19 @@ require_once("../../../includes/modal_info.php");
   <?php
 require_once "../../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-    echo "Error: " . $polaczenie->connect_errno;
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
 } else {
   $sql_count = "SELECT 
   COUNT(*) as totalProducts, 
   COUNT(DISTINCT categoryp) as totalCategories,
   COUNT(CASE WHEN categoryp = 'Komputer PC' THEN 1 END) as totalComputers 
   FROM produkty;";
-  
 
+  $result = $conn->query($sql_count);
 
-  $result = $polaczenie->query($sql_count);
-
-  
   if ($result) {
       $row = $result->fetch_assoc();
       $total_products = $row['totalProducts'];
@@ -87,7 +84,7 @@ if ($polaczenie->connect_errno != 0) {
     </div>
   </div>';
 
-    $polaczenie->close();
+    $conn->close();
   }
 }
 ?>
@@ -103,15 +100,15 @@ if ($polaczenie->connect_errno != 0) {
 <?php
 require_once "../../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-    echo "Error: " . $polaczenie->connect_errno;
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
 } else {
     $limit = 12;
 
     $sql = "SELECT * FROM produkty ORDER BY idp DESC LIMIT $limit";
-    $result = $polaczenie->query($sql);
+    $result = $conn->query($sql);
 
     echo '<table class="table_products">';
     echo <<<END
@@ -145,26 +142,22 @@ if ($polaczenie->connect_errno != 0) {
     echo "</tbody>";
     echo "</table>";
 
-    $polaczenie->close();
+    $conn->close();
 }
 ?>
-
-
-
-
 
 <?php
 require_once "../../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-    echo "Error: " . $polaczenie->connect_errno;
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
 } else {
     $limit = 12;
 
     $sql = "SELECT * FROM produkty ORDER BY idp DESC LIMIT $limit";
-    $result = $polaczenie->query($sql);
+    $result = $conn->query($sql);
 
     echo '<table class="table_productsPortrait">';
     echo <<<END
@@ -191,7 +184,7 @@ if ($polaczenie->connect_errno != 0) {
     echo "</tbody>";
     echo "</table>";
 
-    $polaczenie->close();
+    $conn->close();
 }
 ?>
 
