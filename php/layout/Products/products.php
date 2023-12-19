@@ -1,5 +1,6 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/modal_info.php");
 ?>
 
 <!doctype html>
@@ -11,6 +12,7 @@ require_once("../../../includes/authorized.php");
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
     <link rel="stylesheet" href="../../../css/notification_modals.css">
+    <link rel="stylesheet" href="../../../css/products_style.css">
     <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
 
     
@@ -56,7 +58,7 @@ if ($conn->connect_errno != 0) {
     echo "Error: " . $conn->connect_errno;
 } else {
     $rowsPerPage = 20; 
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $currentPage = $_GET['page'] ?? 1;
 
     $start = ($currentPage - 1) * $rowsPerPage;
 
@@ -86,7 +88,7 @@ if ($conn->connect_errno != 0) {
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
-            echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
+            echo '<td><a href="#" id="myBtn" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>';
             echo "<td>Usuń</td>";
 
             echo "</tr>";
@@ -115,12 +117,24 @@ if ($conn->connect_errno != 0) {
 }
 ?>
 
-
-            </tr>
-          </tbody>
-        </table>
+  <!-- MODAL EDYCJI PRODUKTU -->
+  <div id="myModal" class="modalP">
+    <div class="modal-contentP">
+      <span class="closeP">&times;</span>
+      <p></p>
+    </div>
   </div>
-  </body>
-  
+
+  <!-- AJAX FORMUARZA EDYCJI PRODUKTU -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../../js/products.js"></script>
+  <script src="../../../js/product_edit.js"></script>
+  
+</body>
 </html>
+ 
+
+
+
+
+

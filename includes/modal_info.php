@@ -9,7 +9,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 1) {
     </div>
   </div>
 
-  <script src="../../../js/modal.js"></script>';
+  <script src="../../../js/modals.js"></script>';
 }
 
 //Wrong Login or Password
@@ -21,7 +21,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 2) {
     </div>
   </div>
 
-  <script src="../../../js/modal.js"></script>';
+  <script src="../../../js/modals.js"></script>';
 }
 
 //Login Success
@@ -33,9 +33,33 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 3) {
     </div>
   </div>
 
-  <script src="../../../js/modal.js"></script>';
+  <script src="../../../js/modals.js"></script>';
 }
 
+
+//Edit Success
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalSuccess-content">
+        <p>Dane zostały zaktualizowane poprawnie!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
+//Edit Fail
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalSuccess-content">
+        <p>Dane nie zostały zaktualizowane!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
 
 
 

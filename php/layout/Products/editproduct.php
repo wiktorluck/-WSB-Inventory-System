@@ -1,31 +1,36 @@
+<?php
+  require_once("../../../includes/authorized.php");
+  require_once("../../../includes/connect.php");
 
-<html lang="pl">
-  <head>
-  <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
-    <title>EDIT</title>
-    <link rel="stylesheet" href="../../../css/body_style.css">
-    <link rel="stylesheet" href="../../../css/dashboard_style.css">
-    <link rel="stylesheet" href="../../../css/notification_modals.css">
-  </head>
+  $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-  <body>
-  <div class="nav">
-    <img src="../../../images/inventura_logo_full.png"/>
-    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
-    <a href="../Products/products.php"><button>Produkty</button></a>
-    <a href="../Users/users.php"><button>Użytkownicy</button></a>
-    <a href=""><button>Raporty</button></a>
-    <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
-  </div>
 
-  <div class="mainbox">
-  <div class="welcometext">
-  <?php
-$id = $_GET['id'];
-echo "Edycja produktu o ID => $id";
-?>
-    </div>
+  if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;}
 
-</div>
-</body>
-</html>
+    if(isset($_POST['id'])) {
+    $id = $_POST['id'];
+
+    $sql = "SELECT * FROM produkty WHERE idp = $id";
+
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        
+        $row = $result->fetch_assoc();
+        echo '<form id="updateForm" action="updateproduct.php" method="POST">';
+        echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
+        echo '<input type="text" name="namep" value="' . $row['namep'] . '"></br>';
+        echo '<input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
+        echo '<input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
+        echo '<input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
+        echo '<input type="submit" value="Aktualizuj">';
+        echo '</form>';
+    } else {
+        echo "Brak danych o produkcie.";
+    }
+
+    $conn->close();
+} else {
+    echo "Nieprawidłowe żądanie.";
+} 

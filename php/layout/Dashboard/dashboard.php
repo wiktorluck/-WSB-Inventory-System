@@ -37,7 +37,7 @@ require_once("../../../includes/modal_info.php");
             <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
             <ul> <a href="../Products/products.php">Produkty</a> </ul>
             <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
-            <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
+            <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> 
             <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
         </div>
     </div>
