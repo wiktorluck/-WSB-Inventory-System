@@ -3,5 +3,5 @@
 	$host = "localhost";
 	$db_user = "root";
 	$db_password = "";
-	$db_name = "test";
+	$db_name = "inventura";
 

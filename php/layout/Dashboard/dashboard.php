@@ -4,17 +4,19 @@ require_once("../../../includes/authorized.php");
 
 
 <!doctype html>
+
 <html lang="pl">
+
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
     <title>INVENTURA</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
-  </head>
+</head>
 
-  <body>
 
+<body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
@@ -24,25 +26,23 @@ require_once("../../../includes/authorized.php");
   </div>
 
 
-<div class="mainbox">
-<div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/>
+  <div class="mainbox">
+    <div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/>
 
-<div class="dropdown">
-  <span> <img src="../../../images/more.png"> </span>
-  <div class="dropdown-content">
-      <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-      <ul> <a href="../Products/products.php">Produkty</a> </ul>
-      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
-      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
-      <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+      <div class="dropdown">
+        <span> <img src="../../../images/more.png"> </span>
+        <div class="dropdown-content">
+            <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
+            <ul> <a href="../Products/products.php">Produkty</a> </ul>
+            <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
+            <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
+            <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+        </div>
+    </div>
   </div>
-</div>
-
-
-
-
-</div>
-  <div class="welcometext"> <?php echo "Witaj z powrotem, ".$_SESSION['login'].'!'; ?>  </div>
+  
+  
+  <div class="welcometext"> <?php echo "Witaj z powrotem, ".$_SESSION['login'].'!'; ?></div>
 
   <div class="summaryboxes">
     <div class="box1"> Wszystkich przedmiotów 
@@ -57,13 +57,13 @@ require_once("../../../includes/authorized.php");
   </div>
 
 
-  <div class="tabletext"> Ostatnio dodane przedmioty </div>
+  <div class="tabletext"> Ostatnio dodane przedmioty</div>
 
   <div id="myModal" class="modalAlert">
     <div class="modalAlert-content">
         <p>Nie masz do tego uprawnień!</p>
     </div>
-</div>
+  </div>
 
 <?php
 if(isset($_SESSION['error1']) && $_SESSION['error1'] == 1) {
@@ -83,7 +83,7 @@ if(isset($_SESSION['error1']) && $_SESSION['error1'] == 1) {
 unset($_SESSION['error1']);
 ?>
 
-  <?php
+<?php
 require_once "../../../includes/connect.php";
 
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -179,23 +179,7 @@ if ($polaczenie->connect_errno != 0) {
 ?>
 
 </div>
-  <script>
-    $('.count').each(function () {
-    $(this).prop('Counter',0).animate({
-        Counter: $(this).text()
-    }, {
-        duration: 3000,
-        easing: 'swing',
-        step: function (now) {
-            $(this).text(Math.ceil(now));
-        }
-    });
-});
-</script>
+</body>
 
-     
-
-  </body>
-
-
+<script src="../../../js/counter.js"></script>
 </html>
