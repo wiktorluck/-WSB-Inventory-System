@@ -1,49 +1,70 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/modal_info.php");
 ?>
-
 
 <!doctype html>
 <html lang="pl">
   <head>
-  <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+    
     <title>PRODUCTS</title>
+    
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
-     <link rel="stylesheet" href="../../../css/products_style.css">
+    <link rel="stylesheet" href="../../../css/notification_modals.css">
+    <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+
+    
   </head>
 
+  <body>
   <body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
     <a href="../Products/products.php"><button>Produkty</button></a>
-    <a href="../Users/users.php"><button>Użytkownicy</button></a>
-    <a href=""><button>Raporty</button></a>
+    <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   <button>Użytkownicy</button></a>'; echo '<a href="../Reports/reports.php">   <button>Raporty</button></a>'; } ?>
     <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </div>
-  <div class="mainbox">
 
+
+
+<div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/> 
+
+<div class="dropdown">
+  <span> <img src="../../../images/more.png"> </span>
+  <div class="dropdown-content">
+      <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
+      <ul> <a href="../Products/products.php">Produkty</a> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
+      <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+  </div>
+</div>
+</div>
+
+
+<div class="mainbox">
+  <div class="topLogo">  <img name="menuBurger" src="../../../images/inventura_logo_full.png"/> </div>
   <div class="welcometext">Produkty</div>
-  <br>
       <div class="tableOfProducts">
 <?php
 require_once "../../../includes/connect.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-    echo "Error: " . $polaczenie->connect_errno;
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
 } else {
-    $rowsPerPage = 20; // Adjust the number of rows per page as needed
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $rowsPerPage = 20; 
+    $currentPage = $_GET['page'] ?? 1;
 
     $start = ($currentPage - 1) * $rowsPerPage;
 
     $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
-    $result = $polaczenie->query($sql);
+    $result = $conn->query($sql);
 
-    echo '<table class="table_products">';
+    echo '<table class="table_productsAll">';
     echo <<<END
       <thead>
         <tr>
@@ -66,14 +87,13 @@ if ($polaczenie->connect_errno != 0) {
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
-            echo '<td><a href="editproduct.php?id=' . $row["idp"] . '">Edytuj</a></td>';
+            echo '<td><a href="#" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>';
             echo "<td>Usuń</td>";
 
             echo "</tr>";
         }
 
-        // Add pagination links
-        $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
+        $totalRows = $conn->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);
 
         echo '<tr>';
@@ -92,50 +112,55 @@ if ($polaczenie->connect_errno != 0) {
     echo "</tbody>";
     echo "</table>";
 
-    $polaczenie->close();
+    $conn->close();
 }
 ?>
+
+
             </tr>
           </tbody>
         </table>
-
-
-
-        <script>
-    var table = document.getElementById('table_products');
-    var rowsPerPage = 2; // Adjust the number of rows per page as needed
-
-    function showPage(page) {
-        var startIndex = (page - 1) * rowsPerPage;
-        var endIndex = startIndex + rowsPerPage;
-        var rows = Array.from(table.getElementsByTagName('tbody')[0].rows);
-
-        rows.forEach(function(row, index) {
-            row.style.display = (index >= startIndex && index < endIndex) ? '' : 'none';
-        });
-    }
-
-    function setupPagination() {
-        var totalRows = table.getElementsByTagName('tbody')[0].rows.length;
-        var totalPages = Math.ceil(totalRows / rowsPerPage);
-        var paginationContainer = document.getElementById('pagination-container');
-
-        // Create pagination links
-        for (var i = 1; i <= totalPages; i++) {
-            var li = document.createElement('li');
-            li.textContent = i;
-            li.addEventListener('click', function() {
-                showPage(parseInt(this.textContent));
-            });
-            paginationContainer.appendChild(li);
-        }
-    }
-
-    // Initialize pagination
-    showPage(1);
-    setupPagination();
-</script>
   </div>
+
+  <div id="myModal" class="modalNotification" >
+    <div class="modalSuccess-content">
+      <div class="modalInfo"></div>
+    </div>
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../../js/products.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+      $('.edit-product').click(function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+
+          $.ajax({
+              url: 'editproduct.php',
+              method: 'POST',
+              data: { id: id },
+              success: function(response) {
+                $('#myModal .modalInfo').html(response);
+                  $('#myModal').html(response).show();
+              },
+              error: function(xhr, status, error) {
+                  console.error(status + ": " + error);
+              }
+          });
+      });
+  });
+</script>
   </body>
+  
 
 </html>
+ 
+
+
+
+
+
