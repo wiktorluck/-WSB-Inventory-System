@@ -46,17 +46,54 @@ require_once("../../../includes/modal_info.php");
   
   <div class="welcometext"> <?php echo "Witaj z powrotem, ".$_SESSION['login'].'!'; ?></div>
 
-  <div class="summaryboxes">
-    <div class="box1"> Wszystkich przedmiotów 
-            <p class="count">321</p>
-    </div>
-    <div class="box2"> Wszystkich kategorii 
-            <p class="count">21</p>
-    </div>
+
+  <?php
+require_once "../../../includes/connect.php";
+
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+
+if ($polaczenie->connect_errno != 0) {
+    echo "Error: " . $polaczenie->connect_errno;
+} else {
+  $sql_count = "SELECT 
+  COUNT(*) as totalProducts, 
+  COUNT(DISTINCT categoryp) as totalCategories,
+  COUNT(CASE WHEN categoryp = 'Komputer PC' THEN 1 END) as totalComputers 
+  FROM produkty;";
+  
+
+
+  $result = $polaczenie->query($sql_count);
+
+  
+  if ($result) {
+      $row = $result->fetch_assoc();
+      $total_products = $row['totalProducts'];
+      $total_categories = $row['totalCategories'];
+      $total_computers = $row['totalComputers'];
+  
+      echo'
+      <div class="summaryboxes">
+        <div class="box1"> Wszystkich przedmiotów 
+          <p class="count">' . $total_products . '</p>
+        </div>
+
+      <div class="box2"> Wszystkich kategorii 
+          <p class="count">'. $total_categories .'</p>
+      </div>
+
     <div class="box3"> Wszystkich komputerów 
-            <p class="count">63</p>
+            <p class="count">'. $total_computers .'</p>
     </div>
-  </div>
+  </div>';
+
+    $polaczenie->close();
+  }
+}
+?>
+
+
+  
 
 
   <div class="tabletext"> Ostatnio dodane przedmioty</div>
