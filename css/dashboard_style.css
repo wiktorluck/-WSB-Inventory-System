@@ -1,25 +1,9 @@
-.svg-icon {
-    width: 2em;
-    height: 2em;
-    margin-right: 8px; /* Odstęp między ikoną a tekstem */
-  }
-  
-  .svg-icon path,
-  .svg-icon polygon,
-  .svg-icon rect {
-    fill: #FFFFFF;
-  }
-
-
-
-
 button
 {
     align-items: center; /* Centrowanie w pionie */
     justify-content: center; /* Centrowanie w poziomie */
     font-size: large;
     cursor: pointer;
-   
     background-color: #3484FF;
     color: white;
     border: solid 0px;
@@ -32,6 +16,12 @@ button
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
 }
 
+a {
+    color: black;
+    font-size: 2vh;
+    font-style: normal;
+    text-decoration: none;
+}
 button:hover
 {
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.25);
@@ -84,7 +74,13 @@ button:hover
     flex-direction: row;
     display: flex;
     padding: 1em; 
+}
 
+.summaryboxes2
+{
+    flex-direction: row;
+    display: flex;
+    padding: 1em; 
 }
 
 
@@ -124,9 +120,286 @@ button:hover
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
 }
 
+
+.box4
+{
+    background-color: #3484FF;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FFFAEB;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box5
+{
+    background-color: #DC6803;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FFFAEB;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box6
+{
+    background-color: #B42318;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FEF3F2;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
 p
 {
     font-size: 5vh;
     font-weight: bold;
-
 }
+
+.topLogo {
+    display: none;
+}
+
+
+/********************** MODAL UZYTKOWNICY **********************/
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 100%;
+    top: 0;
+    width: 50%; 
+    height: 70%; 
+  }
+
+
+/********************** MODAL ALERT UPRAWNIENIA **********************/
+  .modalAlert {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 72%;
+    top: 68%;
+    width: 25%; 
+    height: 25%; 
+    border-radius: 15;
+  }
+
+  .modalAlert p {
+    font-size: 2vh;
+  }
+  
+  .modalAlert-content {
+    font-size: 5vh;
+    background-color: #FEF3F2;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%; 
+    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
+  }
+  
+  .tableOfProducts  {
+    margin: 0;
+ }
+ 
+ .table_products {
+     border: solid 1px #dde4ee;
+     border-collapse: collapse;
+     border-spacing: 0;
+     font: normal 13px Helvetica;
+     width: 100%;
+ }
+ 
+     .table_products thead th {
+         background-color: #3484FF;
+         border: solid 1px #EBEBEB;
+         color: #FFFFFF;
+         padding: 5px;
+         text-align: center;
+     }
+ 
+     .table_products tbody td {
+         border: solid 1px #EBEBEB;
+         color: #333;
+         padding: 5px;
+         
+     }
+
+     .table_productsAll {
+        border: solid 1px #dde4ee;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 13px Helvetica;
+        width: 100%;
+    }
+    
+        .table_productsAll thead th {
+            background-color: #3484FF;
+            border: solid 1px #EBEBEB;
+            color: #FFFFFF;
+            padding: 5px;
+            text-align: center;
+        }
+    
+        .table_productsAll tbody td {
+            border: solid 1px #EBEBEB;
+            color: #333;
+            padding: 5px;
+            
+        }
+ 
+ 
+ .pagination {
+     display: flex;
+     list-style: none;
+     padding: 0;
+ }
+ 
+     .pagination a {
+         display: inline-block;
+         padding: 8px 12px;
+         margin: 0 4px;
+         text-decoration: none;
+         color: #333;
+         background-color: #f2f2f2;
+         border: 1px solid #ddd;
+         border-radius: 4px;
+         cursor: pointer;
+     }
+ 
+         .pagination a:hover {
+             background-color: #c0c0c0;
+         }
+ 
+     .pagination .active {
+         background-color: #007bff;
+         color: #fff;
+     }
+ 
+     
+ .welcometext 
+ {
+     font-size: 2.5vh;
+ }
+ .table_productsPortrait {
+     display: none;
+ }
+ 
+
+
+
+  /********************** CSS NA MOBILE DEVICES **********************/
+
+  @media (orientation: portrait){
+    .nav {
+        display: none;
+    }
+
+    .mainbox{
+        top:5px;
+    }
+    .welcometext 
+    {
+    font-size: 2.5vh;
+    }
+
+    .tabletext 
+    {
+    font-size: 2.5vh;
+    }
+
+    .summaryboxes {
+        font-size: 3.5vw;
+    }
+
+    .box1, .box2, .box3 {
+        height: auto;
+        width: auto;
+    }
+
+    .box1 p {
+        font-size: 5vw;
+    }
+
+    .box2 p {
+        font-size: 5vw;
+    }
+
+    .box3 p {
+        font-size: 5vw;
+    }
+
+    .topLogo, .menuButton {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .topLogo img {
+        height: 7vw;
+        align-self: flex-start;
+    }
+
+    .dropdown {
+        margin-right: 5%;
+        display: flex;
+        align-self: flex-end;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+        right: 4%;
+        top: 6%;
+      }
+
+      .table_products {
+        display: none;
+    }
+    .table_productsPortrait {
+        display: block;
+        border: solid 1px #dde4ee;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 2vw Helvetica;
+        width: 100%;
+    }
+    
+        .table_productsPortrait thead th {
+            background-color: #3484FF;
+            border: solid 1px #EBEBEB;
+            color: #FFFFFF;
+            padding: 5px;
+            text-align: center;
+            width: 25rem;
+        }
+    
+        .table_productsPortrait tbody td {
+            border: solid 1px #EBEBEB;
+            color: #333;
+            padding: 5px;
+            
+        }
+
+        
+}
+
+
+

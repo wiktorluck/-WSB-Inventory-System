@@ -10,22 +10,38 @@ require_once("../../../includes/authorized.php");
     <title>PRODUCTS</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
-     <link rel="stylesheet" href="../../../css/products_style.css">
   </head>
 
+  <body>
   <body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
     <a href="../Products/products.php"><button>Produkty</button></a>
-    <a href="../Users/users.php"><button>Użytkownicy</button></a>
-    <a href=""><button>Raporty</button></a>
+    <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   <button>Użytkownicy</button></a>'; echo '<a href="../Reports/reports.php">   <button>Raporty</button></a>'; } ?>
     <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
   </div>
 
 
-  <h2>Produkty</h2>
-  <br>
+
+<div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/> 
+
+<div class="dropdown">
+  <span> <img src="../../../images/more.png"> </span>
+  <div class="dropdown-content">
+      <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
+      <ul> <a href="../Products/products.php">Produkty</a> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
+      <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
+      <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+  </div>
+</div>
+</div>
+
+
+<div class="mainbox">
+  <div class="topLogo">  <img name="menuBurger" src="../../../images/inventura_logo_full.png"/> </div>
+  <div class="welcometext">Produkty</div>
       <div class="tableOfProducts">
 <?php
 require_once "../../../includes/connect.php";
@@ -35,7 +51,7 @@ $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 if ($polaczenie->connect_errno != 0) {
     echo "Error: " . $polaczenie->connect_errno;
 } else {
-    $rowsPerPage = 20; // Adjust the number of rows per page as needed
+    $rowsPerPage = 20; 
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 
     $start = ($currentPage - 1) * $rowsPerPage;
@@ -43,17 +59,16 @@ if ($polaczenie->connect_errno != 0) {
     $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
     $result = $polaczenie->query($sql);
 
-    echo '<table class="table_products">';
+    echo '<table class="table_productsAll">';
     echo <<<END
       <thead>
         <tr>
-          <th>#ID</th>
-          <th>Nazwa</th>
-          <th>Ilość</th>
+         <th style="width: 3vw;">ID</th>
+          <th style="width: 25vw;">Nazwa</th>
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>
-          <th colspan="2">Czynność</th>
+          <th colspan="2">Zmodyfikuj</th>
         </tr>
       </thead>
       END;
@@ -64,7 +79,6 @@ if ($polaczenie->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["idp"] . "</td>";
             echo "<td>" . $row["namep"] . "</td>";
-            echo "<td>" . $row["quantityp"] . "</td>";
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
@@ -74,8 +88,8 @@ if ($polaczenie->connect_errno != 0) {
             echo "</tr>";
         }
 
-
         // Add pagination links
+
         $totalRows = $polaczenie->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);
 
@@ -98,13 +112,15 @@ if ($polaczenie->connect_errno != 0) {
     $polaczenie->close();
 }
 ?>
+
+
             </tr>
           </tbody>
         </table>
 
 
 
-      <script>
+        <script>
     var table = document.getElementById('table_products');
     var rowsPerPage = 2; // Adjust the number of rows per page as needed
 
@@ -138,8 +154,7 @@ if ($polaczenie->connect_errno != 0) {
     showPage(1);
     setupPagination();
 </script>
-
-
+  </div>
   </body>
 
 </html>

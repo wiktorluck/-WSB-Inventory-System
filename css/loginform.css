@@ -26,6 +26,7 @@ body, html
     border: 1px solid rgba( 255, 255, 255, 0.15 );
     width: 20vw;
     height: 60vh;
+    min-width: 20vw;
 }
 
 form
@@ -111,6 +112,7 @@ input:focus
 
 .corplogo
 {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,4 +135,32 @@ input:focus
     font-size: medium;
     font-style: italic;
     color: #B42318;
+}
+
+
+@media (orientation: portrait) {
+    .logform {
+    width: 40vw;
+    height: 60vh;
+} 
+    form {
+        font-size: 4vw;
+    }
+    input
+{
+    width: 25vw;
+    height: 2vh;
+    border: solid 0;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.2s;
+    font-size: 2vw;
+}
+    .loginbutton {
+        width: 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
 }

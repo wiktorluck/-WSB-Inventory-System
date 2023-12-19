@@ -27,7 +27,7 @@
 
 
 <div class="logform">
-  <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300xp"/>   </div>
+  <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300vw"/>   </div>
   <form action="php/auth/signin.php" method="POST">
     <br>
       Login<br>
@@ -41,7 +41,7 @@
         
           <div class="login_error">
             <?php
-            if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+            if(isset($_SESSION['error']))	echo $_SESSION['error'];
           ?>
           </div>
           
