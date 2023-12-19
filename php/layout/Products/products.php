@@ -10,6 +10,7 @@ require_once("../../../includes/authorized.php");
     
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
+    <link rel="stylesheet" href="../../../css/notification_modals.css">
     <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
 
     

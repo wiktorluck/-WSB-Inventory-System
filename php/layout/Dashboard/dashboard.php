@@ -14,6 +14,7 @@ require_once("../../../includes/modal_info.php");
     <title>INVENTURA</title>
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
+    <link rel="stylesheet" href="../../../css/notification_modals.css">
 </head>
 
 

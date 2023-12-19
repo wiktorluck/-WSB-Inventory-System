@@ -1,0 +1,47 @@
+/********************** USERS MODLALS **********************/
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 100%;
+    top: 0;
+    width: 50%; 
+    height: 70%; 
+  }
+
+
+/********************** NOTIFICATIONS MODALS **********************/
+  .modalNotification {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 72%;
+    top: 68%;
+    width: 25%; 
+    height: 25%; 
+    border-radius: 15;
+  }
+
+  .modalNotification p {
+    font-size: 2vh;
+  }
+  
+  .modalAlert-content {
+    font-size: 5vh;
+    background-color: #FEF3F2;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%; 
+    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
+  }
+
+  .modalSuccess-content {
+    font-size: 5vh;
+    background-color: rgb(231, 255, 196);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%; 
+    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
+  }

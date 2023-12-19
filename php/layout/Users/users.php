@@ -12,6 +12,7 @@ require_once("../../../includes/authorized_perm.php");
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
     <link rel="stylesheet" href="../../../css/products_style.css">
+    <link rel="stylesheet" href="../../../css/notification_modals.css">
   </head>
 
   <body>

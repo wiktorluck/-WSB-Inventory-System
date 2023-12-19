@@ -23,7 +23,7 @@
   <meta name="generator" content="">
   <link rel="stylesheet" href="css/loginform.css">
   <link rel="stylesheet" href="css/body_style.css">
-  <link rel="stylesheet" href="css/dashboard_style.css">
+  <link rel="stylesheet" href="css/notification_modals.css">
   <title>INVENTURA</title>
 </head>
 
