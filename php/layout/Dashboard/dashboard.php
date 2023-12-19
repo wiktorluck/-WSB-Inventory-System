@@ -14,6 +14,7 @@ require_once("../../../includes/authorized.php");
   </head>
 
   <body>
+
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
@@ -195,5 +196,6 @@ if ($polaczenie->connect_errno != 0) {
      
 
   </body>
+
 
 </html>

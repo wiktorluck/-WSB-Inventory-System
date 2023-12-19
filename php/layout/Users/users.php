@@ -43,6 +43,8 @@ require_once("../../../includes/authorized_perm.php");
 <div class="tableOfProducts">
 
 
+
+
 <?php
 require_once "../../../includes/connect.php";
 
