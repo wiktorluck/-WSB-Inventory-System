@@ -136,6 +136,7 @@ if ($conn->connect_errno != 0) {
     </div>
   </div>
 
+  <!-- MODAL DODAWANIA PRODUKTU -->
   <div id="myModal2" class="modalA">
     <div class="modal-contentA">
       <span class="closeA">&times;</span>
@@ -175,23 +176,23 @@ if ($conn->connect_errno != 0) {
 
 
   <script>
-    var modal = document.getElementById("myModal2");
-    var btn = document.getElementById("myBtn2");
-    var span = document.getElementsByClassName("closeA")[0];
+  var modal = document.getElementById("myModal2");
+  var btn = document.getElementById("myBtn2");
+  var span = document.getElementsByClassName("closeA")[0];
 
 
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      span.onclick = function() {
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
         modal.style.display = "none";
       }
-
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
+    }
   </script>
 
   
