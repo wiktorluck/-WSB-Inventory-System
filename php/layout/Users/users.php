@@ -1,5 +1,6 @@
 <?php
 require_once("../../../includes/authorized.php");
+require_once("../../../includes/modal_info.php");
 require_once("../../../includes/authorized_perm.php");
 ?>
 
@@ -89,8 +90,50 @@ if ($conn->connect_errno != 0) {
 }
 ?>
 
-            </tr>
-          </tbody>
-        </table>
+<button id="myBtn">Dodaj nowego użytkownika</button>
+
+<!-- MODAL ADD USER -->
+<div id="myModal" class="modalP">
+    <div class="modal-contentP">
+      <span class="closeP">&times;</span>
+      <form id="addUserForm" action="adduser.php" method="post">
+          <label for="loginU">Nazwa użytkownika:</label>
+          <input type="text" id="login" name="login"><br><br>
+
+          <label for="passwordU">Hasło:</label>
+          <input type="password" id="password" name="password"><br><br>
+
+          <label for="permission">Uprawnienia:</label>
+          <select id="permission" name="permission">
+            <option value="0">Pracownik</option>
+            <option value="1">Administrator</option>
+          </select><br><br>
+
+          <input type="submit" value="Wyślij">
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("closeP")[0];
+
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
 
 </html>

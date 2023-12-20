@@ -13,13 +13,13 @@
 
 
         if (empty($login)) {
-            $_SESSION['notification'] = 3;
+            $_SESSION['notification'] = 5;
             header('Location: users.php');
             $conn->close();
         }
 
         if (empty($password)) {
-            $_SESSION['notification'] = 4;
+            $_SESSION['notification'] = 5;
             header('Location: users.php');
             $conn->close();
         }
@@ -35,12 +35,12 @@
                 $insert_query = "INSERT INTO uzytkownicy (login, password, permission) VALUES ('" . mysqli_real_escape_string($conn, $login) . "', '" . $hashed_password . "', '" . $permission . "')";
                 
                 if ($conn->query($insert_query)) {
-                    $_SESSION['success'] = '<span style="color:green">Użytkownik został dodany!</span>';
+                    $_SESSION['notification'] = 4;
                     header('Location: users.php');
             }
         }
         } else {
-            $_SESSION['notification'] = '<span style="color:red">Błąd zapytania SQL!</span>';
+            $_SESSION['notification'] = 5;
         }
     
         header('Location: users.php');
