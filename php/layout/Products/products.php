@@ -89,7 +89,7 @@ if ($conn->connect_errno != 0) {
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
             echo '<td><a href="#" id="myBtn" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>';
-            echo "<td>Usuń</td>";
+            echo '<td><a href="#" id="myBtn1" class="delete-product" data-id="' . $row["idp"] . '">Usuń</a></td>';
 
             echo "</tr>";
         }
@@ -125,10 +125,25 @@ if ($conn->connect_errno != 0) {
     </div>
   </div>
 
-  <!-- AJAX FORMUARZA EDYCJI PRODUKTU -->
+  <!-- MODAL USUWANIA PRODUKTU -->
+  <div id="myModal1" class="modalD">
+    <div class="modal-contentD">
+      <span class="closeD">&times;</span>
+      <p></p>
+      <input type="button" class="closeD" value="Nie"/>
+    </div>
+  </div>
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../../js/products.js"></script>
+    
+  <!-- AJAX FORMUARZA EDYCJI PRODUKTU -->
   <script src="../../../js/product_edit.js"></script>
+    <!-- AJAX FORMUARZA USUWANIA PRODUKTU -->
+  <script src="../../../js/product_delete.js"></script>
+
+
   
 </body>
 </html>

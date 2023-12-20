@@ -11,12 +11,9 @@ if ($conn->connect_errno != 0) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['idp'];
-    $name = $_POST['namep'];
-    $category = $_POST['categoryp'];
-    $serial = $_POST['serialp'];
-    $registration = $_POST['registrationp'];
 
-    $sql = "UPDATE produkty SET namep='$name', categoryp='$category', serialp='$serial', registrationp='$registration' WHERE idp=$id";
+
+    $sql = "DELETE FROM produkty WHERE idp = $id;";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;

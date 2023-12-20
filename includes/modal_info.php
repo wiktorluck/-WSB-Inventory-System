@@ -53,7 +53,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
   echo '
   <div id="myModal" class="modalNotification">
-    <div class="modalSuccess-content">
+    <div class="modalAlert-content">
         <p>Dane nie zostały zaktualizowane!</p>
     </div>
   </div>

@@ -1,6 +1,6 @@
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("closeP")[0];
+var modal = document.getElementById("myModal1");
+var btn = document.getElementById("myBtn1");
+var span = document.getElementsByClassName("closeD")[0];
 
 
   btn.onclick = function() {
@@ -17,17 +17,17 @@ var span = document.getElementsByClassName("closeP")[0];
   }
 
   $(document).ready(function() {
-      $('.edit-product').click(function(e) {
+      $('.delete-product').click(function(e) {
           e.preventDefault();
           var id = $(this).data('id');
 
           $.ajax({
-              url: 'editproductModal.php',
+              url: 'deleteproductModal.php',
               method: 'POST',
               data: { id: id },
               success: function(response) {
-                $('#myModal .modal-contentP p').html(response);
-                $('#myModal').show();
+                $('#myModal1 .modal-contentD p').html(response);
+                $('#myModal1').show();
               },
               error: function(xhr, status, error) {
                   console.error(status + ": " + error);
@@ -37,12 +37,12 @@ var span = document.getElementsByClassName("closeP")[0];
   });
 
   $(document).ready(function() {
-    $('#updateForm').submit(function(e) {
+    $('#deleteForm').submit(function(e) {
         e.preventDefault();
         var formData = $(this).serialize();
 
         $.ajax({
-            url: 'editproduct.php',
+            url: 'deleteproduct.php',
             method: 'POST',
             data: formData,
             success: function(response) {
@@ -57,8 +57,8 @@ var span = document.getElementsByClassName("closeP")[0];
 
 // CLOSE MODAL
 $(document).ready(function() {
-  $('.closeP').click(function() {
-      var modal = document.getElementById("myModal");
+  $('.closeD').click(function() {
+      var modal = document.getElementById("myModal1");
       modal.style.display = "none";
   });
 });
