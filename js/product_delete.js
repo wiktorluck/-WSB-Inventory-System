@@ -57,7 +57,7 @@ var span = document.getElementsByClassName("closeD")[0];
 
 // CLOSE MODAL
 $(document).ready(function() {
-  $('.closeD').click(function() {
+  $('.closeD1').click(function() {
       var modal = document.getElementById("myModal1");
       modal.style.display = "none";
   });

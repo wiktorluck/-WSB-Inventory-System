@@ -1,4 +1,4 @@
-.modalP, .modalD {
+.modalP, .modalD, .modalA {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
 
@@ -14,7 +14,7 @@
   }
   
   /* Modal Content */
-  .modal-contentP, .modal-contentD {
+  .modal-contentP, .modal-contentD, .modal-contentA {
     background-color: #fefefe;
     margin: auto;
     padding: 5px;
@@ -24,15 +24,15 @@
   }
   
   /* The Close Button */
-  .closeP, .colseD {
+  .closeP, .closeD, .closeA {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
   
-  .closeP:hover, .clodeD:hover, .clodeD:focus,
-  .closeP:focus {
+  .closeP:hover, .closeP:focus, .closeD:hover, .closeD:focus, .closeA:hover, .closeA:focus
+ {
     color: #000;
     text-decoration: none;
     cursor: pointer;

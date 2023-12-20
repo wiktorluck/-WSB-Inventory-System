@@ -117,6 +117,8 @@ if ($conn->connect_errno != 0) {
 }
 ?>
 
+<button>Dodaj nowy produkt</button>
+
   <!-- MODAL EDYCJI PRODUKTU -->
   <div id="myModal" class="modalP">
     <div class="modal-contentP">
@@ -130,9 +132,17 @@ if ($conn->connect_errno != 0) {
     <div class="modal-contentD">
       <span class="closeD">&times;</span>
       <p></p>
-      <input type="button" class="closeD" value="Nie"/>
+      <input type="button" class="closeD1" value="Nie"/>
     </div>
   </div>
+
+  <div id="myModal2" class="modalA">
+    <div class="modal-contentA">
+      <span class="closeA">&times;</span>
+      <p></p>
+    </div>
+  </div>
+
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
