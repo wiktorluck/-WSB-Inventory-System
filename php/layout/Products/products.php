@@ -117,7 +117,7 @@ if ($conn->connect_errno != 0) {
 }
 ?>
 
-<button>Dodaj nowy produkt</button>
+<button id="myBtn2">Dodaj nowy produkt</button>
 
   <!-- MODAL EDYCJI PRODUKTU -->
   <div id="myModal" class="modalP">
@@ -139,7 +139,27 @@ if ($conn->connect_errno != 0) {
   <div id="myModal2" class="modalA">
     <div class="modal-contentA">
       <span class="closeA">&times;</span>
-      <p></p>
+        <form id="addForm" action="addproduct.php" method="post">
+          <label for="namep">Nazwa produktu:</label>
+          <input type="text" id="namep" name="namep"><br><br>
+
+          <label for="categoryp">Kategoria:</label>
+          <select id="categoryp" name="categoryp">
+            <option value="Komputer PC">Komputer PC</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Monitor LCD">Monitor LCD</option>
+            <option value="Telefon GSM">Telefon GSM</option>
+            <option value="TV Smart">TV Smart</option>
+          </select><br><br>
+
+          <label for="serialp">Nr seryjny:</label>
+          <input type="text" id="serialp" name="serialp"><br><br>
+
+          <label for="registrationp">Nr ewidencyjny:</label>
+          <input type="text" id="registrationp" name="registrationp"><br><br>
+
+          <input type="submit" value="Wyślij">
+      </form>
     </div>
   </div>
 
@@ -153,6 +173,26 @@ if ($conn->connect_errno != 0) {
     <!-- AJAX FORMUARZA USUWANIA PRODUKTU -->
   <script src="../../../js/product_delete.js"></script>
 
+
+  <script>
+    var modal = document.getElementById("myModal2");
+    var btn = document.getElementById("myBtn2");
+    var span = document.getElementsByClassName("closeA")[0];
+
+
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+  </script>
 
   
 </body>
