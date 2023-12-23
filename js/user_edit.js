@@ -1,28 +1,28 @@
-var modal3 = document.getElementById("myModal");
+var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("closeP")[0];
 
 
   btn.onclick = function() {
-    modal3.style.display = "block";
+    modal.style.display = "block";
   }
   span.onclick = function() {
-    modal3.style.display = "none";
+    modal.style.display = "none";
   }
 
   window.onclick = function(event) {
-    if (event.target == modal3) {
-      modal3.style.display = "none";
+    if (event.target == modal) {
+      modal.style.display = "none";
     }
   }
 
   $(document).ready(function() {
-      $('.edit-product').click(function(e) {
+      $('.edit-user').click(function(e) {
           e.preventDefault();
           var id = $(this).data('id');
 
           $.ajax({
-              url: 'editproductModal.php',
+              url: 'edituserModal.php',
               method: 'POST',
               data: { id: id },
               success: function(response) {
@@ -42,7 +42,7 @@ var span = document.getElementsByClassName("closeP")[0];
         var formData = $(this).serialize();
 
         $.ajax({
-            url: 'editproduct.php',
+            url: 'edituser.php',
             method: 'POST',
             data: formData,
             success: function(response) {
@@ -58,7 +58,7 @@ var span = document.getElementsByClassName("closeP")[0];
 // CLOSE MODAL
 $(document).ready(function() {
   $('.closeP').click(function() {
-      var modal3 = document.getElementById("myModal");
-      modal3.style.display = "none";
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
   });
 });

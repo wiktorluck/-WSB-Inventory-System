@@ -1,21 +1,24 @@
 <?php
 require_once("../../../includes/authorized.php");
 require_once("../../../includes/modal_info.php");
-require_once("../../../includes/authorized_perm.php");
 ?>
-
 
 <!doctype html>
 <html lang="pl">
   <head>
-  <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+    
     <title>USERS</title>
+    
     <link rel="stylesheet" href="../../../css/body_style.css">
     <link rel="stylesheet" href="../../../css/dashboard_style.css">
-    <link rel="stylesheet" href="../../../css/products_style.css">
     <link rel="stylesheet" href="../../../css/notification_modals.css">
+    <link rel="stylesheet" href="../../../css/products_style.css">
+    <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+
+    
   </head>
 
+  <body>
   <body>
   <div class="nav">
     <img src="../../../images/inventura_logo_full.png"/>
@@ -40,13 +43,12 @@ require_once("../../../includes/authorized_perm.php");
   </div>
 </div>
 </div>
-  <div class="mainbox">
-  <h2>Użytkownicy</h2>
-<div class="tableOfProducts">
 
 
-
-
+<div class="mainbox">
+  <div class="topLogo">  <img name="menuBurger" src="../../../images/inventura_logo_full.png"/> </div>
+  <div class="welcometext">Użytkownicy</div>
+      <div class="tableOfProducts">
 <?php
 require_once "../../../includes/connect.php";
 
@@ -55,16 +57,23 @@ $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 if ($conn->connect_errno != 0) {
     echo "Error: " . $conn->connect_errno;
 } else {
-    $sql = "SELECT id, login FROM uzytkownicy";
+    $rowsPerPage = 20; 
+    $currentPage = $_GET['page'] ?? 1;
+
+    $start = ($currentPage - 1) * $rowsPerPage;
+
+    $sql = "SELECT * FROM uzytkownicy LIMIT $start, $rowsPerPage";
     $result = $conn->query($sql);
 
     echo '<table class="table_productsAll">';
     echo <<<END
       <thead>
         <tr>
-          <th>#ID</th>
-          <th>Nazwa</th>
-          <th colspan="2">Modyfikacja użytkownika</th>
+         <th style="width: 3vw;">ID</th>
+          <th style="width: 25vw;">Login</th>
+          <th>Hasło</th>
+          <th>Uprawnienia</th>
+          <th colspan="2">Zmodyfikuj</th>
         </tr>
       </thead>
       END;
@@ -75,12 +84,29 @@ if ($conn->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
             echo "<td>" . $row["login"] . "</td>";
-            echo '<td><a href=""myBtn"?id=' . $row["id"] . '">Edytuj</a></td>';
-            echo '<td>Usuń</td>';
+            echo "<td>" . $row["password"] . "</td>";
+            echo "<td>" . $row["permission"] . "</td>";
+
+            echo '<td><a href="#" id="myBtn" class="edit-user" data-id="' . $row["id"] . '">Edytuj</a></td>';
+            echo '<td><a href="#" id="myBtn1" class="delete-user" data-id="' . $row["id"] . '">Usuń</a></td>';
+
             echo "</tr>";
         }
+
+        $totalRows = $conn->query("SELECT COUNT(*) as total FROM uzytkownicy")->fetch_assoc()['total'];
+        $totalPages = ceil($totalRows / $rowsPerPage);
+
+        echo '<tr>';
+        echo '<td colspan="8">';
+        echo '<div class="pagination">';
+        for ($i = 1; $i  <= $totalPages; $i++) {
+            echo '<a href="?page=' . $i . '">' . $i . '</a>';
+        }
+        echo '</div>';
+        echo '</td>';
+        echo '</tr>';
     } else {
-        echo "<tr><td colspan='3'>Brak rekordów w tabeli.</td></tr>";
+        echo "<tr><td colspan='8'>Brak rekordów w tabeli.</td></tr>";
     }
 
     echo "</tbody>";
@@ -90,21 +116,38 @@ if ($conn->connect_errno != 0) {
 }
 ?>
 
-<button id="myBtn">Dodaj nowego użytkownika</button>
+<button id="myBtn2">Dodaj użytkownika</button>
 
-<!-- MODAL ADD USER -->
-<div id="myModal" class="modalP">
+  <!-- MODAL EDYCJI PRODUKTU -->
+  <div id="myModal" class="modalP">
     <div class="modal-contentP">
       <span class="closeP">&times;</span>
-      <form id="addUserForm" action="adduser.php" method="post">
-          <label for="loginU">Nazwa użytkownika:</label>
-          <input type="text" id="login" name="login"><br><br>
+      <p></p>
+    </div>
+  </div>
 
-          <label for="passwordU">Hasło:</label>
-          <input type="password" id="password" name="password"><br><br>
+  <!-- MODAL USUWANIA PRODUKTU -->
+  <div id="myModal1" class="modalD">
+    <div class="modal-contentD">
+      <span class="closeD">&times;</span>
+      <p></p>
+      <input type="button" class="closeD1" value="Nie"/>
+    </div>
+  </div>
 
-          <label for="permission">Uprawnienia:</label>
-          <select id="permission" name="permission">
+  <!-- MODAL DODAWANIA PRODUKTU -->
+  <div id="myModal2" class="modalA">
+    <div class="modal-contentA">
+      <span class="closeA">&times;</span>
+        <form id="addUserForm" action="adduser.php" method="post">
+          <label for="loginu">Login:</label>
+          <input type="text" id="loginu" name="loginu"><br><br>
+
+          <label for="passwordu">Hasło:</label>
+          <input type="password" id="passwordu" name="passwordu"><br><br>
+
+          <label for="permissionu">Uprawnienia:</label>
+          <select id="permissionu" name="permissionu">
             <option value="0">Pracownik</option>
             <option value="1">Administrator</option>
           </select><br><br>
@@ -115,10 +158,20 @@ if ($conn->connect_errno != 0) {
   </div>
 
 
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- <script src="../../../js/products.js"></script> -->
+    
+  <!-- AJAX FORMUARZA EDYCJI PRODUKTU -->
+  <script src="../../../js/user_edit.js"></script>
+    <!-- AJAX FORMUARZA USUWANIA PRODUKTU -->
+  <script src="../../../js/user_delete.js"></script>
+
+
   <script>
-  var modal = document.getElementById("myModal");
-  var btn = document.getElementById("myBtn");
-  var span = document.getElementsByClassName("closeP")[0];
+  var modal = document.getElementById("myModal2");
+  var btn = document.getElementById("myBtn2");
+  var span = document.getElementsByClassName("closeA")[0];
 
 
     btn.onclick = function() {
@@ -135,5 +188,12 @@ if ($conn->connect_errno != 0) {
     }
   </script>
 
-
+  
+</body>
 </html>
+ 
+
+
+
+
+

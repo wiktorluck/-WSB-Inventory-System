@@ -11,12 +11,9 @@ if ($conn->connect_errno != 0) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
-    $login = $_POST['login'];
-    $password = $_POST['password'];
-    $permission = $_POST['permission'];
 
 
-    $sql = "UPDATE uzytkownicy SET login='$login', password='$password', permission='$permission' WHERE id=$id";
+    $sql = "DELETE FROM uzytkownicy WHERE id = $id;";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;

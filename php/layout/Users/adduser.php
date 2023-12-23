@@ -7,9 +7,9 @@
     if ($conn->connect_errno != 0) {
         echo "Error: " . $conn->connect_errno;
     } else {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $permission = $_POST['permission'];
+        $login = $_POST['loginu'];
+        $password = $_POST['passwordu'];
+        $permission = $_POST['permissionu'];
 
 
         if (empty($login)) {
@@ -46,5 +46,3 @@
         header('Location: users.php');
     }
     $conn->close();
-    
-        

@@ -1,18 +1,18 @@
-var modal = document.getElementById("myModal1");
+var modal2 = document.getElementById("myModal1");
 var btn = document.getElementById("myBtn1");
 var span = document.getElementsByClassName("closeD")[0];
 
 
   btn.onclick = function() {
-    modal.style.display = "block";
+    modal2.style.display = "block";
   }
   span.onclick = function() {
-    modal.style.display = "none";
+    modal2.style.display = "none";
   }
 
   window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    if (event.target == modal2) {
+      modal2.style.display = "none";
     }
   }
 
@@ -59,14 +59,14 @@ var span = document.getElementsByClassName("closeD")[0];
 // CLOSE MODAL
 $(document).ready(function() {
   $('.closeD').click(function() {
-      var modal = document.getElementById("myModal1");
-      modal.style.display = "none";
+      var modal2 = document.getElementById("myModal1");
+      modal2.style.display = "none";
   });
 });
 
 $(document).ready(function() {
   $('.closeD1').click(function() {
-      var modal = document.getElementById("myModal1");
-      modal.style.display = "none";
+      var modal2 = document.getElementById("myModal1");
+      modal2.style.display = "none";
   });
 });
