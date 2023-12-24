@@ -1,6 +1,6 @@
 <?php
 
-//Don't permissions
+//DON'T PERMISSIONS
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 1) {
   echo '
   <div id="myModal" class="modalNotification">
@@ -12,7 +12,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 1) {
   <script src="../../../js/modals.js"></script>';
 }
 
-//Wrong Login or Password
+//WRONG LOGIN OR PASSWORD
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 2) {
   echo '
   <div id="myModal" class="modalNotification">
@@ -24,7 +24,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 2) {
   <script src="../../../js/modals.js"></script>';
 }
 
-//Login Success
+//LOGIN SUCCESS
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 3) {
   echo '
   <div id="myModal" class="modalNotification">
@@ -37,7 +37,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 3) {
 }
 
 
-//Edit Success
+//EDIT SUCCESS
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
   echo '
   <div id="myModal" class="modalNotification">
@@ -49,7 +49,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
   <script src="../../../js/modals.js"></script>';
 }
 
-//Edit Fail
+//EDIT FAIL
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
   echo '
   <div id="myModal" class="modalNotification">
@@ -60,7 +60,6 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
 
   <script src="../../../js/modals.js"></script>';
 }
-
 
 
 unset($_SESSION['notification']);

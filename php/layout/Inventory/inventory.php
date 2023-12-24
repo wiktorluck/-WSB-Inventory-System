@@ -1,6 +1,7 @@
 <?php
-require_once("../../../includes/authorized.php");
-require_once("../../../includes/modal_info.php");
+  require_once("../../../includes/authorized.php");
+  require_once("../../../includes/modal_info.php");
+  require_once("../../../includes/side_panel.php");
 ?>
 
 <!doctype html>
@@ -20,42 +21,6 @@ require_once("../../../includes/modal_info.php");
 
   <body>
   <body>
-
-  
-<?php
-   echo'<div class="nav">';
-   echo' <img src="../../../images/inventura_logo_full.png"/>';
-
-
-   //Panel admina
-   if($_SESSION['permission'] == 1){
-    
-    echo'
-    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
-    <a href="../Products/products.php"><button>Produkty</button></a>
-    <a href="../Users/users.php"><button>Użytkownicy</button></a>
-    <a href="../Reports/reports.php">   <button>Raporty</button></a>
-    
-    <a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>
-    ';
-   }
-   
-   //Panel użytkownika gdy nie ma inwentaryzacji
-   if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 0){
-      echo '<a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>';
-      echo '<a href="../Products/products.php"><button>Produkty</button></a>';
-   }
-
-   //Panel użytkownika gdy trwa inwentaryzacja
-   if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 1){
-        echo '<a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>';  
-    }
-
-     echo '<a href="../../auth/logout.php"><button>Wyloguj się</button></a>';
-     echo'</div>';
-?>
-
-
 <div class="topLogo">  <img src="../../../images/inventura_logo_full.png"/> 
 
 <div class="dropdown">
@@ -98,7 +63,7 @@ if ($conn->connect_errno != 0) {
   
       if($_SESSION['activeInventory'] == 1){
         echo '<table class="table_productsAll">';
-        echo <<<END
+        echo '
           <thead>
             <tr>
              <th style="width: 3vw;">ID</th>
@@ -111,7 +76,7 @@ if ($conn->connect_errno != 0) {
               <th>Akcje</th>
             </tr>
           </thead>
-          END;
+          ';
         echo "<tbody>";
         
         if ($result->num_rows > 0) {
@@ -156,8 +121,6 @@ if ($conn->connect_errno != 0) {
         ';
       }
       
-
-
     $conn->close();
 }
 ?>
@@ -172,7 +135,7 @@ if($_SESSION['permission'] == 1){
 
 ?>
 
-  <!-- MODAL EDYCJI PRODUKTU -->
+  <!-- EDIT INVENTORY MODAL -->
   <div id="myModal" class="modalP">
     <div class="modal-contentP">
       <span class="closeP">&times;</span>
@@ -182,7 +145,7 @@ if($_SESSION['permission'] == 1){
   
 
 
-  <!-- ROZPOCZĘCIE NOWEJ INWENTARYZACJI -->
+  <!-- ADD INVENTORY MODAL -->
   <div id="myModal2" class="modalA">
     <div class="modal-contentA">
       <span class="closeA">&times;</span>
@@ -195,7 +158,7 @@ if($_SESSION['permission'] == 1){
   </div>
 
 
-    <!-- MODAL ZAKOŃCZENIA INWENTARYZACJI -->
+    <!-- END INVENTORY MODAL -->
     <div id="myModal3" class="modalD">
     <div class="modal-contentD">
       <span class="closeD">&times;</span>
@@ -213,49 +176,14 @@ if($_SESSION['permission'] == 1){
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-  <!-- AJAX FORMUARZA EDYCJI PRODUKTU -->
+  <!-- EDIT INVENTORY MODAL AJAX SCRIPT -->
   <script src="../../../js/inventory_edit.js"></script>
 
-  <script>
-  var modal = document.getElementById("myModal2");
-  var btn = document.getElementById("myBtn2");
-  var span = document.getElementsByClassName("closeA")[0];
-
-
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
-
-
-<script>
-  var modal1 = document.getElementById("myModal3");
-  var btn1 = document.getElementById("myBtn3");
-  var span1 = document.getElementsByClassName("closeD")[0];
-
-
-    btn1.onclick = function() {
-      modal1.style.display = "block";
-    }
-    span1.onclick = function() {
-      modal1.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal1) {
-        modal1.style.display = "none";
-      }
-    }
-  </script>
+  <!-- ADD INVENTORY MODAL SCRIPT -->
+  <script src="../../../js/inventory_add.js"></script>
+  
+  <!-- END INVENTORY MODAL SCRIPT -->
+  <script src="../../../js/inventory_end.js"></script>
 
   
 </body>

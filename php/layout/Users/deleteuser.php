@@ -1,6 +1,6 @@
 <?php
-require_once("../../../includes/authorized.php");
-require_once("../../../includes/connect.php");
+    require_once("../../../includes/authorized.php");
+    require_once("../../../includes/connect.php");
 
 $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 

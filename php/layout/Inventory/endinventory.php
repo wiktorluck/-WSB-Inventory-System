@@ -1,40 +1,6 @@
-
-<!-- require_once("../../../includes/authorized.php");
-require_once("../../../includes/connect.php");
-
-$conn = new mysqli($host, $db_user, $db_password, $db_name);
-
-if ($conn->connect_errno != 0) {
-    echo "Error: " . $conn->connect_errno;
-    exit();
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql = "DELETE FROM produkty
-            WHERE EXISTS (
-                SELECT * FROM inventorypositions
-                WHERE inventorypositions.idp = produkty.idp
-                AND inventorypositions.checked = 'Brak'
-            );";
-
-    if ($conn->query($sql) === TRUE) {
-        $_SESSION['notification'] = 4;
-    } else {
-        $_SESSION['notification'] = 5;
-        echo "Błąd: " . $conn->error;
-    }
-
-    header('Location: inventory.php');
-    exit();
-} else {
-    echo "Nieprawidłowe żądanie.";
-} -->
-
-
-
 <?php
-require_once("../../../includes/authorized.php");
-require_once("../../../includes/connect.php");
+  require_once("../../../includes/authorized.php");
+  require_once("../../../includes/connect.php");
 
 $conn = new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -66,4 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Nieprawidłowe żądanie.";
 }
-?>
+
