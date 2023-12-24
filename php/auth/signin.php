@@ -39,7 +39,26 @@ if ($conn->connect_errno!=0)
 					$_SESSION['permission'] = $wiersz['permission'];
 					$_SESSION['notification'] = 3;
 					$rezultat->free_result();
-					header('Location: ../layout/Dashboard/dashboard.php');
+					
+
+					$sql_check_empty = "SELECT COUNT(*) AS total FROM inventorypositions";
+					$result = $conn->query($sql_check_empty);
+					
+					if ($result) {
+						$row = $result->fetch_assoc();
+						$is_empty = $row['total'] == 0;
+					
+						$_SESSION['activeInventory'] = $is_empty ? 0 : 1;
+					} else {
+						$_SESSION['activeInventory'] = 0; 
+					}
+
+					if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 1){
+						header('Location: ../layout/Inventory/inventory.php');
+					}else{
+						header('Location: ../layout/Dashboard/dashboard.php');
+					}
+					
 				} else {
 					$_SESSION['notification'] = 2;
 					header('Location:../../index.php');

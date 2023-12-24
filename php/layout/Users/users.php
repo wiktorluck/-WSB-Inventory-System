@@ -20,13 +20,38 @@ require_once("../../../includes/modal_info.php");
 
   <body>
   <body>
-  <div class="nav">
-    <img src="../../../images/inventura_logo_full.png"/>
+  <?php
+   echo'<div class="nav">';
+   echo' <img src="../../../images/inventura_logo_full.png"/>';
+
+
+   //Panel admina
+   if($_SESSION['permission'] == 1){
+    
+    echo'
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
     <a href="../Products/products.php"><button>Produkty</button></a>
-    <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   <button>Użytkownicy</button></a>'; echo '<a href="../Reports/reports.php">   <button>Raporty</button></a>'; } ?>
-    <a href="../../auth/logout.php"><button>Wyloguj się</button></a>
-  </div>
+    <a href="../Users/users.php"><button>Użytkownicy</button></a>
+    <a href="../Reports/reports.php">   <button>Raporty</button></a>
+    
+    <a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>
+    ';
+   }
+   
+   //Panel użytkownika gdy nie ma inwentaryzacji
+   if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 0){
+      echo '<a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>';
+      echo '<a href="../Products/products.php"><button>Produkty</button></a>';
+   }
+
+   //Panel użytkownika gdy trwa inwentaryzacja
+   if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 1){
+        echo '<a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>';  
+    }
+
+     echo '<a href="../../auth/logout.php"><button>Wyloguj się</button></a>';
+     echo'</div>';
+?>
 
 
 
