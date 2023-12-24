@@ -100,6 +100,30 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
   <script src="../../../js/modals.js"></script>';
 }
 
+//DIFFRENT PASSWORDS
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 9) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalAlert-content">
+        <p>Hasła różnią się od siebie!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
+//EMTY PASSWORDS
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 10) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalAlert-content">
+        <p>Wymagane wpisanie hasła!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
 
 unset($_SESSION['notification']);
 unset($_SESSION['temporaryPassword']); 

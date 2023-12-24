@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['notification'] = 4;
         $_SESSION['activeInventory'] = 1;
         header('Location: inventory.php');
-       
         exit();
     } else {
         $_SESSION['notification'] = 5;

@@ -14,28 +14,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $newPassword = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
 
-        if ($newPassword === $confirmPassword) {
-            $userId = $_SESSION['id'];
-            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-            $sql = "UPDATE uzytkownicy SET password='$hashedPassword', changePassword=0 WHERE id=$userId";
+        // Sprawdzenie, czy oba pola formularza zostały wypełnione
+        if (!empty($newPassword) && !empty($confirmPassword)) {
+            if ($newPassword === $confirmPassword) {
+                $userId = $_SESSION['id'];
+                $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                $sql = "UPDATE uzytkownicy SET password='$hashedPassword', changePassword=0 WHERE id=$userId";
 
-            $result = $conn->query($sql);
+                $result = $conn->query($sql);
 
-            if ($result) {
-                if ($_SESSION['activeInventory'] == 1) {
-                    $_SESSION['notification'] = 3;
-                    header('Location: ../layout/Inventory/inventory.php');
-                    exit();
+                if ($result) {
+                    if ($_SESSION['activeInventory'] == 1) {
+                        $_SESSION['notification'] = 3;
+                        header('Location: ../layout/Inventory/inventory.php');
+                        exit();
+                    } else {
+                        $_SESSION['notification'] = 3;
+                        header('Location: ../layout/Dashboard/dashboard.php');
+                        exit();
+                    }
                 } else {
-                    $_SESSION['notification'] = 3;
-                    header('Location: ../layout/Dashboard/dashboard.php');
+                    echo "Error: " . $conn->error;
                     exit();
                 }
             } else {
-                echo "Error: " . $conn->error;
+                $_SESSION['notification'] = 9;
+                header('Location: ../../newPassword.php');
                 exit();
             }
         } else {
+            $_SESSION['notification'] = 10;
             header('Location: ../../newPassword.php');
             exit();
         }
@@ -48,4 +56,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-
+?>

@@ -15,12 +15,14 @@
         if (empty($login)) {
             $_SESSION['notification'] = 5;
             header('Location: users.php');
+            exit();
             $conn->close();
         }
 
         if (empty($password)) {
             $_SESSION['notification'] = 5;
             header('Location: users.php');
+            exit();
             $conn->close();
         }
     
@@ -37,6 +39,7 @@
                 if ($conn->query($insert_query)) {
                     $_SESSION['notification'] = 4;
                     header('Location: users.php');
+                    exit();
             }
         }
         } else {
@@ -44,5 +47,6 @@
         }
     
         header('Location: users.php');
+        exit();
     }
     $conn->close();

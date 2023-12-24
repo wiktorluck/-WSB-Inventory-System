@@ -62,6 +62,7 @@ if ($conn->connect_errno!=0)
 						}else{
 							$_SESSION['notification'] = 3;
 							header('Location: ../layout/Inventory/inventory.php');
+							exit();
 							}
 					}else{
 						if($wiersz['changePassword'] == 1){
@@ -71,16 +72,19 @@ if ($conn->connect_errno!=0)
 						}else{
 							$_SESSION['notification'] = 3;
 							header('Location: ../layout/Dashboard/dashboard.php');
+							exit();
 							}
 					}
 					
 				} else {
 					$_SESSION['notification'] = 2;
 					header('Location:../../index.php');
+					exit();
 				}
 			} else {
 				$_SESSION['notification'] = 2;
 				header('Location:../../index.php');
+				exit();
 			}
 		}	
 		$conn->close();
