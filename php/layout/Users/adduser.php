@@ -29,7 +29,7 @@
     
         if ($rezultat) {
             if ($rezultat->num_rows > 0) {
-                $_SESSION['notification'] = '<span style="color:red">Login zajęty!</span>';
+                $_SESSION['notification'] = 6;
             } else {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $insert_query = "INSERT INTO uzytkownicy (login, password, permission) VALUES ('" . mysqli_real_escape_string($conn, $login) . "', '" . $hashed_password . "', '" . $permission . "')";

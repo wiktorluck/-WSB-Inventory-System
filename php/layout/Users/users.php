@@ -137,10 +137,8 @@ if ($conn->connect_errno != 0) {
         <form id="addUserForm" action="adduser.php" method="post">
           <label for="loginu">Login:</label>
           <input type="text" id="loginu" name="loginu"><br><br>
-
           <label for="passwordu">Hasło:</label>
           <input type="password" id="passwordu" name="passwordu"><br><br>
-
           <label for="permissionu">Uprawnienia:</label>
           <select id="permissionu" name="permissionu">
             <option value="0">Pracownik</option>
@@ -153,7 +151,6 @@ if ($conn->connect_errno != 0) {
   </div>
 
 
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- <script src="../../../js/products.js"></script> -->
     
@@ -162,26 +159,10 @@ if ($conn->connect_errno != 0) {
     <!-- AJAX FORMUARZA USUWANIA PRODUKTU -->
   <script src="../../../js/user_delete.js"></script>
 
-
-  <script>
-  var modal = document.getElementById("myModal2");
-  var btn = document.getElementById("myBtn2");
-  var span = document.getElementsByClassName("closeA")[0];
+  <script src="../../../js/user_add.js"></script>
 
 
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
 
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 
   
 </body>

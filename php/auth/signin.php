@@ -37,7 +37,7 @@ if ($conn->connect_errno!=0)
 					$_SESSION['id'] = $wiersz['id'];
 					$_SESSION['login'] = $wiersz['login'];
 					$_SESSION['permission'] = $wiersz['permission'];
-					$_SESSION['notification'] = 3;
+
 					$rezultat->free_result();
 					
 
@@ -53,10 +53,25 @@ if ($conn->connect_errno!=0)
 						$_SESSION['activeInventory'] = 0; 
 					}
 
-					if($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 1){
-						header('Location: ../layout/Inventory/inventory.php');
+					if($_SESSION['activeInventory'] == 1){
+
+						if($wiersz['changePassword'] == 1){
+							$_SESSION['notification'] = 8;
+							header('Location: ../../newPassword.php');
+							exit();
+						}else{
+							$_SESSION['notification'] = 3;
+							header('Location: ../layout/Inventory/inventory.php');
+							}
 					}else{
-						header('Location: ../layout/Dashboard/dashboard.php');
+						if($wiersz['changePassword'] == 1){
+							$_SESSION['notification'] = 8;
+							header('Location: ../../newPassword.php');
+							exit();
+						}else{
+							$_SESSION['notification'] = 3;
+							header('Location: ../layout/Dashboard/dashboard.php');
+							}
 					}
 					
 				} else {
@@ -70,3 +85,5 @@ if ($conn->connect_errno!=0)
 		}	
 		$conn->close();
 	}
+
+

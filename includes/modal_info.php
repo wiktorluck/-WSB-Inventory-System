@@ -61,6 +61,46 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
   <script src="../../../js/modals.js"></script>';
 }
 
+//ADD USER FAIL
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 6) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalAlert-content">
+        <p>Dane nie zostały zaktualizowane! Istnieje już użytkownik o podanym loginie!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
+
+//**MODAL Z TYMCZASOWYM HASŁEM
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalSuccess-content">';
+       echo 'Nowe hasło:';
+       echo $_SESSION['temporaryPassword']; 
+  echo'  </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
+
+//WARNING ABOUT REQUIRED CHANGE PASSWORD **NIE ŚWIECI SIĘ NA POMARAŃCZ
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalWarning-content">
+        <p>Wymagana aktualizacja hasła!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
 
 unset($_SESSION['notification']);
+unset($_SESSION['temporaryPassword']); 
 
