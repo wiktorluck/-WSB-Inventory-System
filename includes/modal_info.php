@@ -124,6 +124,29 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 10) {
   <script src="../../../js/modals.js"></script>';
 }
 
+//REGISTRATION NUMBER IS BUSY
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 11) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalAlert-content">
+        <p>Produkt nie został dodany do bazy, ponieważ istnieje już produkt w bazie o podanym numerze ewidencyjnym!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
+
+//ADD PRODUCT VALIDATION
+if(isset($_SESSION['notification']) && $_SESSION['notification'] == 12) {
+  echo '
+  <div id="myModal" class="modalNotification">
+    <div class="modalAlert-content">
+        <p>Produkt nie został dodany do bazy, podano błędne dane!</p>
+    </div>
+  </div>
+
+  <script src="../../../js/modals.js"></script>';
+}
 
 unset($_SESSION['notification']);
 unset($_SESSION['temporaryPassword']); 
