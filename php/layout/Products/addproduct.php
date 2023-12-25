@@ -14,9 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoryp = $_POST['categoryp'];
     $serialp = $_POST['serialp'];
     $registrationp = $_POST['registrationp'];
+    $pricep = $_POST['pricep'];
 
-    if (empty($namep) || empty($categoryp) || empty($serialp) || empty($registrationp)) {
-        $_SESSION['notification'] = 12;
+    if (!is_numeric($registrationp) || !is_numeric($pricep)) {
+        $_SESSION['notification'] = 12; 
+        header('Location: products.php');
+        exit();
+    }
+
+    if (empty($namep) || empty($categoryp) || empty($serialp) || empty($registrationp) || empty($pricep)) {
+        $_SESSION['notification'] = 11;
         header('Location: products.php');
         exit();
     }
@@ -38,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $sql = "INSERT INTO produkty (namep, categoryp, quantityp, serialp, registrationp) VALUES ('$namep', '$categoryp', 1, '$serialp', '$registrationp')";
+    $sql = "INSERT INTO produkty (namep, categoryp, quantityp, serialp, registrationp, pricep) VALUES ('$namep', '$categoryp', 1, '$serialp', '$registrationp','$pricep')";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;
@@ -52,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Nieprawidłowe żądanie.";
 }
-?>

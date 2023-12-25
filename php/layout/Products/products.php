@@ -67,6 +67,7 @@ if ($conn->connect_errno != 0) {
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>
+          <th>Cena ewidencyjna</th>
       END;
           if($_SESSION['permission'] == 1) { echo '<th colspan="2">Zmodyfikuj</th>'; }      
     echo '</tr>';
@@ -82,6 +83,7 @@ if ($conn->connect_errno != 0) {
             echo "<td>" . $row["categoryp"] . "</td>";
             echo "<td>" . $row["serialp"] . "</td>";
             echo "<td>" . $row["registrationp"] . "</td>";
+            echo "<td>" . $row["pricep"] . ' zł'."</td>";
             if($_SESSION['permission'] == 1) { echo '<td><a href="#" id="myBtn" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>'; } 
             if($_SESSION['permission'] == 1) { echo '<td><a href="#" id="myBtn1" class="delete-product" data-id="' . $row["idp"] . '">Usuń</a></td>'; } 
             echo "</tr>";
@@ -151,6 +153,9 @@ if ($conn->connect_errno != 0) {
 
           <label for="registrationp">Nr ewidencyjny:</label>
           <input type="text" id="registrationp" name="registrationp"><br><br>
+
+          <label for="pricep">Cena ewidencyjna:</label>
+          <input type="text" id="pricep" name="pricep"><br><br>
 
           <input type="submit" value="Wyślij">
       </form>

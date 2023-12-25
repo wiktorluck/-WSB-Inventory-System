@@ -23,6 +23,7 @@
         echo '<input type="text" name="namep" value="' . $row['namep'] . '"></br>';
         echo '<input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
         echo '<input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
+        echo '<input type="text" name="pricep" value="' . $row['pricep'] . '"></br>';
         echo '<input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
         echo '<input type="submit" value="Aktualizuj">';
         echo '</form>';

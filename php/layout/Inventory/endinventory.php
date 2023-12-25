@@ -10,7 +10,7 @@ if ($conn->connect_errno != 0) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql_delete_produkty = "DELETE FROM produkty
+    $sql_delete_products = "DELETE FROM produkty
             WHERE EXISTS (
                 SELECT * FROM inventorypositions
                 WHERE inventorypositions.idp = produkty.idp
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql_delete_inventory = "DELETE FROM inventorypositions;";
 
-    if ($conn->query($sql_delete_produkty) === TRUE && $conn->query($sql_delete_inventory) === TRUE) {
+    if ($conn->query($sql_delete_products) === TRUE && $conn->query($sql_delete_inventory) === TRUE) {
         $_SESSION['notification'] = 4;
         $_SESSION['activeInventory'] = 0;
     } else {

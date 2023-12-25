@@ -55,7 +55,7 @@ if ($conn->connect_errno != 0) {
       $start = ($currentPage - 1) * $rowsPerPage;
   
       $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
-      inventorypositions.registrationp, inventorypositions.checked, uzytkownicy.login 
+      inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, uzytkownicy.login 
       FROM inventorypositions 
       LEFT JOIN uzytkownicy ON inventorypositions.userid = uzytkownicy.id LIMIT $start, $rowsPerPage";
 
@@ -71,6 +71,7 @@ if ($conn->connect_errno != 0) {
               <th>Kategoria</th>
               <th>Nr seryjny</th>
               <th>Nr ewidencyjny</th>
+              <th>Cena ewidencyjna</th>
               <th>Status</th>
               <th>Ostatni sprawdzający</th>
               <th>Akcje</th>
@@ -88,6 +89,7 @@ if ($conn->connect_errno != 0) {
                 echo "<td>" . $row["categoryp"] . "</td>";
                 echo "<td>" . $row["serialp"] . "</td>";
                 echo "<td>" . $row["registrationp"] . "</td>";
+                echo "<td>" . $row["pricep"] . ' zł'."</td>";
                 echo "<td>" . $row["checked"] . "</td>";
                 echo "<td>" . $row["login"] . "</td>";
                 echo '<td><a href="#" id="myBtn" class="edit-inventory" data-id="' . $row["idp"] . '">Potwierdź</a></td>';
