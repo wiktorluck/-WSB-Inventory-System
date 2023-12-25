@@ -78,8 +78,10 @@ if ($conn->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
             echo "<td>" . $row["login"] . "</td>";
-            echo "<td>" . $row["permission"] . "</td>";
-
+            echo "<td>"; 
+            if($row["permission"] == 1){ echo'Administrator';}
+            else{ echo 'Pracownik'; };
+            echo "</td>";
             echo '<td><a href="#" id="myBtn" class="edit-user" data-id="' . $row["id"] . '">Edytuj</a></td>';
             echo '<td><a href="#" id="myBtn1" class="delete-user" data-id="' . $row["id"] . '">Usuń</a></td>';
 
