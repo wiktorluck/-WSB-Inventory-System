@@ -114,7 +114,46 @@ if ($conn->connect_errno != 0) {
     
         echo "</tbody>";
         echo "</table>";
+
+
+        //TOTAL DEFICIT
+        $sum_query = "SELECT SUM(pricep) AS total_price FROM inventorypositions WHERE checked = 'brak'";
+              $sum_result = $conn->query($sum_query);
+
+              if ($sum_result) {
+                  $row = $sum_result->fetch_assoc();
+                  $total_price = $row['total_price'];
+                  $_SESSION['deficit'] = $total_price;
+
+                  echo '<div id="sumDiv">';
+                  echo '<p>Obecne Manko: ' . $_SESSION['deficit'] . ' zł</p>';
+                  echo '</div>';
+
+                  
+              } else {
+                  echo "Błąd zapytania: " . $conn->error;
+              }
       }
+
+
+      //TOTAL POSISTION WHERE CHECKED = 'BRAK'
+      $count_shortcomings_query = "SELECT COUNT(*) AS total_shortcomings FROM inventorypositions WHERE checked = 'brak'";
+      $count_result = $conn->query($count_shortcomings_query);
+      
+      if ($count_result) {
+          $row = $count_result->fetch_assoc();
+          $total_shortcomings = $row['total_shortcomings'];
+          $_SESSION['shortcomings'] = $total_shortcomings;
+      
+          echo '<div id="sumDiv">';
+          echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>';
+          echo '</div>';
+      } else {
+          echo "Błąd zapytania: " . $conn->error;
+      }
+
+
+
       if($_SESSION['activeInventory'] == 0)
       {
         echo'
