@@ -29,6 +29,21 @@ body, html
     min-width: 20vw;
 }
 
+.summaryform{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.27 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 25px;
+    border: 1px solid rgba( 255, 255, 255, 0.15 );
+    width: 50vw;
+    height: 80vh;
+    min-width: 20vw;
+}
+
 form
 {
     
@@ -36,6 +51,7 @@ form
     flex: 1;
     padding: 40px;
 }
+
 
 
 

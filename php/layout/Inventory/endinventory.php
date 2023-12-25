@@ -10,6 +10,8 @@ if ($conn->connect_errno != 0) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (isset($_POST['change'])) {
     $sql_delete_products = "DELETE FROM produkty
             WHERE EXISTS (
                 SELECT * FROM inventorypositions
@@ -29,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header('Location: inventory.php');
     exit();
+    }else{
+        header('Location: inventory.php');
+        exit();
+    }
 } else {
     echo "Nieprawidłowe żądanie.";
 }

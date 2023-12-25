@@ -115,9 +115,9 @@ if ($conn->connect_errno != 0) {
         echo "</tbody>";
         echo "</table>";
 
-
+        if($_SESSION['activeInventory'] == 1){
         //TOTAL DEFICIT
-        $sum_query = "SELECT SUM(pricep) AS total_price FROM inventorypositions WHERE checked = 'brak'";
+              $sum_query = "SELECT SUM(pricep) AS total_price FROM inventorypositions WHERE checked = 'brak'";
               $sum_result = $conn->query($sum_query);
 
               if ($sum_result) {
@@ -133,9 +133,10 @@ if ($conn->connect_errno != 0) {
               } else {
                   echo "Błąd zapytania: " . $conn->error;
               }
+            }
       }
 
-
+      if($_SESSION['activeInventory'] == 1){
       //TOTAL POSISTION WHERE CHECKED = 'BRAK'
       $count_shortcomings_query = "SELECT COUNT(*) AS total_shortcomings FROM inventorypositions WHERE checked = 'brak'";
       $count_result = $conn->query($count_shortcomings_query);
@@ -151,7 +152,7 @@ if ($conn->connect_errno != 0) {
       } else {
           echo "Błąd zapytania: " . $conn->error;
       }
-
+    }
 
 
       if($_SESSION['activeInventory'] == 0)
@@ -203,11 +204,11 @@ if($_SESSION['permission'] == 1){
     <div id="myModal3" class="modalD">
     <div class="modal-contentD">
       <span class="closeD">&times;</span>
-      <h3>Czy na pewno chcesz zakończyć inwentaryzację?</h3>
+      <h3>Czy na pewno chcesz przejść do podsumowania oraz zakończenia Inwentaryzacji?</h3>
       <i>Zakończenie inwentaryzacji wiążę się z poprawieniem aktualnej listy magazynowej</i>
-      <form id="endInventoryForm" action="endinventory.php" method="post">
+      <form id="endInventoryForm" action="summaryinventory.php" method="post">
           
-          <input type="submit" value="Tak">
+          <input type="submit" value="Sumuj">
       </form>
     </div>
   </div>
