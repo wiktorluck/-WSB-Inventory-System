@@ -88,7 +88,7 @@ if(isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
 }
 
 
-//WARNING ABOUT REQUIRED CHANGE PASSWORD **NIE ŚWIECI SIĘ NA POMARAŃCZ
+//WARNING ABOUT REQUIRED CHANGE PASSWORD
 if(isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
   echo '
   <div id="myModal" class="modalNotification">

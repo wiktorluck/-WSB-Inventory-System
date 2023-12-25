@@ -1,6 +1,6 @@
 <?php
-    require_once("../../../includes/authorized.php");
-    require_once("../../../includes/connect.php");
+require_once("../../../includes/authorized.php");
+require_once("../../../includes/connect.php");
 
 $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -13,24 +13,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $login = $_POST['login'];
     $permission = $_POST['permission'];
+    $resetPassword = isset($_POST['resetPassword']) ? $_POST['resetPassword'] : 0; 
+    
+    $sql = "UPDATE uzytkownicy SET login='$login', permission='$permission' WHERE id=$id";
 
-    if(isset($_POST['resetPassword']) && $_POST['resetPassword'] == 'on') {
-        $temporaryPassword = generateTemporaryPassword();
+    if ($conn->query($sql) === TRUE) {
+        if ($resetPassword == 'on') {
+            $temporaryPassword = generateTemporaryPassword();
         
-        $hashedPassword = password_hash($temporaryPassword, PASSWORD_BCRYPT);
-
-        $sql = "UPDATE uzytkownicy SET login='$login', password='$hashedPassword', changePassword=1, permission='$permission' WHERE id=$id";
-
-        if ($conn->query($sql) === TRUE) {
-            $_SESSION['notification'] = 7;
-            $_SESSION['temporaryPassword'] = $temporaryPassword;
-            header('Location: users.php');
-            exit();
-        } else {
-            $_SESSION['notification'] = 5;
-            header('Location: users.php');
-            exit();
+            $hashedPassword = password_hash($temporaryPassword, PASSWORD_BCRYPT);
+    
+            $sql = "UPDATE uzytkownicy SET login='$login', password='$hashedPassword', changePassword=1, permission='$permission' WHERE id=$id";
+    
+            if ($conn->query($sql) === TRUE) {
+                $_SESSION['temporaryPassword'] = $temporaryPassword;
+                $_SESSION['notification'] = 7;
+                header('Location: users.php');
+                exit();
+            } else {
+                $_SESSION['notification'] = 5;
+                header('Location: users.php');
+                exit();
+            }
         }
+        
+        $_SESSION['notification'] = 4;
+        header('Location: users.php');
+        exit();
+    } else {
+        $_SESSION['notification'] = 5;
+        header('Location: users.php');
+        exit();
     }
 } else {
     echo "Nieprawidłowe żądanie.";

@@ -66,7 +66,6 @@ if ($conn->connect_errno != 0) {
         <tr>
          <th style="width: 3vw;">ID</th>
           <th style="width: 25vw;">Login</th>
-          <th>Hasło</th>
           <th>Uprawnienia</th>
           <th colspan="2">Zmodyfikuj</th>
         </tr>
@@ -79,7 +78,6 @@ if ($conn->connect_errno != 0) {
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
             echo "<td>" . $row["login"] . "</td>";
-            echo "<td>" . $row["password"] . "</td>";
             echo "<td>" . $row["permission"] . "</td>";
 
             echo '<td><a href="#" id="myBtn" class="edit-user" data-id="' . $row["id"] . '">Edytuj</a></td>';
