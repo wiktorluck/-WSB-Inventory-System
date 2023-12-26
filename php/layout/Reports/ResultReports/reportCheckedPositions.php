@@ -33,7 +33,7 @@ require_once("../../../../includes/modal_info.php");
             if ($conn->connect_errno != 0) {
                 echo "Error: " . $conn->connect_errno;
             } else {
-                $sql = "SELECT * FROM inventorypositions WHERE checked = 'Zgodnosc';";
+                $sql = "SELECT * FROM inventorypositions WHERE checked = 'Zgodnosc' OR checked= 'Brak';";
                 $result = $conn->query($sql);
 
                 if ($result && $result->num_rows > 0) {
@@ -47,6 +47,7 @@ require_once("../../../../includes/modal_info.php");
                             <th>Nr seryjny</th>
                             <th>Nr ewidencyjny</th>
                             <th>Cena ewidencyjna</th>
+                            <th>Status</th>
                         </tr>
                     </thead>';
                     echo '<tbody>';
@@ -62,6 +63,7 @@ require_once("../../../../includes/modal_info.php");
                         echo '<td>' . $row['serialp'] . '</td>';
                         echo '<td>' . $row['registrationp'] . '</td>';
                         echo '<td>' . $row['pricep'] . ' zł</td>';
+                        echo '<td>' . $row['checked'] . '</td>';
                         echo '</tr>';
                     }
 
