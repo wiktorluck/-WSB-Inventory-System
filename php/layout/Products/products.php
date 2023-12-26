@@ -28,7 +28,7 @@
   <span> <img src="../../../images/more.png"> </span>
   <div class="dropdown-content">
       <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-      <ul> <a href="../Products/products.php">Produkty</a> </ul>
+      <ul> <a href="../Products/products.php">products</a> </ul>
       <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
       <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
       <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
@@ -40,7 +40,7 @@
 
 <div class="mainbox">
   <div class="topLogo">  <img name="menuBurger" src="../../../images/inventura_logo_full.png"/> </div>
-  <div class="welcometext">Produkty</div>
+  <div class="welcometext">products</div>
       <div class="tableOfProducts">
 <?php
 require_once "../../../includes/connect.php";
@@ -55,7 +55,7 @@ if ($conn->connect_errno != 0) {
 
     $start = ($currentPage - 1) * $rowsPerPage;
 
-    $sql = "SELECT * FROM produkty LIMIT $start, $rowsPerPage";
+    $sql = "SELECT * FROM products LIMIT $start, $rowsPerPage";
     $result = $conn->query($sql);
 
     echo '<table class="table_productsAll">';
@@ -89,7 +89,7 @@ if ($conn->connect_errno != 0) {
             echo "</tr>";
         }
 
-        $totalRows = $conn->query("SELECT COUNT(*) as total FROM produkty")->fetch_assoc()['total'];
+        $totalRows = $conn->query("SELECT COUNT(*) as total FROM products")->fetch_assoc()['total'];
         $totalPages = ceil($totalRows / $rowsPerPage);
 
         echo '<tr>';

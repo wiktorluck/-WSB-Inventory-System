@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $permission = $_POST['permission'];
     $resetPassword = isset($_POST['resetPassword']) ? $_POST['resetPassword'] : 0; 
     
-    $sql = "UPDATE uzytkownicy SET login='$login', permission='$permission' WHERE id=$id";
+    $sql = "UPDATE users SET login='$login', permission='$permission' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         if ($resetPassword == 'on') {
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
             $hashedPassword = password_hash($temporaryPassword, PASSWORD_BCRYPT);
     
-            $sql = "UPDATE uzytkownicy SET login='$login', password='$hashedPassword', changePassword=1, permission='$permission' WHERE id=$id";
+            $sql = "UPDATE users SET login='$login', password='$hashedPassword', changePassword=1, permission='$permission' WHERE id=$id";
     
             if ($conn->query($sql) === TRUE) {
                 $_SESSION['temporaryPassword'] = $temporaryPassword;

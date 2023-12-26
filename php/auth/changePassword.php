@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($newPassword === $confirmPassword) {
                 $userId = $_SESSION['id'];
                 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                $sql = "UPDATE uzytkownicy SET password='$hashedPassword', changePassword=0 WHERE id=$userId";
+                $sql = "UPDATE users SET password='$hashedPassword', changePassword=0 WHERE id=$userId";
 
                 $result = $conn->query($sql);
 

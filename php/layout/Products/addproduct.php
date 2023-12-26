@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $check_query = "SELECT COUNT(*) AS registrationp FROM produkty WHERE registrationp = '$registrationp'";
+    $check_query = "SELECT COUNT(*) AS registrationp FROM products WHERE registrationp = '$registrationp'";
     $check_result = $conn->query($check_query);
 
     if ($check_result) {
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $sql = "INSERT INTO produkty (namep, categoryp, quantityp, serialp, registrationp, pricep) VALUES ('$namep', '$categoryp', 1, '$serialp', '$registrationp','$pricep')";
+    $sql = "INSERT INTO products (namep, categoryp, quantityp, serialp, registrationp, pricep) VALUES ('$namep', '$categoryp', 1, '$serialp', '$registrationp','$pricep')";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;

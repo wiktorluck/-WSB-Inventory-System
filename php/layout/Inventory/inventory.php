@@ -27,7 +27,7 @@
   <span> <img src="../../../images/more.png"> </span>
   <div class="dropdown-content">
       <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-      <ul> <a href="../Products/products.php">Produkty</a> </ul>
+      <ul> <a href="../Products/products.php">products</a> </ul>
       <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
       <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> </ul>
       <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
@@ -55,9 +55,9 @@ if ($conn->connect_errno != 0) {
       $start = ($currentPage - 1) * $rowsPerPage;
   
       $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
-      inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, uzytkownicy.login 
+      inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
       FROM inventorypositions 
-      LEFT JOIN uzytkownicy ON inventorypositions.userid = uzytkownicy.id LIMIT $start, $rowsPerPage";
+      LEFT JOIN users ON inventorypositions.userid = users.id LIMIT $start, $rowsPerPage";
 
       $result = $conn->query($sql);
   

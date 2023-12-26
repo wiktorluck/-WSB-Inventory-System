@@ -12,7 +12,7 @@ if ($conn->connect_errno != 0) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO inventoryPositions (idp, namep, quantityp, categoryp, serialp, registrationp, checked, pricep)
             SELECT idp, namep, quantityp, categoryp, serialp, registrationp, 'Niesprawdzone', pricep
-            FROM produkty";
+            FROM products";
 
     
     if ($conn->query($sql) === TRUE) {

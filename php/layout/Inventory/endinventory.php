@@ -12,10 +12,10 @@ if ($conn->connect_errno != 0) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['change'])) {
-    $sql_delete_products = "DELETE FROM produkty
+    $sql_delete_products = "DELETE FROM products
             WHERE EXISTS (
                 SELECT * FROM inventorypositions
-                WHERE inventorypositions.idp = produkty.idp
+                WHERE inventorypositions.idp = products.idp
                 AND inventorypositions.checked = 'Brak'
             );";
 

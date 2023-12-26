@@ -27,7 +27,7 @@
         <span> <img src="../../../images/more.png"> </span>
         <div class="dropdown-content">
             <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-            <ul> <a href="../Products/products.php">Produkty</a> </ul>
+            <ul> <a href="../Products/products.php">products</a> </ul>
             <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Users/users.php">   Użytkownicy</a>'; } ?> </ul>
             <ul> <?php if($_SESSION['permission'] == 1) { echo '<a href="../Reports/reports.php">   Raporty</a>'; } ?> </ul> 
             <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
@@ -51,7 +51,7 @@ if ($conn->connect_errno != 0) {
   COUNT(*) as totalProducts, 
   COUNT(DISTINCT categoryp) as totalCategories,
   COUNT(CASE WHEN categoryp = 'Komputer PC' THEN 1 END) as totalComputers 
-  FROM produkty;";
+  FROM products;";
 
   $result = $conn->query($sql_count);
 
@@ -100,7 +100,7 @@ if ($conn->connect_errno != 0) {
 } else {
     $limit = 12;
 
-    $sql = "SELECT * FROM produkty ORDER BY idp DESC LIMIT $limit";
+    $sql = "SELECT * FROM products ORDER BY idp DESC LIMIT $limit";
     $result = $conn->query($sql);
 
     echo '<table class="table_products">';
@@ -149,7 +149,7 @@ if ($conn->connect_errno != 0) {
 } else {
     $limit = 12;
 
-    $sql = "SELECT * FROM produkty ORDER BY idp DESC LIMIT $limit";
+    $sql = "SELECT * FROM products ORDER BY idp DESC LIMIT $limit";
     $result = $conn->query($sql);
 
     echo '<table class="table_productsPortrait">';

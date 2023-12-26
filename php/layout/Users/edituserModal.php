@@ -11,7 +11,7 @@
     if(isset($_POST['id'])) {
     $id = $_POST['id'];
 
-    $sql = "SELECT * FROM uzytkownicy WHERE id = $id";
+    $sql = "SELECT * FROM users WHERE id = $id";
 
     $result = $conn->query($sql);
 

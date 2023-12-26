@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $registration = $_POST['registrationp'];
     $price = $_POST['pricep'];
 
-    $sql = "UPDATE produkty SET namep='$name', categoryp='$category', serialp='$serial', registrationp='$registration', pricep='$price' WHERE idp=$id";
+    $sql = "UPDATE products SET namep='$name', categoryp='$category', serialp='$serial', registrationp='$registration', pricep='$price' WHERE idp=$id";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;

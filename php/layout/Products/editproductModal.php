@@ -11,7 +11,7 @@
     if(isset($_POST['id'])) {
     $id = $_POST['id'];
 
-    $sql = "SELECT * FROM produkty WHERE idp = $id";
+    $sql = "SELECT * FROM products WHERE idp = $id";
 
     $result = $conn->query($sql);
 

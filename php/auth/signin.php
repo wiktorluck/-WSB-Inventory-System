@@ -23,7 +23,7 @@ if ($conn->connect_errno!=0)
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
 	
 		if ($rezultat = @$conn->query(
-			sprintf("SELECT * FROM uzytkownicy WHERE login='%s'", mysqli_real_escape_string($conn, $login))
+			sprintf("SELECT * FROM users WHERE login='%s'", mysqli_real_escape_string($conn, $login))
 		))
 		{
 			$ilu_userow = $rezultat->num_rows;

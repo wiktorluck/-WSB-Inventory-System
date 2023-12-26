@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['idp'];
 
 
-    $sql = "DELETE FROM produkty WHERE idp = $id;";
+    $sql = "DELETE FROM products WHERE idp = $id;";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;
