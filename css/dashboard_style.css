@@ -73,14 +73,7 @@ button:hover
 {
     flex-direction: row;
     display: flex;
-    padding: 1em; 
-}
-
-.summaryboxes2
-{
-    flex-direction: row;
-    display: flex;
-    padding: 1em; 
+    padding: 2em; 
 }
 
 
@@ -155,6 +148,12 @@ button:hover
     color: #FEF3F2;
     border-radius: 15px;
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box1:hover, .box2:hover, .box3:hover, .box4:hover, .box5:hover, .box6:hover{
+    cursor: pointer;
+    transform: scale(1.1); 
+    transition: 300ms;
 }
 
 p
