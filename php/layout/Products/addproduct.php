@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pricep = $_POST['pricep'];
 
     if (!is_numeric($registrationp) || !is_numeric($pricep)) {
-        $_SESSION['notification'] = 12; 
+        $_SESSION['notification'] = 12;
         header('Location: products.php');
         exit();
     }

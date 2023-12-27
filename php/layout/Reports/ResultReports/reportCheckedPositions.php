@@ -6,21 +6,22 @@ require_once("../../../../includes/modal_info.php");
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
-  
-  <meta charset="utf-8">
-  <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
-  <meta name="author" content="">
-  <meta name="generator" content="">
-  <link rel="stylesheet" href="../../../../css/loginform.css">
-  <link rel="stylesheet" href="../../../../css/body_style.css">
-  <link rel="stylesheet" href="../../../../css/notification_modals.css">
-  <title>INVENTURA</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
+    <meta name="author" content="">
+    <meta name="generator" content="">
+    <link rel="stylesheet" href="../../../../css/loginform.css">
+    <link rel="stylesheet" href="../../../../css/body_style.css">
+    <link rel="stylesheet" href="../../../../css/notification_modals.css">
+    <title>INVENTURA</title>
 </head>
 
 <body>
-<div class="summaryform">
+    <div class="summaryform">
 
 
         <p>Raport sprawdzonych pozycji:<br>
@@ -74,21 +75,23 @@ require_once("../../../../includes/modal_info.php");
             }
             ?>
             <br><br><br>
-            
+
             <br>
-            <div class="loginbutton"><button onclick="printPage()">Wydruk</button></div>
-            <a href="../reports.php"><div class="loginbutton"><button type="submit" name="logout">Wstecz</button></div></a>
-    </form>
-            
-    <div class="footer">INVENTURA @ 2023</div>
-</div>
+        <div class="loginbutton"><button onclick="printPage()">Wydruk</button></div>
+        <a href="../reports.php">
+            <div class="loginbutton"><button type="submit" name="logout">Wstecz</button></div>
+        </a>
+        </form>
+
+        <div class="footer">INVENTURA @ 2023</div>
+    </div>
 </body>
 
 
 <script>
-        function printPage() {
-            window.print();
-        }
-    </script>
-</html>
+    function printPage() {
+        window.print();
+    }
+</script>
 
+</html>

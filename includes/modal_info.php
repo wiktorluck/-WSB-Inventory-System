@@ -1,153 +1,129 @@
 <?php
 
 //DON'T PERMISSIONS
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 1) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 1) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Brak wystarczających uprawnień!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //WRONG LOGIN OR PASSWORD
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 2) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 2) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Nieprawidłowy login lub hasło!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //LOGIN SUCCESS
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 3) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 3) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalSuccess-content">
         <p>Pomyślnie zalogowano do systemu!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 
 //EDIT SUCCESS
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 4) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalSuccess-content">
         <p>Dane zostały zaktualizowane poprawnie!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //EDIT FAIL
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 5) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Dane nie zostały zaktualizowane!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //ADD USER FAIL
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 6) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 6) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Dane nie zostały zaktualizowane! Istnieje już użytkownik o podanym loginie!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 
 //**MODAL Z TYMCZASOWYM HASŁEM
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalSuccess-content">';
-       echo 'Nowe hasło:';
-       echo $_SESSION['temporaryPassword']; 
-  echo'  </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  echo 'Nowe hasło:';
+  echo $_SESSION['temporaryPassword'];
+  echo '  </div>
+  </div>';
 }
 
 
 //WARNING ABOUT REQUIRED CHANGE PASSWORD
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalWarning-content">
         <p>Wymagana aktualizacja hasła!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //DIFFRENT PASSWORDS
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 9) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 9) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Hasła różnią się od siebie!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //EMTY PASSWORDS
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 10) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 10) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Wymagane wpisanie hasła!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //REGISTRATION NUMBER IS BUSY
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 11) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 11) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Produkt nie został dodany do bazy, ponieważ istnieje już produkt w bazie o podanym numerze ewidencyjnym!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 //ADD PRODUCT VALIDATION
-if(isset($_SESSION['notification']) && $_SESSION['notification'] == 12) {
+if (isset($_SESSION['notification']) && $_SESSION['notification'] == 12) {
   echo '
-  <div id="myModal" class="modalNotification">
+  <div id="notificationBar" class="modalNotification">
     <div class="modalAlert-content">
         <p>Produkt nie został dodany do bazy, podano błędne dane!</p>
     </div>
-  </div>
-
-  <script src="../../../js/modals.js"></script>';
+  </div>';
 }
 
 unset($_SESSION['notification']);
-unset($_SESSION['temporaryPassword']); 
+unset($_SESSION['temporaryPassword']);
 

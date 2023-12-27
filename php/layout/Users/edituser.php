@@ -13,18 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $login = $_POST['login'];
     $permission = $_POST['permission'];
-    $resetPassword = isset($_POST['resetPassword']) ? $_POST['resetPassword'] : 0; 
-    
+    $resetPassword = isset($_POST['resetPassword']) ? $_POST['resetPassword'] : 0;
+
     $sql = "UPDATE users SET login='$login', permission='$permission' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         if ($resetPassword == 'on') {
             $temporaryPassword = generateTemporaryPassword();
-        
+
             $hashedPassword = password_hash($temporaryPassword, PASSWORD_BCRYPT);
-    
+
             $sql = "UPDATE users SET login='$login', password='$hashedPassword', changePassword=1, permission='$permission' WHERE id=$id";
-    
+
             if ($conn->query($sql) === TRUE) {
                 $_SESSION['temporaryPassword'] = $temporaryPassword;
                 $_SESSION['notification'] = 7;
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         }
-        
+
         $_SESSION['notification'] = 4;
         header('Location: users.php');
         exit();
@@ -50,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-function generateTemporaryPassword($length = 10) {
+function generateTemporaryPassword($length = 10)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $password = '';
     $charactersLength = strlen($characters);

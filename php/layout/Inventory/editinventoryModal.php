@@ -1,14 +1,15 @@
 <?php
-  require_once("../../../includes/authorized.php");
-  require_once("../../../includes/connect.php");
+require_once("../../../includes/authorized.php");
+require_once("../../../includes/connect.php");
 
-  $conn = @new mysqli($host, $db_user, $db_password, $db_name);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
 
-  if ($conn->connect_errno != 0) {
-    echo "Error: " . $conn->connect_errno;}
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
+}
 
-    if(isset($_POST['id'])) {
+if (isset($_POST['id'])) {
     $id = $_POST['id'];
 
     $sql = "SELECT * FROM inventorypositions WHERE idp = $id";
@@ -16,7 +17,7 @@
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
-        
+
         $row = $result->fetch_assoc();
         echo '<form id="updateInventoryForm" action="editinventory.php" method="POST">';
         echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
@@ -30,7 +31,7 @@
             <option value="Zgodnosc">Zgodność</option>
         </select>
         ';
-        
+
         echo '<input type="submit" value="Aktualizuj">';
         echo '</form>';
     } else {
@@ -40,4 +41,4 @@
     $conn->close();
 } else {
     echo "Nieprawidłowe żądanie.";
-} 
+}

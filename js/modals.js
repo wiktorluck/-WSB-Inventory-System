@@ -1,10 +1,8 @@
-//Notification Modal Script
-document.addEventListener("DOMContentLoaded", function() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    setTimeout(function() {
-        modal.style.display = "none";
-    }, 3000);
+$(document).ready(function () {
+  const notificationBar = $("#notificationBar");
+  notificationBar.show();
+
+  setTimeout(function () {
+    notificationBar.hide();
+  }, 3000);
 });
-
-

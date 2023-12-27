@@ -1,6 +1,6 @@
 <?php
-  require_once("../../../includes/authorized.php");
-  require_once("../../../includes/connect.php");
+require_once("../../../includes/authorized.php");
+require_once("../../../includes/connect.php");
 
 $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             SELECT idp, namep, quantityp, categoryp, serialp, registrationp, 'Niesprawdzone', pricep
             FROM products";
 
-    
+
     if ($conn->query($sql) === TRUE) {
         $_SESSION['notification'] = 4;
         $_SESSION['activeInventory'] = 1;

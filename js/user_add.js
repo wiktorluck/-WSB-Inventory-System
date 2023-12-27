@@ -1,17 +1,16 @@
-var modal = document.getElementById("myModal2");
-var btn = document.getElementById("myBtn2");
-var span = document.getElementsByClassName("closeA")[0];
+var modal2 = document.getElementById("myModal2");
+var btn2 = document.getElementById("myBtn2");
+var span2 = document.getElementsByClassName("closeA")[0];
 
+btn2.onclick = function () {
+  modal2.style.display = "block";
+};
+span2.onclick = function () {
+  modal2.style.display = "none";
+};
 
-  btn.onclick = function() {
-    modal.style.display = "block";
+window2.onclick = function (event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
   }
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+};
