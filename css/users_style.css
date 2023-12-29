@@ -136,8 +136,7 @@ button:hover {
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
 }
 
-.box6
-{
+.box6 {
     background-color: #B42318;
     height: 15vh;
     width: 20vw;
@@ -155,7 +154,7 @@ button:hover {
     animation: ease-in-out;
 }
 
-.box1 p, .box2 p, .box3 p
+p
 {
     font-size: 5vh;
     font-weight: bold;
@@ -227,6 +226,17 @@ button:hover {
  }
 
 
+ .edit-user, .delete-user{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  
+  #AddUser
+  {
+    width: 150px;
+  }
+
 
   /********************** CSS NA MOBILE DEVICES **********************/
 
@@ -246,27 +256,6 @@ button:hover {
     .tabletext 
     {
     font-size: 2.5vh;
-    }
-
-    .summaryboxes {
-        font-size: 3.5vw;
-    }
-
-    .box1, .box2, .box3 {
-        height: auto;
-        width: auto;
-    }
-
-    .box1 p {
-        font-size: 5vw;
-    }
-
-    .box2 p {
-        font-size: 5vw;
-    }
-
-    .box3 p {
-        font-size: 5vw;
     }
 
     .topLogo, .menuButton {

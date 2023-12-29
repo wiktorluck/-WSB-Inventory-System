@@ -1,4 +1,6 @@
+<link rel="stylesheet" type="text/css" href="../../../css/dashboard_style.css">
 <?php
+
 require_once("../../../includes/authorized.php");
 require_once("../../../includes/connect.php");
 
@@ -20,13 +22,13 @@ if (isset($_POST['id'])) {
 
         $row = $result->fetch_assoc();
         echo '<form id="updateForm" action="editproduct.php" method="POST">';
-        echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
-        echo '<input type="text" name="namep" value="' . $row['namep'] . '"></br>';
-        echo '<input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
-        echo '<input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
-        echo '<input type="text" name="pricep" value="' . $row['pricep'] . '"></br>';
-        echo '<input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
-        echo '<input type="submit" value="Aktualizuj">';
+        echo 'ID: <input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
+        echo 'Nazwa: <input type="text" name="namep" value="' . $row['namep'] . '"></br>';
+        echo 'Kategoria: <input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
+        echo 'Numer seryjny: <input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
+        echo 'Cena: <input type="text" name="pricep" value="' . $row['pricep'] . '"></br>';
+        echo 'Numer ewidencyjny: <input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
+        echo '<input id="UpdateButton" type="submit" value="Aktualizuj">';
         echo '</form>';
     } else {
         echo "Brak danych o produkcie.";
@@ -36,3 +38,5 @@ if (isset($_POST['id'])) {
 } else {
     echo "Nieprawidłowe żądanie.";
 }
+
+?>

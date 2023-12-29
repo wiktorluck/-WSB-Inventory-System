@@ -1,0 +1,52 @@
+
+.summaryform{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.27 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 25px;
+    border: 1px solid rgba( 255, 255, 255, 0.15 );
+    width: 70vw;
+    height: auto;
+    padding: 15px;
+    min-width: 20vw;
+}
+
+
+.table_productsAll {
+    border: solid 1px #dde4ee;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Helvetica;
+    width: 100%;
+}
+
+    .table_productsAll thead th {
+        background-color: #3484FF;
+        border: solid 1px #EBEBEB;
+        color: #FFFFFF;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .table_productsAll tbody td {
+        border: solid 1px #EBEBEB;
+        color: #333;
+        padding: 5px;
+        
+    }
+
+     
+
+ .SendButton, .UpdateButton {
+    background: rgb(181, 236, 185)000 !important;
+    width: 10vw;
+    margin-left: 15%;
+    height: 3vh;
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.2s;
+}

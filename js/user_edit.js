@@ -1,5 +1,5 @@
 var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("userEdit");
 var span = document.getElementsByClassName("closeP")[0];
 
 btn.onclick = function () {

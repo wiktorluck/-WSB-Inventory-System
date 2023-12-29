@@ -1,5 +1,5 @@
 var modal1 = document.getElementById("myModal1");
-var btn = document.getElementById("myBtn1");
+var btn = document.getElementById("userDelete");
 var span = document.getElementsByClassName("closeD")[0];
 
 btn.onclick = function () {

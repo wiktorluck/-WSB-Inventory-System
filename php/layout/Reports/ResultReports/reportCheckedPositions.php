@@ -9,7 +9,7 @@ require_once("../../../../includes/modal_info.php");
 
 <head>
     <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
     <meta name="author" content="">
@@ -28,52 +28,35 @@ require_once("../../../../includes/modal_info.php");
             </br></br>
             <hr>
             <?php
-            require_once "../../../../includes/connect.php";
+require_once "../../../../includes/connect.php";
 
-            $conn = @new mysqli($host, $db_user, $db_password, $db_name);
-            if ($conn->connect_errno != 0) {
-                echo "Error: " . $conn->connect_errno;
-            } else {
-                $sql = "SELECT * FROM inventorypositions WHERE checked = 'Zgodnosc' OR checked= 'Brak';";
-                $result = $conn->query($sql);
+$conn = @new mysqli($host, $db_user, $db_password, $db_name);
+if ($conn->connect_errno != 0) {
+    echo "Error: " . $conn->connect_errno;
+} else {
+    $rowsPerPage = 10; // Set the number of rows per page
+    $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1; // Get the current page from URL
+    $start = ($currentPage - 1) * $rowsPerPage;
 
-                if ($result && $result->num_rows > 0) {
-                    echo '<table border="1">';
-                    echo '
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nazwa</th>
-                            <th>Kategoria</th>
-                            <th>Nr seryjny</th>
-                            <th>Nr ewidencyjny</th>
-                            <th>Cena ewidencyjna</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>';
-                    echo '<tbody>';
+    // First, get the total number of rows
+    $totalRowsResult = $conn->query("SELECT COUNT(*) as total FROM inventorypositions WHERE checked = 'Zgodnosc' OR checked= 'Brak'");
+    $totalRows = $totalRowsResult->fetch_assoc()['total'];
+    $totalPages = ceil($totalRows / $rowsPerPage);
 
-                    $deficit = 0;
-                    $shortcomings = 0;
+    // Now, modify your SQL query to get only the rows for the current page
+    $sql = "SELECT * FROM inventorypositions WHERE checked = 'Zgodnosc' OR checked= 'Brak' LIMIT $start, $rowsPerPage";
+    $result = $conn->query($sql);
 
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<tr>';
-                        echo '<td>' . $row['idip'] . '</td>';
-                        echo '<td>' . $row['namep'] . '</td>';
-                        echo '<td>' . $row['categoryp'] . '</td>';
-                        echo '<td>' . $row['serialp'] . '</td>';
-                        echo '<td>' . $row['registrationp'] . '</td>';
-                        echo '<td>' . $row['pricep'] . ' zł</td>';
-                        echo '<td>' . $row['checked'] . '</td>';
-                        echo '</tr>';
-                    }
+    // Rest of your code to display the table...
+    // ...
 
-                    echo '</tbody></table>';
-                } else {
-                    echo "Brak wyników spełniających kryteria.";
-                }
-            }
-            ?>
+    // Display page links
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo '<a href="?page=' . $i . '">' . $i . '</a> ';
+    }
+}
+?>
+
             <br><br><br>
 
             <br>
