@@ -50,6 +50,8 @@ button:hover {
 .nav a img {
     width: 15vw;
     color: #fff;
+
+
 }
 
 .mainbox {
@@ -58,6 +60,7 @@ button:hover {
     display: flex;
     justify-content: start;
     padding: 1em;
+        
 }
 
 
@@ -70,8 +73,91 @@ button:hover {
     font-size: 2vh;
 }
 
-p {
-    font-size: 2vh;
+.summaryboxes {
+    flex-direction: row;
+    display: flex;
+
+}
+
+
+.box1 {
+    background-color: #E6F0FF;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #3484FF;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box2 {
+    background-color: #FFFAEB;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #DC6803;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box3 {
+    background-color: #FEF3F2;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #B42318;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+.box4 {
+    background-color: #3484FF;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FFFAEB;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box5 {
+    background-color: #DC6803;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FFFAEB;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box6
+{
+    background-color: #B42318;
+    height: 15vh;
+    width: 20vw;
+    margin: 15px;
+    padding: 15px;
+    color: #FEF3F2;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box1:hover, .box2:hover, .box3:hover, .box4:hover, .box5:hover, .box6:hover{
+    cursor: pointer;
+    transform: scale(1.02); 
+    transition: 200ms;
+    animation: ease-in-out;
+}
+
+.box1 p, .box2 p, .box3 p
+{
+    font-size: 5vh;
     font-weight: bold;
 }
 
@@ -141,17 +227,6 @@ p {
  }
 
 
- .edit-user, .delete-user{
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  
-  #AddUser
-  {
-    width: 150px;
-  }
-
 
   /********************** CSS NA MOBILE DEVICES **********************/
 
@@ -160,18 +235,46 @@ p {
         display: none;
     }
 
-    .mainbox {
+    .mainbox{
         top:5px;
-        width: 100%;
     }
-    .welcometext {
+    .welcometext 
+    {
     font-size: 2.5vh;
     }
 
-    .tabletext {
+    .tabletext 
+    {
     font-size: 2.5vh;
     }
 
+    .summaryboxes {
+        left: 2%;
+        font-size: 2.5vw;
+        align-self: flex-end;
+    }
+
+.BoxReportsPortraitAll {
+    display: flex;
+    flex-direction: column;
+}
+
+.ReportText {
+    align-self: flex-start;
+}
+
+.box1, .box2, .box3, .box4, .box5, .box6 {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+}
+
+.box1 p, .box2 p, .box3 p, .box4 p, .box5 p, .box6 p {
+    font-size: 3.5vw;
+    width: auto;
+    height: auto;
+}
+    
     .topLogo, .menuButton {
         justify-content: space-between;
         display: flex;
@@ -184,7 +287,7 @@ p {
     }
 
     .dropdown {
-        right: 50px;
+        margin-right: 5%;
         display: flex;
         align-self: flex-end;
       }
@@ -195,13 +298,13 @@ p {
         background-color: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 5px 12px;
+        padding: 12px 16px;
         z-index: 1;
       }
       
       .dropdown:hover .dropdown-content {
         display: block;
-        right: 50px;
+        right: 4%;
         top: 6%;
       }
 

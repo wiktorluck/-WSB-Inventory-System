@@ -64,7 +64,6 @@
 }
 
 
-
 .modalP, .modalD, .modalA, .modalI {
   display: none;
   position: fixed;
@@ -92,18 +91,69 @@
 .SendButton
 {
   width: 25%;
+  border-radius: 5px;
   text-align: center;
   background-color: #e1ffd9;
 }
 
+.UpdateButton
+{
+  height: auto;
+  width: 50px;
+  text-align: center;
+  background-color: #e1ffd9;
+}
 
+.noDelete {
+  width: 50px;
+  height: auto;
+  text-align: center;
+  background-color:#ffd0e2;
+}
 
+.yesDelete {
+  height: auto;
+  width: 50px;
+  text-align: center;
+  background-color: #e1ffd9;
+}
 /********************** mobile devices media **********************/
 @media (orientation: portrait) {
   .modal {
     width: 90%; 
     height: 70%; 
   }
+
+#updateForm {
+  font-size: 12px;
+}
+
+#updateForm input {
+  font-size: 12px;
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.noDelete {
+  width: 50px;
+  height: auto;
+  text-align: center;
+  background-color:#ffd0e2;
+}
+
+.yesDelete {
+  height: auto;
+  width: 50px;
+  text-align: center;
+  background-color: #e1ffd9;
+}
+
+.UpdateButton {
+  height: auto;
+  width: 50px;
+  text-align: center;
+  background-color: #e1ffd9;
+}
 
 .modalP p, .modalD p {
   font-size: 15px;
@@ -126,4 +176,15 @@
   width: 85%;
   font-size: 15px;
 }
+
+
+/********* success modals *********/
+.modalSuccess-content {
+  font-size: 4vh;
+  margin: 15% auto;
+  padding: 10px;
+  border-radius: 15px;
+  width: 90%; 
+}
+
 }

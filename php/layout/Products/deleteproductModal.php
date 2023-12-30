@@ -22,7 +22,7 @@ if (isset($_POST['id'])) {
         echo '<form id="deleteForm" action="deleteproduct.php" method="POST">';
         echo '<p>Czy potwierdzasz usunięcie produktu: (' . $row['namep'] . ') z bazy danych?</br>';
         echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
-        echo '<input type="submit" value="Tak">';
+        echo '<input class="yesDelete"type="submit" value="Tak">';
         echo '</form>';
     } else {
         echo "Brak danych o produkcie.";

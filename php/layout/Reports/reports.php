@@ -4,32 +4,57 @@ require_once("../../../includes/authorized_perm.php");
 require_once("../../../includes/side_panel.php");
 ?>
 
-
 <!doctype html>
 <html lang="pl">
-
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
-  <title>INVENTURA</title>
-  <link rel="stylesheet" href="../../../css/body_style.css">
-  <link rel="stylesheet" href="../../../css/dashboard_style.css">
-  <link rel="stylesheet" href="../../../css/notification_modals.css">
+<link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+<title>INVENTURA</title>
+<link rel="stylesheet" href="../../../css/reports.css">
+<link rel="stylesheet" href="../../../css/notification_modals.css">
 </head>
 
 <body>
-  <div class="mainbox">
+<!----------- start dropdown portarit mode ----------->
+<div class="mainbox">
+    <div class="topLogo"> <img src="../../../images/inventura_logo_full.png" />
+      <div class="dropdown">
+        <span> <img src="../../../images/more.png"> </span>
+        <div class="dropdown-content">
+          <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
+          <ul> <a href="../Products/products.php">Produkty</a> </ul>
+          <ul>
+            <?php if ($_SESSION['permission'] == 1) {
+              echo '<a href="../Users/users.php">   Użytkownicy</a>';
+            } ?>
+          </ul>
+          <ul>
+            <?php if ($_SESSION['permission'] == 1) {
+              echo '<a href="../Reports/reports.php">   Raporty</a>';
+            } ?>
+          </ul>
+          </ul>
+          <ul> <a href="../../auth/logout.php">Wyloguj się</a> </ul>
+        </div>
+      </div>
+    </div>
+<!----------- ^ end dropdown portarit mode ^ ----------->
+
+<!--------------- welcome text -------------->
     <div class="welcometext">
       <?php echo "Co chcesz sprawdzić, " . $_SESSION['login'] . '?'; ?>
     </div>
+<!--------------- ^ welcome text ^ -------------->
 
+<!---------------------- report boxes ---------------------->
+<div class="BoxReportsPortraitAll">
+
+<br><div class="ReportText"> Raporty Inwentaryzacji </div>
     <?php
     if ($_SESSION['activeInventory'] == 1) {
       echo '
         
         <div class="summaryboxes">
-        <h2>Raporty Inwentaryzacji</h2></br>
-        <hr>
                 <a href="ResultReports/reportDeficiencies.php">
                  <div class="box1"> Raport Braków 
                   <p> wydruk </p>
@@ -53,6 +78,11 @@ require_once("../../../includes/side_panel.php");
     }
 
     ?>
+</div>
+<!---------------------- ^ report boxes ^ ---------------------->
+
+<!---------------------- inventura in proccesss ---------------------->
+<div class="BoxReportsPortraitInv">
 
 <?php
     require_once "../../../includes/connect.php";
@@ -62,7 +92,6 @@ require_once("../../../includes/side_panel.php");
     if ($_SESSION['activeInventory'] == 1) {
       echo 'Inwentaryzacja w toku...';
     }
-
 
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -87,10 +116,8 @@ require_once("../../../includes/side_panel.php");
         
 
         echo '
+        <br><br><div class="ReportText"> Raporty aktualnych stanów </div>
       <div class="summaryboxes">
-
-        <h2>Raporty aktualnych stanów</h2></br>
-      <hr>
      
       <a href="ResultReports/reportLaptops.php">
         <div class="box5"> Raport komputerów
@@ -117,7 +144,8 @@ require_once("../../../includes/side_panel.php");
       }
     }
     ?>
-
+</div>
+<!---------------------- ^ inventura in proccesss ^ ---------------------->
   </div>
   <script src="../../../js/modals.js"></script>
 </body>

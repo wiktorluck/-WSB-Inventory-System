@@ -20,7 +20,6 @@
         <meta name="generator" content="">
 </head>
 <!---------------------- ^ metainfo ^ ---------------------->
-
 <!---------------------- content ---------------------->
 <body>
 <!----------- start dropdown portarit mode ----------->
@@ -30,7 +29,7 @@
         <span> <img src="../../../images/more.png"> </span>
         <div class="dropdown-content">
           <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-          <ul> <a href="../Products/products.php">products</a> </ul>
+          <ul> <a href="../Products/products.php">Produkty</a> </ul>
           <ul>
             <?php if ($_SESSION['permission'] == 1) {
               echo '<a href="../Users/users.php">   Użytkownicy</a>';
@@ -67,8 +66,8 @@ $conn = @new mysqli($host, $db_user, $db_password, $db_name);
         <tr>
           <th style="width: 25px;">ID</th>
           <th style="width: 150px;">Login</th>
-          <th tyle="width: 220px;">Uprawnienia</th>
-          <th colspan="2" style="width: 150px;">Zmodyfikuj</th>
+          <th style="width: 150px;">Uprawnienia</th>
+          <th colspan="2">Zmodyfikuj</th>
         </tr>
       </thead>
     END;
@@ -82,8 +81,8 @@ if ($result->num_rows > 0) { while ($row = $result->fetch_assoc()) {
       echo 'Administrator'; } else {
       echo 'Pracownik'; }
   echo "</td>";
-  echo '<td><a href="#" id="userEdit" data-id="' . $row["id"] . '">Edytuj</a></td>';
-  echo '<td><a href="#" id="userDelete"  data-id="' . $row["id"] . '">Usuń</a></td>';
+  echo '<td><a href="#" id="userEdit" data-id="' . $row["id"] . '"> <img src="../../../images/edit.png"  width="20" /> </a></td>';
+  echo '<td><a href="#" id="userDelete"  data-id="' . $row["id"] . '"> <img src="../../../images/delete.png"  width="20" /> </a></td>';
   echo "</tr>"; }
     } else {
     echo "<tr><td colspan='8'>Brak rekordów w tabeli.</td></tr>"; }
@@ -101,8 +100,8 @@ $conn->close();
 <!----------- edit modal ----------->
   <div id="myModal" class="modalP">
     <div class="modal-contentP">
-        <span class="closeP">&times;</span>
-      <p></p>
+      <span class="closeP">&times;</span>
+        <p></p>
     </div>
   </div>
 <!----------- ^ edit modal ^ ----------->

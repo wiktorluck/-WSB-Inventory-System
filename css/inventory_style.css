@@ -50,8 +50,6 @@ button:hover {
 .nav a img {
     width: 15vw;
     color: #fff;
-
-
 }
 
 .mainbox {
@@ -59,10 +57,8 @@ button:hover {
     width: 100%;
     display: flex;
     justify-content: start;
-    padding: 1em;
-        
+    padding: 1em;   
 }
-
 
 .welcometext {
     font-size: 2.5vh;
@@ -73,165 +69,80 @@ button:hover {
     font-size: 2vh;
 }
 
-.summaryboxes {
-    flex-direction: row;
-    display: flex;
-    padding: 2em; 
-}
-
-
-.box1 {
-    background-color: #E6F0FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #3484FF;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box2 {
-    background-color: #FFFAEB;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #DC6803;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box3 {
-    background-color: #FEF3F2;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #B42318;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-
-.box4 {
-    background-color: #3484FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box5 {
-    background-color: #DC6803;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box6
-{
-    background-color: #B42318;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FEF3F2;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box1:hover, .box2:hover, .box3:hover, .box4:hover, .box5:hover, .box6:hover{
-    cursor: pointer;
-    transform: scale(1.02); 
-    transition: 200ms;
-    animation: ease-in-out;
-}
-
-.box1 p, .box2 p, .box3 p
-{
-    font-size: 5vh;
-    font-weight: bold;
-}
-
 .topLogo {
     display: none;
 }
-  
-  .tableOfProducts  {
+
+.tableOfProducts  {
     margin: 0;
- }
- 
- .table_products {
-     border: solid 1px #dde4ee;
-     border-collapse: collapse;
-     border-spacing: 0;
-     font: normal 13px Helvetica;
-     width: 100%;
- }
- 
-     .table_products thead th {
-         background-color: #3484FF;
-         border: solid 1px #EBEBEB;
-         color: #FFFFFF;
-         padding: 5px;
-         text-align: center;
-     }
- 
-     .table_products tbody td {
-         border: solid 1px #EBEBEB;
-         color: #333;
-         padding: 5px;
-         
-     }
+}
 
- 
- 
- .pagination {
-     display: flex;
-     list-style: none;
-     padding: 0;
- }
- 
-     .pagination a {
-         display: inline-block;
-         padding: 8px 12px;
-         margin: 0 4px;
-         text-decoration: none;
-         color: #333;
-         background-color: #f2f2f2;
-         border: 1px solid #ddd;
-         border-radius: 4px;
-         cursor: pointer;
-     }
- 
-         .pagination a:hover {
-             background-color: #c0c0c0;
-         }
- 
-     .pagination .active {
-         background-color: #007bff;
-         color: #fff;
-     }
- 
+.table_products {
+    border: solid 1px #dde4ee;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Helvetica;
+    width: 100%;
+}
+
+.table_products thead th {
+    background-color: #3484FF;
+    border: solid 1px #EBEBEB;
+    color: #FFFFFF;
+    padding: 5px;
+    text-align: center;
+}
+
+.table_products tbody td {
+    border: solid 1px #EBEBEB;
+    color: #333;
+    padding: 5px;
+}
 
 
- .InventoryAllPortrait {
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: #c0c0c0;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.InventoryAllPortrait {
     display: none;
- }
+}
 
-
+#myBtn2, #myBtn3 {
+    width: 250px;
+}
 /********************** CSS NA MOBILE DEVICES **********************/
   @media (orientation: portrait) {
 .InventoryAll {
     display: none;
+}
+
+#myBtn2, #myBtn3 {
+    width: 150px;
 }
 
 .InventoryAllPortrait {
@@ -245,6 +156,7 @@ button:hover {
 .mainbox{
     top:5px;
 }
+
 .welcometext {
     font-size: 2.5vh;
 }
@@ -257,12 +169,14 @@ button:hover {
     display: flex;
     align-self: flex-end;
 }
+
 .topLogo, .menuButton {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
     width: 100%;
 }
+
 .topLogo img {
     height: 7vw;
     align-self: flex-start;

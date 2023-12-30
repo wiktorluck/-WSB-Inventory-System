@@ -63,7 +63,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $(".closeD1").click(function () {
+  $(".noDelete").click(function () {
     var modal2 = document.getElementById("myModal1");
     modal2.style.display = "none";
   });

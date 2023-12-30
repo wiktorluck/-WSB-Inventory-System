@@ -9,21 +9,21 @@
   <!DOCTYPE html>
   <html lang="pl">
   <head>
-    <title>PRODUCTS</title>
+    <title> PRODUCTS </title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
       <link rel="stylesheet" href="../../../css/notification_modals.css">
       <link rel="stylesheet" href="../../../css/products_style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
         <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
         <meta name="author" content="BKolacz, WLuck, MLisiecki">
-        <meta name="generator" content="">
+        <meta name="keywords" content="inwentaryzacja, sprzęt komputerowy"/>
+        <meta charset="utf-8">
   </head> 
 <!---------------------- ^ metainfo ^ ---------------------->
+<!---------------------------- content ---------------------------->
 <body>
-<!---------------------------- navigation menu ---------------------------->
+  <!--------------- start dropdown portarit mode -------------->
   <div class="mainbox">
-<!--------------- start dropdown portarit mode -------------->
   <div class="topLogo"> <img src="../../../images/inventura_logo_full.png" />
     <div class="dropdown">
       <span> <img src="../../../../images/more.png"> </span>
@@ -46,7 +46,6 @@
   </div>
 <!--------------- ^ stop dropdown portarit mode ^ -------------->
 
-<!---------------------------- content ---------------------------->
 <!--------------- welcome text -------------->         
   <div class="welcometext"> Lista wszystkich produktów </div>
 <!--------------- ^ welcome text ^ -------------->
@@ -66,7 +65,7 @@
         if ($conn->connect_errno != 0) {
           echo "Error: " . $conn->connect_errno;
         } else {
-          $rowsPerPage = 20;
+          $rowsPerPage = 15;
           $currentPage = $_GET['page'] ?? 1;
           $start = ($currentPage - 1) * $rowsPerPage;
           $sql = "SELECT * FROM products LIMIT $start, $rowsPerPage";
@@ -98,10 +97,10 @@
               echo "<td>" . $row["registrationp"] . "</td>";
               echo "<td>" . $row["pricep"] . ' zł' . "</td>";
               if ($_SESSION['permission'] == 1) {
-                echo '<td><a href="#" id="myBtn" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>';
+                echo '<td><a href="#" id="myBtn" class="edit-product" data-id="' . $row["idp"] . '"> <img src="../../../images/edit.png"  width="20" /> </a></td>';
               }
               if ($_SESSION['permission'] == 1) {
-                echo '<td><a href="#" id="myBtn1" class="delete-product" data-id="' . $row["idp"] . '">Usuń</a></td>';
+                echo '<td><a href="#" id="myBtn1" class="delete-product" data-id="' . $row["idp"] . '"> <img src="../../../images/delete.png"  width="20" /> </a></td>';
               }
               echo "</tr>";
             }
@@ -156,7 +155,7 @@ require_once "../../../includes/connect.php";
             <th style="width: 25px;">ID</th>
             <th style="width: 350px;">Nazwa</th>
           END;
-            if ($_SESSION['permission'] == 1) { echo '<th style="width: 150px;" colspan="2">Zmodyfikuj</th>'; }
+            if ($_SESSION['permission'] == 1) { echo '<th colspan="2">Zmodyfikuj</th>'; }
           echo '</tr>';
         echo '</thead>';
         echo "<tbody>";
@@ -165,8 +164,8 @@ require_once "../../../includes/connect.php";
       echo "<tr>";
       echo "<td>" . $row["idp"] . "</td>";
       echo "<td>" . $row["namep"] . "</td>";
-    if ($_SESSION['permission'] == 1) { echo '<td><a href="#" class="edit-product" data-id="' . $row["idp"] . '">Edytuj</a></td>'; }
-    if ($_SESSION['permission'] == 1) { echo '<td><a href="#" class="delete-product" data-id="' . $row["idp"] . '">Usuń</a></td>'; } echo "</tr>"; }
+    if ($_SESSION['permission'] == 1) { echo '<td><a href="#" class="edit-product" data-id="' . $row["idp"] . '"> <img src="../../../images/edit.png"  width="16" /> </a></td>'; }
+    if ($_SESSION['permission'] == 1) { echo '<td><a href="#" class="delete-product" data-id="' . $row["idp"] . '"> <img src="../../../images/delete.png"  width="16" /> </a></td>'; } echo "</tr>"; }
       $totalRows = $conn->query("SELECT COUNT(*) as total FROM products")->fetch_assoc()['total'];
       $totalPages = ceil($totalRows / $rowsPerPage);
       echo '<tr>';
@@ -210,7 +209,7 @@ require_once "../../../includes/connect.php";
     <div class="modal-contentD">
       <span class="closeD">&times;</span>
         <p></p>
-      <input type="button" class="closeD1" value="Nie" />
+      <input type="button" class="noDelete" value="Nie" />
     </div>
   </div>
 <!----------- ^ delete modal ^ ----------->

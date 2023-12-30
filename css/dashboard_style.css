@@ -76,7 +76,7 @@ button:hover {
 .summaryboxes {
     flex-direction: row;
     display: flex;
-    padding: 2em; 
+    padding: 1em; 
 }
 
 
