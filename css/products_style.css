@@ -124,8 +124,7 @@ button:hover {
     width: 100%;
     display: flex;
     justify-content: start;
-    padding: 1em;
-        
+    padding: 1em;       
 }
 
 input

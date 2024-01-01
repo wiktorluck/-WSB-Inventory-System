@@ -11,13 +11,13 @@
   <head>
     <title>USERS</title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
-      <link rel="stylesheet" href="../../../css/users_style.css">
-      <link rel="stylesheet" href="../../../css/notification_modals.css">
+      <link rel="stylesheet" type="text/css" href="../../../css/users_style.css">
+      <link rel="stylesheet" type="text/css" href="../../../css/notification_modals.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
         <meta name="author" content="BKolacz, WLuck, MLisiecki">
-        <meta name="generator" content="">
+        <meta name="keywords" content="inwentaryzacja, sprzęt komputerowy"/>
 </head>
 <!---------------------- ^ metainfo ^ ---------------------->
 <!---------------------- content ---------------------->

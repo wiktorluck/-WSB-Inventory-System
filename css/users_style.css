@@ -60,7 +60,6 @@ button:hover {
     padding: 1em;
 }
 
-
 .welcometext {
     font-size: 2.5vh;
 }
@@ -83,59 +82,56 @@ p {
     margin: 0;
  }
  
- .table_products {
-     border: solid 1px #dde4ee;
-     border-collapse: collapse;
-     border-spacing: 0;
-     font: normal 13px Helvetica;
-     width: 100%;
- }
- 
-     .table_products thead th {
-         background-color: #3484FF;
-         border: solid 1px #EBEBEB;
-         color: #FFFFFF;
-         padding: 5px;
-         text-align: center;
-     }
- 
-     .table_products tbody td {
-         border: solid 1px #EBEBEB;
-         color: #333;
-         padding: 5px;
-         
-     }
+.table_products {
+    border: solid 1px #dde4ee;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Helvetica;
+    width: 100%;
+}
 
- 
- 
- .pagination {
-     display: flex;
-     list-style: none;
-     padding: 0;
- }
- 
-     .pagination a {
-         display: inline-block;
-         padding: 8px 12px;
-         margin: 0 4px;
-         text-decoration: none;
-         color: #333;
-         background-color: #f2f2f2;
-         border: 1px solid #ddd;
-         border-radius: 4px;
-         cursor: pointer;
-     }
- 
-         .pagination a:hover {
-             background-color: #c0c0c0;
-         }
- 
-     .pagination .active {
-         background-color: #007bff;
-         color: #fff;
-     }
- 
-  
+.table_products thead th {
+    background-color: #3484FF;
+    border: solid 1px #EBEBEB;
+    color: #FFFFFF;
+    padding: 5px;
+    text-align: center;
+}
+
+.table_products tbody td {
+    border: solid 1px #EBEBEB;
+    color: #333;
+    padding: 5px;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: #c0c0c0;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
  .table_productsPortrait {
      display: none;
  }

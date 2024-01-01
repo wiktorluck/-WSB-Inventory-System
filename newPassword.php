@@ -10,8 +10,8 @@ require_once("includes/modal_info.php");
     <head>
       <title>INVENTURA</title>
         <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
-        <link rel="stylesheet" href="css/loginform.css">
-        <link rel="stylesheet" href="css/notification_modals.css">
+        <link rel="stylesheet" type="text/css" href="css/loginform.css">
+        <link rel="stylesheet" type="text/css" href="css/notification_modals.css">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta charset="utf-8">
           <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
