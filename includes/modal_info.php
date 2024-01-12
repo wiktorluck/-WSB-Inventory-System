@@ -84,7 +84,6 @@ if (isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
       tempInput.select();
       document.execCommand("copy");
       document.body.removeChild(tempInput);
-      alert("Skopiowano do schowka: " + temporaryPassword);
     }
   </script>';
 }
