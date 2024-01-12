@@ -65,12 +65,28 @@ if (isset($_SESSION['notification']) && $_SESSION['notification'] == 6) {
 //**MODAL Z TYMCZASOWYM HASŁEM
 if (isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
   echo '
-  <div id="notificationBar" class="modalNotification">
-    <div class="modalSuccess-content">';
-  echo 'Nowe hasło:';
+  <div id="notificationBar2" class="modalNotificationResetPassword">
+    <div class="modalSuccess-content-ResetPassword">';
+  echo '<span class="closeP">&times;</span></br>';
+  echo 'Wygenerowano nowe hasło:</br>';
   echo $_SESSION['temporaryPassword'];
+  echo '<button type="button" onclick="copyToClipboard()">Skopiuj nowe hasło</button>';
   echo '  </div>
   </div>';
+  
+  echo '
+  <script>
+    function copyToClipboard() {
+      var temporaryPassword = "' . (isset($_SESSION['temporaryPassword']) ? htmlspecialchars($_SESSION['temporaryPassword'], ENT_QUOTES, 'UTF-8') : '') . '";
+      var tempInput = document.createElement("input");
+      document.body.appendChild(tempInput);
+      tempInput.value = temporaryPassword;
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Skopiowano do schowka: " + temporaryPassword);
+    }
+  </script>';
 }
 
 

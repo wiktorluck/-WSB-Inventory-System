@@ -56,7 +56,7 @@ button:hover {
 
 .mainbox {
     flex-direction: column;
-    width: 80vw;
+    width: 100%;
     display: flex;
     justify-content: start;
     padding: 1em;
@@ -76,7 +76,6 @@ button:hover {
 .summaryboxes {
     flex-direction: row;
     display: flex;
-    padding: 2em; 
 }
 
 
@@ -235,17 +234,16 @@ button:hover {
  }
 
 
-
   /********************** CSS NA MOBILE DEVICES **********************/
 
   @media (orientation: portrait){
     .nav {
         display: none;
     }
-	
+
     .mainbox{
         width: 95vw;
-        top:5px;
+        top:10px;
     }
     .welcometext 
     {
@@ -258,29 +256,46 @@ button:hover {
     }
 
     .summaryboxes {
-        font-size: 3.5vw;
-     	overflow-x: scroll;
-        max-width: 500px;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        left: 2%;
+        font-size: 2.5vw;
     }
 
-    .box1, .box2, .box3 {
-        height: auto;
-        width: auto;
-    }
 
-    .box1 p {
-        font-size: 5vw;
-    }
 
-    .box2 p {
-        font-size: 5vw;
-    }
+.BoxReportsPortraitAll {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.BoxReportsPortraitInv{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
-    .box3 p {
-        font-size: 5vw;
-    }
+.ReportText {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
 
+.box1, .box2, .box3, .box4, .box5, .box6 {
+    text-align: center;
+    font-size: 5vw;
+    height: 100px;
+    width: 200px;
+    margin: 5px;
+}
+
+.box1 p, .box2 p, .box3 p, .box4 p, .box5 p, .box6 p {
+    font-size: 3.5vw;
+    width: auto;
+    height: auto;
+}
+    
     .topLogo, .menuButton {
         justify-content: space-between;
         display: flex;
@@ -333,15 +348,23 @@ button:hover {
             padding: 5px;
             text-align: center;
             width: 25rem;
-            font-size: 3vw;
         }
     
         .table_productsPortrait tbody td {
             border: solid 1px #EBEBEB;
             color: #333;
             padding: 5px;
-            font-size: 3vw;
+            
         }
 
+        .summaryform{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            left: 2%;
+            font-size: 2.5vw;
+        }
+
+        
         
 }

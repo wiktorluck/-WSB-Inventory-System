@@ -50,17 +50,14 @@ button:hover {
 .nav a img {
     width: 15vw;
     color: #fff;
-
-
 }
 
 .mainbox {
     flex-direction: column;
-    width: 80vw;
     display: flex;
     justify-content: start;
     padding: 1em;
-        
+    width: 80vw;
 }
 
 
@@ -73,91 +70,8 @@ button:hover {
     font-size: 2vh;
 }
 
-.summaryboxes {
-    flex-direction: row;
-    display: flex;
-    padding: 2em; 
-}
-
-
-.box1 {
-    background-color: #E6F0FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #3484FF;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box2 {
-    background-color: #FFFAEB;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #DC6803;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box3 {
-    background-color: #FEF3F2;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #B42318;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-
-.box4 {
-    background-color: #3484FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box5 {
-    background-color: #DC6803;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box6
-{
-    background-color: #B42318;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #FEF3F2;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
-}
-
-.box1:hover, .box2:hover, .box3:hover, .box4:hover, .box5:hover, .box6:hover{
-    cursor: pointer;
-    transform: scale(1.02); 
-    transition: 200ms;
-    animation: ease-in-out;
-}
-
-.box1 p, .box2 p, .box3 p
-{
-    font-size: 5vh;
+p {
+    font-size: 2vh;
     font-weight: bold;
 }
 
@@ -165,7 +79,11 @@ button:hover {
     display: none;
 }
   
-  .tableOfProducts  {
+.table_productsAll{
+    width: 20vw;
+}
+
+.tableOfProducts  {
     margin: 0;
  }
  
@@ -226,7 +144,19 @@ button:hover {
      display: none;
  }
 
- header{
+
+ .edit-user, .delete-user{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  
+  #AddUser
+  {
+    width: 150px;
+  }
+
+  header{
     height: 20px;
     background-color: lightcoral;
     margin-top:10px;
@@ -234,51 +164,23 @@ button:hover {
     border-radius: 25px;
  }
 
-
-
   /********************** CSS NA MOBILE DEVICES **********************/
 
   @media (orientation: portrait){
     .nav {
         display: none;
     }
-	
-    .mainbox{
-        width: 95vw;
+
+    .mainbox {
         top:5px;
+        width: 90vw;
     }
-    .welcometext 
-    {
+    .welcometext {
     font-size: 2.5vh;
     }
 
-    .tabletext 
-    {
+    .tabletext {
     font-size: 2.5vh;
-    }
-
-    .summaryboxes {
-        font-size: 3.5vw;
-     	overflow-x: scroll;
-        max-width: 500px;
-        justify-content: center;
-    }
-
-    .box1, .box2, .box3 {
-        height: auto;
-        width: auto;
-    }
-
-    .box1 p {
-        font-size: 5vw;
-    }
-
-    .box2 p {
-        font-size: 5vw;
-    }
-
-    .box3 p {
-        font-size: 5vw;
     }
 
     .topLogo, .menuButton {
@@ -293,7 +195,7 @@ button:hover {
     }
 
     .dropdown {
-        margin-right: 5%;
+        right: 50px;
         display: flex;
         align-self: flex-end;
       }
@@ -304,13 +206,13 @@ button:hover {
         background-color: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 12px 16px;
+        padding: 5px 12px;
         z-index: 1;
       }
       
       .dropdown:hover .dropdown-content {
         display: block;
-        right: 4%;
+        right: 50px;
         top: 6%;
       }
 
@@ -331,16 +233,14 @@ button:hover {
             border: solid 1px #EBEBEB;
             color: #FFFFFF;
             padding: 5px;
-            text-align: center;
             width: 25rem;
-            font-size: 3vw;
         }
     
         .table_productsPortrait tbody td {
             border: solid 1px #EBEBEB;
             color: #333;
             padding: 5px;
-            font-size: 3vw;
+            
         }
 
         

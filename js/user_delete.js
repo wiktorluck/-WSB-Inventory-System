@@ -1,11 +1,11 @@
 var modal1 = document.getElementById("myModal1");
-var btn = document.getElementById("myBtn1");
-var span = document.getElementsByClassName("closeD")[0];
+var btn1 = document.getElementById("userDelete");
+var span1 = document.getElementsByClassName("closeD")[0];
 
-btn.onclick = function () {
+btn1.onclick = function () {
   modal1.style.display = "block";
 };
-span.onclick = function () {
+span1.onclick = function () {
   modal1.style.display = "none";
 };
 

@@ -27,7 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql) === TRUE) {
                 $_SESSION['temporaryPassword'] = $temporaryPassword;
-                $_SESSION['notification'] = 7;
+                if (isset($_POST["resetPassword"])) {
+                    $_SESSION['notification'] = 7;
+                }else{
+                    $_SESSION['notification'] = 4;
+                }
                 header('Location: users.php');
                 exit();
             } else {

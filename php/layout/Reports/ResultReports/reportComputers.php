@@ -1,25 +1,26 @@
+<!---------------------- php ---------------------->
 <?php
 require_once("../../../../includes/authorized.php");
 require_once("../../../../includes/modal_info.php");
 ?>
+<!---------------------- ^ php ^ ---------------------->
 
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
-
-    <meta charset="utf-8">
-    <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
-    <meta name="author" content="">
-    <meta name="generator" content="">
-    <link rel="stylesheet" href="../../../../css/loginform.css">
-    <link rel="stylesheet" href="../../../../css/body_style.css">
-    <link rel="stylesheet" href="../../../../css/notification_modals.css">
-    <title>INVENTURA</title>
-</head>
-
+<!---------------------- metainfo ---------------------->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>INVENTURA</title>
+            <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+            <link rel="stylesheet" href="../../../../css/reports.css">
+            <link rel="stylesheet" href="../../../../css/notification_modals.css">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta charset="utf-8">
+                <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
+                <meta name="author" content="BKolacz, WLuck, MLisiecki">
+                <meta name="keywords" content="inwentaryzacja, sprzęt komputerowy"/>
+    </head>
+<!---------------------- ^ metainfo ^ ---------------------->
+<!---------------------------- content ---------------------------->
 <body>
     <div class="summaryform">
 
@@ -75,9 +76,9 @@ require_once("../../../../includes/modal_info.php");
             <br><br><br>
 
             <br>
-        <div class="loginbutton"><button onclick="printPage()">Wydruk</button></div>
+        <div class="inventoryButton"><button onclick="printPage()">Wydruk</button></div>
         <a href="../reports.php">
-            <div class="loginbutton"><button type="submit" name="logout">Wstecz</button></div>
+            <div class="inventoryButton"><button type="submit" name="logout">Wstecz</button></div>
         </a>
         </form>
 
