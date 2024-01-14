@@ -13,6 +13,7 @@
     <title>INVENTURA</title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
       <link rel="shortcut icon" href="../../../images/favicon.ico">
+      <link rel="stylesheet" href="../../../css/style.css">
       <link rel="stylesheet" href="../../../css/dashboard_style.css">
       <link rel="stylesheet" href="../../../css/notification_modals.css">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,15 +62,15 @@
     $total_computers = $row['totalComputers'];
   echo '
     <div class="summaryboxes">
-      <div class="box1"> Wszystkich przedmiotów 
+      <div class="boxes box1"> Wszystkich przedmiotów 
         <p class="count">' . $total_products . '</p>
     </div>
 
-    <div class="box2"> Wszystkich kategorii 
+    <div class="boxes box2"> Wszystkich kategorii 
       <p class="count">' . $total_categories . '</p>
     </div>
 
-    <div class="box3"> Wszystkich komputerów 
+    <div class="boxes box3"> Wszystkich komputerów 
         <p class="count">' . $total_computers . '</p>
       </div>
     </div>';
@@ -84,10 +85,10 @@
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
 
   if ($conn->connect_errno != 0) { echo "Error: " . $conn->connect_errno; } else {
-    $limit = 12;
+    $limit = 8;
     $sql = "SELECT * FROM products ORDER BY idp DESC LIMIT $limit";
     $result = $conn->query($sql);
-      echo '<table class="table_products">';
+      echo '<table class="table_last_products">';
       echo <<<END
         <thead>
           <tr>

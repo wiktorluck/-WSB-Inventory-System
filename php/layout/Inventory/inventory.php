@@ -13,8 +13,9 @@
   <head>
     <title>INVENTORY</title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
-      <link rel="stylesheet" href="../../../css/notification_modals.css">
+      <link rel="stylesheet" href="../../../css/style.css">
       <link rel="stylesheet" href="../../../css/inventory_style.css">
+      <link rel="stylesheet" href="../../../css/notification_modals.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -44,7 +45,7 @@
   require_once "../../../includes/connect.php";
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
   if ($conn->connect_errno != 0) { echo "Error: " . $conn->connect_errno; } else {
-    $rowsPerPage = 20;
+    $rowsPerPage = 15;
     $currentPage = $_GET['page'] ?? 1;
     $start = ($currentPage - 1) * $rowsPerPage;
     $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
@@ -54,12 +55,12 @@
 
   $result = $conn->query($sql);
     if ($_SESSION['activeInventory'] == 1) {
-    echo '<table class="table_productsAll">';
+    echo '<table class="table_InventoryAll">';
     echo '
       <thead>
         <tr>
-          <th style="width: 35px;">ID</th>
-          <th style="width: 250px;">Nazwa</th>
+        <th style="width: 3vw;">ID</th>
+        <th style="width: 25vw;">Nazwa</th>
           <th>Kategoria</th>
           <th>Nr seryjny</th>
           <th>Nr ewidencyjny</th>
@@ -107,6 +108,8 @@
     echo "<tr><td colspan='8'>Brak rekordów w tabeli.</td></tr>"; }
     echo "</tbody>";
     echo "</table>";
+
+    echo "<div class='SummaryDivInventory'>";
   if ($_SESSION['activeInventory'] == 1) {
     $sum_query = "SELECT SUM(pricep) AS total_price FROM inventorypositions WHERE checked = 'brak'";
     $sum_result = $conn->query($sum_query);
@@ -114,9 +117,9 @@
       $row = $sum_result->fetch_assoc();
       $total_price = $row['total_price'];
       $_SESSION['deficit'] = $total_price;
-      echo '<div id="sumDiv">';
+
       echo '<p>Obecne Manko: ' . $_SESSION['deficit'] . ' zł</p>';
-      echo '</div>';
+
         } else { echo "Błąd zapytania: " . $conn->error; }}}
     if ($_SESSION['activeInventory'] == 1) {
       $count_shortcomings_query = "SELECT COUNT(*) AS total_shortcomings FROM inventorypositions WHERE checked = 'brak'";
@@ -125,9 +128,11 @@
       $row = $count_result->fetch_assoc();
       $total_shortcomings = $row['total_shortcomings'];
       $_SESSION['shortcomings'] = $total_shortcomings;
-        echo '<div id="sumDiv">';
+
         echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>';
-        echo '</div>'; } else { echo "Błąd zapytania: " . $conn->error; } }
+         } 
+        else { echo "Błąd zapytania: " . $conn->error; } }
+        echo "</div>";
     if ($_SESSION['activeInventory'] == 0) {
       echo '
         <h3>Brak aktywnej Inwentaryzacji<h3><br>
@@ -146,7 +151,7 @@
         if ($conn->connect_errno != 0) {
           echo "Error: " . $conn->connect_errno;
         } else {
-          $rowsPerPage = 20;
+          $rowsPerPage = 15;
           $currentPage = $_GET['page'] ?? 1;
           $start = ($currentPage - 1) * $rowsPerPage;
           $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
@@ -209,6 +214,7 @@
             echo "</tbody>";
             echo "</table>";
 
+          echo "<div class='SummaryDivInventory'>";
             if ($_SESSION['activeInventory'] == 1) {
               //TOTAL DEFICIT
               $sum_query = "SELECT SUM(pricep) AS total_price FROM inventorypositions WHERE checked = 'brak'";
@@ -219,9 +225,7 @@
                 $total_price = $row['total_price'];
                 $_SESSION['deficit'] = $total_price;
 
-                echo '<div id="sumDiv">';
                 echo '<p>Obecne Manko: ' . $_SESSION['deficit'] . ' zł</p>';
-                echo '</div>';
 
 
               } else {
@@ -240,14 +244,12 @@
               $total_shortcomings = $row['total_shortcomings'];
               $_SESSION['shortcomings'] = $total_shortcomings;
 
-              echo '<div id="sumDiv">';
               echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>';
-              echo '</div>';
             } else {
               echo "Błąd zapytania: " . $conn->error;
             }
           }
-
+          echo "</div>";
 
           if ($_SESSION['activeInventory'] == 0) {
             echo '
@@ -298,7 +300,7 @@
           <div class="modal-contentD">
             <span class="closeD">&times;</span>
             <h3>Czy na pewno chcesz przejść do podsumowania oraz zakończenia Inwentaryzacji?</h3>
-            <i>Zakończenie inwentaryzacji wiążę się z poprawieniem aktualnej listy magazynowej</i>
+            <i>Zakończenie inwentaryzacji wiążę się z poprawieniem aktualnej listy magazynowej! Niesprawdzone pozycje zostaną potraktowane jako nieruszone i pozostaną na stanie</i>
             <form id="endInventoryForm" action="summaryinventory.php" method="post">
 
               <input type="submit" value="Sumuj">

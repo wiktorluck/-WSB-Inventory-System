@@ -12,6 +12,7 @@
   <head>
     <title>USERS</title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+      <link rel="stylesheet" href="../../../css/style.css">
       <link rel="stylesheet" href="../../../css/users_style.css">
       <link rel="stylesheet" href="../../../css/notification_modals.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +45,7 @@ $conn = @new mysqli($host, $db_user, $db_password, $db_name);
   if ($conn->connect_errno != 0) { echo "Error: " . $conn->connect_errno; } else {
   $sql = "SELECT * FROM users";
   $result = $conn->query($sql);
-  echo '<table class="table_productsAll">';
+  echo '<table class="table_usersAll">';
     echo <<<END
       <thead>
         <tr>

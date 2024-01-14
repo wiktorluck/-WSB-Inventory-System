@@ -1,275 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap');
-body, html {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    background-color: #f5F6F8;
+
+/* REPORTS BOXES */
+.boxes{
+    font-size: 20px;
+    padding: 30px;
 }
-
-button {
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    cursor: pointer;
-    background-color: #3484FF;
-    color: white;
-    border: solid 0px;
-    width: 90%;
-    height: 6vh;
-    transition-duration: 0.2s;
-    margin: 15px;
-    border-radius: 10px;
-    font-size: 2vh;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
-}
-
-a {
-    color: black;
-    font-size: 2vh;
-    font-style: normal;
-    text-decoration: none;
-}
-
-button:hover {
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.25);
-    background-color: #4597FF;
-}
-
-
-.nav {
-    display: flex;
-    justify-content: start;
-    box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.25);
-    padding: 0.5em;
-    width: 15vw;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.nav a img {
-    width: 15vw;
-    color: #fff;
-
-
-}
-
-.mainbox {
-    flex-direction: column;
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    padding: 1em;
-        
-}
-
-
-.welcometext {
-    font-size: 2.5vh;
-}
-
-.tabletext {
-    padding-top: 5%;
-    font-size: 2vh;
-}
-
-.summaryboxes {
-    flex-direction: row;
-    display: flex;
-}
-
 
 .box1 {
-    background-color: #E6F0FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #3484FF;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+    background-color: #FEF3F2;
+    color: #B42318;
 }
 
 .box2 {
-    background-color: #FFFAEB;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #DC6803;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+    background-color: #E6F0FF;
+    color: #3484FF;
+
 }
 
 .box3 {
-    background-color: #FEF3F2;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
-    color: #B42318;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+    background-color: #FFFAEB;
+    color: #DC6803;
 }
 
 
 .box4 {
-    background-color: #3484FF;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
+    background-color: #DC6803;
     color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
+
 }
 
 .box5 {
-    background-color: #DC6803;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
+    background-color: #3484FF;
     color: #FFFAEB;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
 }
 
 .box6
 {
     background-color: #B42318;
-    height: 15vh;
-    width: 20vw;
-    margin: 15px;
-    padding: 15px;
     color: #FEF3F2;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.15);
 }
+/* --- */
 
-.box1:hover, .box2:hover, .box3:hover, .box4:hover, .box5:hover, .box6:hover{
-    cursor: pointer;
-    transform: scale(1.02); 
-    transition: 200ms;
-    animation: ease-in-out;
-}
-
-.box1 p, .box2 p, .box3 p
-{
-    font-size: 5vh;
-    font-weight: bold;
-}
-
-.topLogo {
-    display: none;
-}
-  
-  .tableOfProducts  {
-    margin: 0;
- }
- 
- .table_products {
-     border: solid 1px #dde4ee;
-     border-collapse: collapse;
-     border-spacing: 0;
-     font: normal 13px Helvetica;
-     width: 100%;
- }
- 
-     .table_products thead th {
-         background-color: #3484FF;
-         border: solid 1px #EBEBEB;
-         color: #FFFFFF;
-         padding: 5px;
-         text-align: center;
-     }
- 
-     .table_products tbody td {
-         border: solid 1px #EBEBEB;
-         color: #333;
-         padding: 5px;
-         
-     }
-
- 
- 
- .pagination {
-     display: flex;
-     list-style: none;
-     padding: 0;
- }
- 
-     .pagination a {
-         display: inline-block;
-         padding: 8px 12px;
-         margin: 0 4px;
-         text-decoration: none;
-         color: #333;
-         background-color: #f2f2f2;
-         border: 1px solid #ddd;
-         border-radius: 4px;
-         cursor: pointer;
-     }
- 
-         .pagination a:hover {
-             background-color: #c0c0c0;
-         }
- 
-     .pagination .active {
-         background-color: #007bff;
-         color: #fff;
-     }
- 
-  
- .table_productsPortrait {
-     display: none;
- }
-
- header{
-    height: 20px;
-    background-color: lightcoral;
-    margin-top:10px;
-    margin-bottom: 35px;
-    border-radius: 25px;
- }
 
 
   /********************** CSS NA MOBILE DEVICES **********************/
 
   @media (orientation: portrait){
-    .nav {
-        display: none;
-    }
-
-    .mainbox{
-        width: 95vw;
-        top:10px;
-    }
-    .welcometext 
-    {
-    font-size: 2.5vh;
-    }
-
-    .tabletext 
-    {
-    font-size: 2.5vh;
-    }
-
-    .summaryboxes {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        left: 2%;
-        font-size: 2.5vw;
-    }
-
-
 
 .BoxReportsPortraitAll {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
+
 .BoxReportsPortraitInv{
     display: flex;
     flex-direction: column;
@@ -280,6 +63,14 @@ button:hover {
     display: flex;
     flex-direction: column;
     font-weight: bold;
+}
+
+.summaryboxes {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 2%;
+    font-size: 2.5vw;
 }
 
 .box1, .box2, .box3, .box4, .box5, .box6 {
@@ -295,76 +86,5 @@ button:hover {
     width: auto;
     height: auto;
 }
-    
-    .topLogo, .menuButton {
-        justify-content: space-between;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-    .topLogo img {
-        height: 7vw;
-        align-self: flex-start;
-    }
-
-    .dropdown {
-        margin-right: 5%;
-        display: flex;
-        align-self: flex-end;
-      }
       
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 12px 16px;
-        z-index: 1;
-      }
-      
-      .dropdown:hover .dropdown-content {
-        display: block;
-        right: 4%;
-        top: 6%;
-      }
-
-      .table_products {
-        display: none;
-    }
-    .table_productsPortrait {
-        display: block;
-        border: solid 1px #dde4ee;
-        border-collapse: collapse;
-        border-spacing: 0;
-        font: normal 2vw Helvetica;
-        width: 100%;
-    }
-    
-        .table_productsPortrait thead th {
-            background-color: #3484FF;
-            border: solid 1px #EBEBEB;
-            color: #FFFFFF;
-            padding: 5px;
-            text-align: center;
-            width: 25rem;
-        }
-    
-        .table_productsPortrait tbody td {
-            border: solid 1px #EBEBEB;
-            color: #333;
-            padding: 5px;
-            
-        }
-
-        .summaryform{
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            left: 2%;
-            font-size: 2.5vw;
-        }
-
-        
-        
 }

@@ -19,21 +19,23 @@ if (isset($_POST['id'])) {
     if ($result && $result->num_rows > 0) {
 
         $row = $result->fetch_assoc();
-        echo '<form id="updateInventoryForm" action="editinventory.php" method="POST">';
-        echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
-        echo '<input type="text" disabled name="namep" value="' . $row['namep'] . '"></br>';
-        echo '<input type="text" disabled name="categoryp" value="' . $row['categoryp'] . '"></br>';
-        echo '<input type="text" disabled name="serialp" value="' . $row['serialp'] . '"></br>';
-        echo '<input type="text" disabled name="registrationp" value="' . $row['registrationp'] . '"></br>';
-        echo '<label for="status">Wybierz status:</label>
-        <select id="status" name="status">
-            <option value="Brak">Brak</option>
-            <option value="Zgodnosc">Zgodność</option>
-        </select>
-        ';
+        echo '<div class="updateInventoryDiv">';
+            echo '<form id="updateInventoryForm" action="editinventory.php" method="POST">';
+            echo '<input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
+            echo '<input type="text" disabled name="namep" value="' . $row['namep'] . '"></br>';
+            echo '<input type="text" disabled name="categoryp" value="' . $row['categoryp'] . '"></br>';
+            echo '<input type="text" disabled name="serialp" value="' . $row['serialp'] . '"></br>';
+            echo '<input type="text" disabled name="registrationp" value="' . $row['registrationp'] . '"></br>';
+            echo '<label for="status">Wybierz status:</label>
+            <select id="status" name="status">
+                <option value="Brak">Brak</option>
+                <option value="Zgodnosc">Zgodność</option>
+            </select>
+            ';
 
-        echo '<input type="submit" value="Aktualizuj">';
-        echo '</form>';
+            echo '<input type="submit" value="Aktualizuj">';
+            echo '</form>';
+        echo '</div>';
     } else {
         echo "Brak danych o produkcie.";
     }

@@ -21,15 +21,18 @@ if (isset($_POST['id'])) {
     if ($result && $result->num_rows > 0) {
 
         $row = $result->fetch_assoc();
+        echo '<div class="updateProductDiv">';
         echo '<form id="updateForm" action="editproduct.php" method="POST">';
-        echo 'ID: <input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
-        echo 'Nazwa: <input type="text" name="namep" value="' . $row['namep'] . '"></br>';
-        echo 'Kategoria: <input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
-        echo 'Numer seryjny: <input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
-        echo 'Cena: <input type="text" name="pricep" value="' . $row['pricep'] . '"></br>';
-        echo 'Numer ewidencyjny: <input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
+        echo '<p>Edycja Produktu</p>';
+        echo 'ID:</br> <input type="hidden" name="idp" value="' . $row['idp'] . '"></br>';
+        echo 'Nazwa:</br> <input type="text" name="namep" value="' . $row['namep'] . '"></br>';
+        echo 'Kategoria:</br> <input type="text" name="categoryp" value="' . $row['categoryp'] . '"></br>';
+        echo 'Numer seryjny:</br> <input type="text" name="serialp" value="' . $row['serialp'] . '"></br>';
+        echo 'Cena:</br> <input type="text" name="pricep" value="' . $row['pricep'] . '"></br>';
+        echo 'Numer ewidencyjny:</br> <input type="text" name="registrationp" value="' . $row['registrationp'] . '"></br>';
         echo '<input class="UpdateButton" type="submit" value="Aktualizuj">';
         echo '</form>';
+        echo '</div>';
     } else {
         echo "Brak danych o produkcie.";
     }

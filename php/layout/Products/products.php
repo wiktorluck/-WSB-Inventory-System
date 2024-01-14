@@ -12,8 +12,11 @@
   <head>
     <title> PRODUCTS </title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+      <link rel="stylesheet" href="../../../css/style.css">
       <link rel="stylesheet" href="../../../css/notification_modals.css">
       <link rel="stylesheet" href="../../../css/products_style.css">
+
+      
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
         <meta name="author" content="BKolacz, WLuck, MLisiecki">
@@ -38,7 +41,7 @@
 
   
 <!--------------- all items in database -------------->
-      <div class="tableOfProducts">
+      <div class="ProductsAll">
         <?php
         require_once "../../../includes/connect.php";
         $conn = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -54,7 +57,7 @@
           echo <<<END
       <thead>
         <tr>
-         <th style="width: 3vw;">ID</th>
+          <th style="width: 3vw;">ID</th>
           <th style="width: 25vw;">Nazwa</th>
           <th style="width:100px;">Kategoria</th>
           <th>Nr seryjny</th>
@@ -119,6 +122,7 @@
 <!--------------- ^ all items in database ^ -------------->
 
 <!---------------------- all items in database portrait mode ---------------------->
+<div class="ProductsAllPortrait">
 <?php
 require_once "../../../includes/connect.php";
   $conn = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -170,9 +174,10 @@ require_once "../../../includes/connect.php";
   $conn->close();
 }
 ?>
+</DIV>
 <!---------------------- ^ all items in database portrait mode ^ ---------------------->
 
-<button id="AddProduct"> Dodaj nowy produkt </button>
+<button class="AddProductButton" id="AddProduct"> Dodaj nowy produkt </button>
 
 <!---------------------- modale ---------------------->
 <!----------- edit modal ----------->

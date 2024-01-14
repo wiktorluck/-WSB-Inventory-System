@@ -11,6 +11,7 @@ require_once("../../../includes/dropdown_portrait.php");
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
 <title>INVENTURA</title>
+<link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="../../../css/reports.css">
 <link rel="stylesheet" href="../../../css/notification_modals.css">
 </head>
@@ -39,20 +40,20 @@ require_once("../../../includes/dropdown_portrait.php");
         
         <div class="summaryboxes">
                 <a href="ResultReports/reportDeficiencies.php">
-                 <div class="box1"> Raport Braków 
+                 <div class="boxes box1"> Raport Braków 
                   <p> wydruk </p>
                  </div>
                 </a>
 
 
                 <a href="ResultReports/reportUncheckedPositions.php">
-                 <div class="box2"> Raport Niesprawdzonych Pozycji
+                 <div class="boxes box2"> Raport Niesprawdzonych Pozycji
                   <p> wydruk </p>
                  </div>
                 </a>
 
                 <a href="ResultReports/reportCheckedPositions.php">
-                 <div class="box3"> Raport Sprawdzonych Pozycji 
+                 <div class="boxes box3"> Raport Sprawdzonych Pozycji 
                   <p> wydruk </p>
                  </div>
                 </a>
@@ -97,19 +98,19 @@ require_once("../../../includes/dropdown_portrait.php");
       <div class="summaryboxes">
      
       <a href="ResultReports/reportLaptops.php">
-        <div class="box5"> Raport komputerów
+        <div class="boxes box5"> Raport komputerów
         <p class="count">' . $total_computers . '</p>
         </div>
       </a>
 
       <a href="ResultReports/reportLaptops.php">
-      <div class="box4"> Raport laptopów
+      <div class="boxes box4"> Raport laptopów
       <p class="count">' . $total_laptops . '</p>
       </div>
     </a>
     
     <a href="ResultReports/reportOther.php">
-        <div class="box5"> Raport innych sprzętów
+        <div class="boxes box5"> Raport innych sprzętów
         <p class="count">' . $total_others . '</p>
         </div>
       </a>';
