@@ -11,8 +11,10 @@ require_once("../../../../includes/modal_info.php");
     <head>
         <title>INVENTURA</title>
             <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+            <link rel="stylesheet" href="../../../../css/style.css">
             <link rel="stylesheet" href="../../../../css/reports.css">
             <link rel="stylesheet" href="../../../../css/notification_modals.css">
+            <link rel="stylesheet" href="../../../../css/reports_results_style.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta charset="utf-8">
                 <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -24,7 +26,10 @@ require_once("../../../../includes/modal_info.php");
 <body>
 <div class="summaryform">
         <div class="infoSummary">
-        <p>Raport brakujących pozycji:<br>
+        <p>Raport Niesprawdzonych Pozycji:<br>
+        <?php
+           echo '<p>Ilość niesprawdzonych towarów: ' . $_SESSION['unchecked'] . '</p>';
+        ?>
         <div class="inventoryButton1"><button onclick="printPage()">Wydruk</button></div>
         <div class="inventoryButton2"><a href="../reports.php"> <button type="submit" name="logout">Wstecz</button></a></div>
         <hr>

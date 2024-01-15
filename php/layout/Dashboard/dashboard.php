@@ -29,7 +29,7 @@
 <header>
   <?php
       if ($_SESSION['activeInventory'] == 0) { echo 'Obecnie nie rozpoczęto Inwentaryzacji!'; }
-      if ($_SESSION['activeInventory'] == 1) { echo 'Inwentaryzacja w toku...'; }
+      if ($_SESSION['activeInventory'] == 1) { echo 'Inwentaryzacja w toku...';}
   ?>
 </header>
 

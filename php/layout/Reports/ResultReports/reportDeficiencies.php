@@ -11,8 +11,10 @@ require_once("../../../../includes/modal_info.php");
     <head>
         <title>INVENTURA</title>
             <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+            <link rel="stylesheet" href="../../../../css/style.css">
             <link rel="stylesheet" href="../../../../css/reports.css">
             <link rel="stylesheet" href="../../../../css/notification_modals.css">
+            <link rel="stylesheet" href="../../../../css/reports_results_style.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta charset="utf-8">
                 <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -24,12 +26,13 @@ require_once("../../../../includes/modal_info.php");
 <body>
 <div class="summaryform">
         <div class="infoSummary">
-        <p>Raport brakujących pozycji:<br>
-        <div class="inventoryButton1"><button onclick="printPage()">Wydruk</button></div>
+        <p>Raport brakujących pozycji:<br> 
+        <?php echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>'; ?> 
+        
+            <div class="inventoryButton1"><button onclick="printPage()">Wydruk</button></div>
         <a href="../reports.php">
             <div class="inventoryButton2"><button type="submit" name="logout">Wstecz</button></div>
         </a>
-        <hr>
 </div>
 
             <div class="TableInventory">

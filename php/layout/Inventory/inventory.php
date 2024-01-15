@@ -24,11 +24,10 @@
   </head>
 <!---------------------- ^ metainfo ^ ---------------------->
 <!---------------------------- content ---------------------------->
-
 <header>
   <?php
       if ($_SESSION['activeInventory'] == 0) { echo 'Obecnie nie rozpoczęto Inwentaryzacji!'; }
-      if ($_SESSION['activeInventory'] == 1) { echo 'Inwentaryzacja w toku...'; }
+      if ($_SESSION['activeInventory'] == 1) { echo 'Inwentaryzacja w toku...';}
   ?>
 </header>
 
@@ -131,7 +130,7 @@
 
         echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>';
          } 
-        else { echo "Błąd zapytania: " . $conn->error; } }
+        else { echo "Błąd zapytania: " . $conn->error; }}
 
         if ($_SESSION['activeInventory'] == 1) {
           $count_shortcomings_query = "SELECT COUNT(*) AS total_shortcomings FROM inventorypositions WHERE checked = 'Niesprawdzone'";

@@ -4,7 +4,7 @@
 }
 .SummaryDivInventory{
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
@@ -27,13 +27,16 @@
 }
 
 #myBtn2{
-  background-color: #DC6803;
   width: 30%;
 }
 #myBtn3{
-  background-color: #DC6803;
   width: 30%;
 }
+
+th{
+  background-color: #DC6803;
+}
+
 
 @media (orientation: portrait) {
 

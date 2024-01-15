@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+th {
+    background-color: black;
+}
+button {
+    background-color: black;
+    width: 30%;
+}
+.summaryform{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+}
+
+@media print {
+    button{
+        display: none;
+    }
+    p{
+        font-size: 50px;
+    }
+}
