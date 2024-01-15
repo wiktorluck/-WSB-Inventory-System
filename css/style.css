@@ -82,7 +82,6 @@ a {
 .summaryboxes {
     flex-direction: row;
     display: flex;
-    padding: 1em;
     font-size: 3.5vw;
 }
 .boxes{

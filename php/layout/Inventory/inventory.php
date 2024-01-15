@@ -45,7 +45,7 @@
   require_once "../../../includes/connect.php";
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
   if ($conn->connect_errno != 0) { echo "Error: " . $conn->connect_errno; } else {
-    $rowsPerPage = 15;
+    $rowsPerPage = 10;
     $currentPage = $_GET['page'] ?? 1;
     $start = ($currentPage - 1) * $rowsPerPage;
     $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
@@ -132,6 +132,18 @@
         echo '<p>Ilość brakujących towarów: ' . $_SESSION['shortcomings'] . '</p>';
          } 
         else { echo "Błąd zapytania: " . $conn->error; } }
+
+        if ($_SESSION['activeInventory'] == 1) {
+          $count_shortcomings_query = "SELECT COUNT(*) AS total_shortcomings FROM inventorypositions WHERE checked = 'Niesprawdzone'";
+          $count_result = $conn->query($count_shortcomings_query);
+        if ($count_result) {
+          $row = $count_result->fetch_assoc();
+          $total_shortcomings = $row['total_shortcomings'];
+          $_SESSION['unchecked'] = $total_shortcomings;
+    
+            echo '<p>Ilość niesprawdzonych towarów: ' . $_SESSION['unchecked'] . '</p>';
+             } 
+            else { echo "Błąd zapytania: " . $conn->error; } }
         echo "</div>";
     if ($_SESSION['activeInventory'] == 0) {
       echo '
@@ -151,7 +163,7 @@
         if ($conn->connect_errno != 0) {
           echo "Error: " . $conn->connect_errno;
         } else {
-          $rowsPerPage = 15;
+          $rowsPerPage = 10;
           $currentPage = $_GET['page'] ?? 1;
           $start = ($currentPage - 1) * $rowsPerPage;
           $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
@@ -264,13 +276,14 @@
 </div>
 <!---------------------- ^ all items in inventory portrait mode ^ ---------------------->
         <?php
+        echo "<div class='myBtns'>";
         if ($_SESSION['permission'] == 1) {
             echo '<button id="myBtn2">Rozpocznij nową Inwentaryzację</button>';
           if ($_SESSION['activeInventory'] == 1) {
             echo '<button id="myBtn3">Zakończ Inwentaryzację</button>';
           }
         }
-
+        echo "</div>";
         ?>
 
         <!-- EDIT INVENTORY MODAL -->

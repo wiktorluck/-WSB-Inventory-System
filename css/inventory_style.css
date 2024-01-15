@@ -4,22 +4,36 @@
 }
 .SummaryDivInventory{
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   text-align: center;
   width: 100%;
   font-size: 12px;
-  border: 3px solid #ddd;
-  border-radius: 10px;
   margin-top: 10px;
 }
 .SummaryDivInventory p{
-  font-size: 40px;
-  font-style: italic;
+  font-size: 30px;
   color:#DC6803;
-  margin: 2%;
+  margin: 1%;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
 }
 
+.myBtns{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#myBtn2{
+  background-color: #DC6803;
+  width: 30%;
+}
+#myBtn3{
+  background-color: #DC6803;
+  width: 30%;
+}
 
 @media (orientation: portrait) {
 
@@ -34,8 +48,12 @@
     }
     /* --- */
     .SummaryDivInventory p{
-      font-size: 20px;
+      font-size: 15px;
     }
-    
-    
+    #myBtn2{
+      width: 100%;
+    }
+    #myBtn3{
+      width: 100%;
+    }
 }

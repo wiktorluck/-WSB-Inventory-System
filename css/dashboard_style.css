@@ -15,6 +15,10 @@
     background-color: #FEF3F2;
     color: #B42318;
 }
+.summaryboxes {
+    display: flex;
+    justify-content: center;
+}
 /* --- */
 
 
@@ -33,9 +37,7 @@ th{
   
  .table_productsPortrait {
      display: none;
- }
-
- 
+ } 
 /* --- */
 
 
@@ -51,9 +53,7 @@ th{
 
     .summaryboxes {
         font-size: 3.5vw;
-     	overflow-x: scroll;
-        max-width: 500px;
-        justify-content: center;
+     	overflow-x:scroll;
     }
 
     .boxes {
