@@ -315,15 +315,26 @@
             <i>Zakończenie inwentaryzacji wiążę się z poprawieniem aktualnej listy magazynowej! Niesprawdzone pozycje zostaną potraktowane jako nieruszone i pozostaną na stanie</i>
             <form id="endInventoryForm" action="summaryinventory.php" method="post">
 
-              <input type="submit" value="Sumuj">
+              <input type="submit" value="Sumuj" id="sumujBtn">
+            </form>
+          </div>
+        </div>
+
+        <div id="myModal4" class="modalD">
+          <div class="modal-contentD">
+            <span class="closeD">&times;</span>
+            <h3>Uwaga!</h3>
+            <i>Nie wszystkie pozycje zostały sprawdzone! Jeśli przejdziesz do podsumowania i zakończenia inwentaryzacji niesprawdzone pozycje zostaną nieruszone i pozostaną aktywne w stanie magazynowym..</i>
+            <form id="endInventoryForm" action="summaryinventory.php" method="post">
+              
+              <input id="myBtn4" type="submit" value="Tak" id="sumujBtn">
             </form>
           </div>
         </div>
 
 
-
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
         <!-- EDIT INVENTORY MODAL AJAX SCRIPT -->
         <script src="../../../js/inventory_edit.js"></script>
