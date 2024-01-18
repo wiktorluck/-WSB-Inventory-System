@@ -34,7 +34,7 @@
 <body>
 
 <!--------------- welcome text -------------->
-      <div class="welcometext">Inwentaryzacja<?php if($_SESSION['activeInventory'] == 0) echo '<div class="infoDiv" onmouseover="openInfoModal()" onmouseout="closeInfoModal()">?</div>';?></div>
+      <div class="welcometext">Inwentaryzacja</div>
     
 
 <!--------------- ^ welcome text ^ -------------->
@@ -201,11 +201,13 @@ echo '</tr>';
         echo "</div>";
     if ($_SESSION['activeInventory'] == 0) {
       echo '
-        <h3>Brak aktywnej Inwentaryzacji<h3><br>
-        <h4>Możesz rozpocząć proces inwenatryzacji, ...<h4>
+        <i>Brak aktywnej Inwentaryzacji Możesz rozpocząć proces inwenatryzacji</i>
+        <div class="infoDiv" onmouseover="openInfoModal()" onmouseout="closeInfoModal()">?</div>
       '; }
     $conn->close(); }
   ?>
+
+
 </div>
 <!---------------------- ^ all items in inventory ^ ---------------------->
 
@@ -340,22 +342,30 @@ echo '</tr>';
               echo "Błąd zapytania: " . $conn->error;
             }
           }
+
+          
           echo "</div>";
+
 
 
 
           $conn->close();
         }
+
+
+        if ($_SESSION['activeInventory'] == 0) {
+          echo '<button id="myBtn2">Rozpocznij nową Inwentaryzację</button>';
+      }
         ?>
 </div>
 <!---------------------- ^ all items in inventory portrait mode ^ ---------------------->
         <?php
+              
+        // BUTTONS INVENTORY OPTION
         echo "<div class='myBtns'>";
-        if ($_SESSION['permission'] == 1) {
+        if ($_SESSION['activeInventory'] == 1) {
             echo '<button id="myBtn2">Rozpocznij nową Inwentaryzację</button>';
-          if ($_SESSION['activeInventory'] == 1) {
             echo '<button id="myBtn3">Zakończ Inwentaryzację</button>';
-          }
         }
         echo "</div>";
         ?>

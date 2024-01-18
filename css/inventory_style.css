@@ -23,20 +23,30 @@
 .myBtns{
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 50%;
 }
-
 #myBtn2{
-  width: 20%;
+  width: 50%;
 }
 #myBtn3{
-  width: 20%;
+  width: 50%;
 }
 
 th{
   background-color: #DC6803;
 }
 
+.infoDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  margin-left: 4%;
+  width: 20%;
+  height: 5vh;
+  text-align: center;
+}
 
 @media (orientation: portrait) {
 

@@ -250,16 +250,7 @@ table {
     font-size: 10px;
     height: 3vh;
   }
-  .infoDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    margin-left: 4%;
-    width: 2%;
-    text-align: center;
-  }
+
 
 
 /* PAGINATION  */

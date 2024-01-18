@@ -79,7 +79,7 @@
                     LIMIT $start, $rowsPerPage";
           } else {
             $sql = "SELECT idp, namep, categoryp, serialp, registrationp, pricep
-                    FROM inventorypositions 
+                    FROM products 
                     LIMIT $start, $rowsPerPage";
           }
 
@@ -178,7 +178,7 @@ require_once "../../../includes/connect.php";
                 WHERE namep LIKE '%$searchTerm%' OR registrationp LIKE '%$searchTerm%' 
                 LIMIT $start, $rowsPerPage";
       } else {
-        $sql = "SELECT *
+        $sql = "SELECT idp, namep
                 FROM products 
                 LIMIT $start, $rowsPerPage";
       }
