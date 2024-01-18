@@ -111,10 +111,7 @@
   float: right;
   font-size: 20px;
 }
-.modal-contentD{
-  width: 30%;
-  height: 40%;
-}
+
 .modal-contentA{
   width: 40%;
   height: 50%;
@@ -141,7 +138,6 @@
   font-size: 20px;
 }
 
-
 .closeD1{
   width: 100%;
   background-color: rgb(216, 72, 72);
@@ -166,8 +162,28 @@
   border-radius: 10px;
   cursor: pointer;
 }
+/* --- */
 
+/* MODAL DELETE PRODUCT */
+.modal-contentD{
+  width: 30vw;
+  height: 40%;
+  min-height: 290px;
+  min-width: 390px;
+}
+.modal-contentD .noDelete{
+  width: 100%;
+  height: 20%;
+  font-size: 20px;
 
+}
+.modal-contentD .yesDelete{
+  width: 100%;
+  margin: 0px;
+  height: 20%;
+  font-size: 20px;
+}
+/* --- */
 
 .AddProductButton{
   width: 20%;
@@ -179,6 +195,20 @@
     width: 90%; 
     height: 70%; 
   }
+
+
+/* MODAL DELETE PRODUCT MOBILE */
+.modal-contentD{
+  width: 40%;
+  min-width: 10px;
+}
+.modal-contentD .yesDelete{
+  height: 40px;
+}
+.modal-contentD .noDelete{
+  height: 40px;
+}
+/* --- */
 
   .modal-contentP{
     margin-top: -20%;

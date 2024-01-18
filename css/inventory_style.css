@@ -23,19 +23,20 @@
 .myBtns{
   display: flex;
   justify-content: center;
-  width: 50%;
 }
 #myBtn2{
-  width: 50%;
+  width: 30%;
 }
 #myBtn3{
-  width: 50%;
+  width: 30%;
 }
 
 th{
   background-color: #DC6803;
 }
-
+.tableOfProducts{
+  align-items: center;
+}
 .infoDiv {
   display: flex;
   justify-content: center;
@@ -64,9 +65,9 @@ th{
       font-size: 15px;
     }
     #myBtn2{
-      width: 100%;
+      width: 90%;
     }
     #myBtn3{
-      width: 100%;
+      width: 90%;
     }
 }

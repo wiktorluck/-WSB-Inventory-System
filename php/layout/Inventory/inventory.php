@@ -77,13 +77,13 @@ if($_SESSION['activeInventory'] == 1){
   
     // Check if search form is submitted
     if (isset($_GET['search'])) {
-      $_SESSION['searchTerm'] = sanitizeInput($_GET['search']);
+      $_SESSION['searchTermInventory'] = sanitizeInput($_GET['search']);
     }
   
     // Sprawdza czy istnieje zmienna sesji z wartością wyszukiwania
-    if (isset($_SESSION['searchTerm'])) {
+    if (isset($_SESSION['searchTermInventory'])) {
       // Jeśli istnieje, użyj jej wartości w zapytaniu SQL
-      $searchTerm = $_SESSION['searchTerm'];
+      $searchTerm = $_SESSION['searchTermInventory'];
       $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
               inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
               FROM inventorypositions 
@@ -194,7 +194,7 @@ echo '</tr>';
           $row = $count_result->fetch_assoc();
           $total_shortcomings = $row['total_shortcomings'];
           $_SESSION['unchecked'] = $total_shortcomings;
-    
+          
             echo '<p>Ilość niesprawdzonych towarów: ' . $_SESSION['unchecked'] . '</p>';
              } 
             else { echo "Błąd zapytania: " . $conn->error; } }
@@ -202,7 +202,7 @@ echo '</tr>';
     if ($_SESSION['activeInventory'] == 0) {
       echo '
         <i>Brak aktywnej Inwentaryzacji Możesz rozpocząć proces inwenatryzacji</i>
-        <div class="infoDiv" onmouseover="openInfoModal()" onmouseout="closeInfoModal()">?</div>
+        <a class="infoDiv" onmouseover="openInfoModal()" onmouseout="closeInfoModal() onclick="openInfoModal()" ">?</a>
       '; }
     $conn->close(); }
   ?>
@@ -229,13 +229,13 @@ echo '</tr>';
         
           // Check if search form is submitted
           if (isset($_GET['search'])) {
-            $_SESSION['searchTerm'] = sanitizeInput2($_GET['search']);
+            $_SESSION['searchTermInventory'] = sanitizeInput2($_GET['search']);
           }
         
           // Sprawdza czy istnieje zmienna sesji z wartością wyszukiwania
-          if (isset($_SESSION['searchTerm'])) {
+          if (isset($_SESSION['searchTermInventory'])) {
             // Jeśli istnieje, użyj jej wartości w zapytaniu SQL
-            $searchTerm = $_SESSION['searchTerm'];
+            $searchTerm = $_SESSION['searchTermInventory'];
             $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
                     inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
                     FROM inventorypositions 
