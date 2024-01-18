@@ -10,6 +10,9 @@ body, html
     background-color: #f5F6F8;
 }
 .mainbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     width: 80vw;
     display: flex;
@@ -53,7 +56,14 @@ header{
 
 /* TEXT */
 .welcometext {
-    font-size: 2.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    font-size: 3.5vh;
+    border-bottom: 5px solid #ddd;
+    margin-bottom: 10px;
 }
 
 p {
@@ -143,6 +153,38 @@ button:hover {
 }
 /* --- */
 
+/* INPUTS */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    cursor: pointer;
+    background-color: #3484FF;
+    color: white;
+    border: solid 0px;
+    width: 90%;
+    height: 6vh;
+    transition-duration: 0.2s;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 2vh;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
+  }
+  
+  input[type=submit]:hover {
+    color: white;
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.5);
+  }
 
 
 /* TABLES */
@@ -151,14 +193,17 @@ table {
     width: 100%;
   }
   th, td {
-    padding: 8px;
     text-align: left;
-    border-bottom: 4px solid #ddd;
+    border-bottom: 3px solid #ddd;
   }
   th{
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     background-color: #4597FF;
     color: whitesmoke;
     font-weight: bold;
+    padding: 5px;
   }
   
   .tableOfProducts  {
@@ -173,6 +218,21 @@ table {
 }
 /* --- */
 
+/* FILTER TABLES  */
+.filtersTableDiv{
+    display: flex;
+    justify-content: center;
+
+}
+
+.filtersTableDiv form {
+    padding: 20px;
+}
+.filterTableButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* PAGINATION  */
@@ -207,7 +267,6 @@ table {
 
 
 
-
 /* ---------- MOBILE DEFAULT CSS -----*/
 @media (orientation: portrait){
     .nav {
@@ -216,6 +275,11 @@ table {
     .mainbox{
         width: 95vw;
         top:10px;
+        align-items: unset;
+    }
+    .welcometext{
+        width: 100%;
+
     }
 
     /*TABLE MOBILE */

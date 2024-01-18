@@ -33,9 +33,7 @@
 
 <body>
 <!----------- welcome text ----------->         
-<div class="welcometext">
-  <?php echo "Dodajemy kogoś nowego, " . $_SESSION['login'] . '?'; ?>
-</div>
+<div class="welcometext">Użytkownicy</div>
 <!----------- ^ welcome text ^ -----------> 
 
 <!----------- users table ----------->   

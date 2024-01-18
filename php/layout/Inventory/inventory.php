@@ -14,8 +14,8 @@
     <title>INVENTORY</title>
       <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
       <link rel="stylesheet" href="../../../css/style.css">
-      <link rel="stylesheet" href="../../../css/inventory_style.css">
       <link rel="stylesheet" href="../../../css/notification_modals.css">
+      <link rel="stylesheet" href="../../../css/inventory_style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -34,9 +34,33 @@
 <body>
 
 <!--------------- welcome text -------------->
-      <div class="welcometext">Inwentaryzacje</div>
+      <div class="welcometext">Inwentaryzacja<?php if($_SESSION['activeInventory'] == 0) echo '<div class="infoDiv" onmouseover="openInfoModal()" onmouseout="closeInfoModal()">?</div>';?></div>
+    
+
 <!--------------- ^ welcome text ^ -------------->
-        
+
+
+<?php
+
+if($_SESSION['activeInventory'] == 1){
+  echo '
+      <div class="filtersTableDiv">
+      <form method="GET" action="">
+          <label for="search">Wyszukaj:</label>
+            <input type="text" name="search" id="search" placeholder="Nazwę/Nr. Ewidencyjny/Status">
+          <div class="filterTableButtons">
+            <input type="submit" value="Wyszukaj" class="submitFilters">
+            <input type="submit" value="Wyczyść"  class="submitFilters" onclick="clearFilters()">
+          </div>
+
+      </form>
+    </div>
+    ';
+}
+
+
+
+?>
 <!---------------------- all items in inventory ---------------------->      
 <div class="tableOfProducts">
 <div class="InventoryAll">  
@@ -47,10 +71,33 @@
     $rowsPerPage = 10;
     $currentPage = $_GET['page'] ?? 1;
     $start = ($currentPage - 1) * $rowsPerPage;
-    $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
-      inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
-      FROM inventorypositions 
-      LEFT JOIN users ON inventorypositions.userid = users.id LIMIT $start, $rowsPerPage";
+    function sanitizeInput($input) {
+      return htmlspecialchars(strip_tags(trim($input)));
+    }
+  
+    // Check if search form is submitted
+    if (isset($_GET['search'])) {
+      $_SESSION['searchTerm'] = sanitizeInput($_GET['search']);
+    }
+  
+    // Sprawdza czy istnieje zmienna sesji z wartością wyszukiwania
+    if (isset($_SESSION['searchTerm'])) {
+      // Jeśli istnieje, użyj jej wartości w zapytaniu SQL
+      $searchTerm = $_SESSION['searchTerm'];
+      $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
+              inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
+              FROM inventorypositions 
+              LEFT JOIN users ON inventorypositions.userid = users.id 
+              WHERE inventorypositions.namep LIKE '%$searchTerm%' OR inventorypositions.registrationp LIKE '%$searchTerm%' OR inventorypositions.checked LIKE '%$searchTerm%'
+              LIMIT $start, $rowsPerPage";
+    } else {
+      // Jeśli nie ma wartości wyszukiwania, użyj oryginalnego zapytania SQL
+      $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
+              inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
+              FROM inventorypositions 
+              LEFT JOIN users ON inventorypositions.userid = users.id 
+              LIMIT $start, $rowsPerPage";
+    }
 
   $result = $conn->query($sql);
     if ($_SESSION['activeInventory'] == 1) {
@@ -88,21 +135,29 @@
     $totalPages = ceil($totalRows / $rowsPerPage);
     $startPage = max(1, $currentPage - 2); 
     $endPage = min($totalPages, $currentPage + 2); 
-      echo '<tr>';
-        echo '<td colspan="8">';
-          echo '<div class="pagination">';
-            if ($currentPage > 1) {
-              echo '<a href="?page=' . ($currentPage - 1) . '">&laquo;</a>'; }
-            for ($i = $startPage; $i <= $endPage; $i++) {
-              echo '<a href="?page=' . $i . '"';
-            if ($i == $currentPage) {
-              echo ' class="active"'; }
-              echo '>' . $i . '</a>'; }
-            if ($currentPage < $totalPages) {
-            echo '<a href="?page=' . ($currentPage + 1) . '">&raquo;</a>'; }
-          echo '</div>';
-        echo '</td>';
-      echo '</tr>';
+echo '<tr>';
+echo '<td colspan="8">';
+echo '<div class="pagination">';
+
+if ($currentPage > 1) {
+    echo '<a href="?page=' . ($currentPage - 1) . '">&laquo;</a>';
+}
+
+for ($i = $startPage; $i <= $endPage; $i++) {
+    echo '<a href="?page=' . $i . '"';
+    if ($i == $currentPage) {
+        echo ' class="active"';
+    }
+    echo '>' . $i . '</a>';
+}
+
+if ($currentPage < $totalPages) {
+    echo '<a href="?page=' . ($currentPage + 1) . '">&raquo;</a>';
+}
+
+echo '</div>';
+echo '</td>';
+echo '</tr>';
   } else {
     echo "<tr><td colspan='8'>Brak rekordów w tabeli.</td></tr>"; }
     echo "</tbody>";
@@ -165,10 +220,35 @@
           $rowsPerPage = 10;
           $currentPage = $_GET['page'] ?? 1;
           $start = ($currentPage - 1) * $rowsPerPage;
-          $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
-      inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
-      FROM inventorypositions 
-      LEFT JOIN users ON inventorypositions.userid = users.id LIMIT $start, $rowsPerPage";
+
+                    function sanitizeInput2($input) {
+            return htmlspecialchars(strip_tags(trim($input)));
+          }
+        
+          // Check if search form is submitted
+          if (isset($_GET['search'])) {
+            $_SESSION['searchTerm'] = sanitizeInput2($_GET['search']);
+          }
+        
+          // Sprawdza czy istnieje zmienna sesji z wartością wyszukiwania
+          if (isset($_SESSION['searchTerm'])) {
+            // Jeśli istnieje, użyj jej wartości w zapytaniu SQL
+            $searchTerm = $_SESSION['searchTerm'];
+            $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
+                    inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
+                    FROM inventorypositions 
+                    LEFT JOIN users ON inventorypositions.userid = users.id 
+                    WHERE inventorypositions.namep LIKE '%$searchTerm%' OR inventorypositions.registrationp LIKE '%$searchTerm%' OR inventorypositions.checked LIKE '%$searchTerm%'
+                    LIMIT $start, $rowsPerPage";
+          } else {
+            $sql = "SELECT inventorypositions.idp, inventorypositions.namep, inventorypositions.categoryp, inventorypositions.serialp, 
+            inventorypositions.registrationp, inventorypositions.checked, inventorypositions.pricep, users.login 
+            FROM inventorypositions 
+            LEFT JOIN users ON inventorypositions.userid = users.id LIMIT $start, $rowsPerPage";
+          }
+
+
+
           $result = $conn->query($sql);
           if ($_SESSION['activeInventory'] == 1) {
             echo '<table class="table_productsAllportraitMode">';
@@ -176,8 +256,8 @@
           <thead>
             <tr>
              <th style="width: 35px;">ID</th>
-              <th>Nr ewidencyjny</th>
-              <th>Cena ewidencyjna</th>
+             <th>Nazwa</th> 
+             <th>Nr ewidencyjny</th>
               <th>Status</th>
               <th>Akcje</th>
             </tr>
@@ -190,8 +270,8 @@
               while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["idp"] . "</td>";
+                echo "<td>" . $row["namep"] . "</td>";
                 echo "<td>" . $row["registrationp"] . "</td>";
-                echo "<td>" . $row["pricep"] . ' zł' . "</td>";
                 echo "<td>" . $row["checked"] . "</td>";
                 echo '<td><a href="#" id="myBtn" class="edit-inventory" data-id="' . $row["idp"] . '"> <img src="../../../images/mark.png"  width="25" /> </a></td>';
                 echo "</tr>";
@@ -262,12 +342,7 @@
           }
           echo "</div>";
 
-          if ($_SESSION['activeInventory'] == 0) {
-            echo '
-        <h3>Brak aktywnej Inwentaryzacji<h3>
-        <h4>Przeprowadzając Inwentaryzację sprawdzisz swoje pozycje oraz poprawisz stany magazynowe w przypadku braków...<h4>
-        ';
-          }
+
 
           $conn->close();
         }
@@ -292,7 +367,6 @@
             <p></p>
           </div>
         </div>
-
 
 
         <!-- ADD INVENTORY MODAL -->
@@ -320,6 +394,7 @@
           </div>
         </div>
 
+        <!-- INFO MODAL ABOUT UNCHECKED POSITIONS -->
         <div id="myModal4" class="modalD">
           <div class="modal-contentD">
             <span class="closeD">&times;</span>
@@ -332,8 +407,16 @@
           </div>
         </div>
 
+        <div id="infoModal" class="modalI">
+        <div class="modal-contentI">
+            <span class="closeI" onclick="closeInfoModal()">&times;</span>
+            <p>Tutaj umieść treść informacji.</p>
+        </div>
+      </div>
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
         <!-- EDIT INVENTORY MODAL AJAX SCRIPT -->
@@ -344,7 +427,22 @@
 
         <!-- END INVENTORY MODAL SCRIPT -->
         <script src="../../../js/inventory_end.js"></script>
+
+        <!-- MODALS JS -->
         <script src="../../../js/modals.js"></script>
+
+        <!-- CLEAR TABLE FILTRES -->
+        <script src="../../../js/clear_filtres.js"></script>
+
+        <script>
+        function openInfoModal() {
+            document.getElementById("infoModal").style.display = "block";
+        }
+
+        function closeInfoModal() {
+            document.getElementById("infoModal").style.display = "none";
+        }
+    </script>
 
   </body>
 

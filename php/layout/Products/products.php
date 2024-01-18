@@ -36,7 +36,7 @@
 <body>
 
 <!--------------- welcome text -------------->         
-  <div class="welcometext"> Lista wszystkich produktów </div>
+  <div class="welcometext"> Produkty </div>
 <!--------------- ^ welcome text ^ -------------->
 
   

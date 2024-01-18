@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezerwacja Stolików</title>
+    <!-- Linki do Bootstrapa CSS i pliku CSS lokalnego dla niestandardowych stylów -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Sticky menu na górze strony -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand"  (click) = "changeComponent('app-main-page-grid')" href="#">Reserwacja Stolików</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" (click) = "changeComponent('app-main-page-grid')" href="#">Start</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click) = "changeComponent('AboutUs')" href="#">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click) = "changeComponent('Contact')" href="#">Kontakt</a>
+                </li>
+
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" (click)="changeComponent('Login')" href="#">Zaloguj</a>
+                  </li>
+                  <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" (click)="logout()" href="#">Wyloguj</a>
+                  </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mb-4 d-flex justify-content-center">
+        <img src="https://images.affordableseating.net/dpr_1.0,f_auto,q_auto,w_1333,h_333/afd/media/contenttype/restaurant_table_types_and_styles_-_header_1.jpg" class="img-fluid" alt="Obrazek">
+    </div>
+    <div class="boxed-container">
+<router-outlet>
+
+</router-outlet>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

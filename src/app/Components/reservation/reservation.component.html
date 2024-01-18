@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Formularz Rezerwacji Stolika</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="reservationForm">
+      <div class="form-group">
+          <label for="datepicker">Data rezerwacji:</label>
+          <input type="date" class="form-control" id="datepicker" formControlName="reservation_date" required>
+      </div>
+      <div class="form-group">
+          <label for="timepickerFrom">Godzina rezerwacji od:</label>
+          <input type="time" class="form-control" id="timepickerFrom" formControlName="reservation_time_from" required>
+      </div>
+      <div class="form-group">
+          <label for="timepickerTo">Godzina rezerwacji do:</label>
+          <input type="time" class="form-control" id="timepickerTo" formControlName="reservation_time_to" required>
+      </div>
+      <div class="form-group">
+          <label for="guests">Ilość gości:</label>
+          <input type="text" class="form-control" id="guests" formControlName="guests_count" placeholder="Podaj ilość gości" required>
+      </div>
+      <div class="form-group">
+          <label for="fullName">Imię i nazwisko:</label>
+          <input type="text" class="form-control" id="fullName" formControlName="full_name" placeholder="Podaj swoje imię i nazwisko" required>
+      </div>
+      
+      <input type="hidden" formControlName="user_id">
+      <input type="hidden" formControlName="restaurant_id">
+
+      <button type="submit" class="btn btn-dark btn-block">Zarezerwuj Stolik</button>
+  </form>
+</div>

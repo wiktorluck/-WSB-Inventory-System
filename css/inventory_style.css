@@ -12,11 +12,11 @@
   margin-top: 10px;
 }
 .SummaryDivInventory p{
-  font-size: 30px;
-  color:#DC6803;
+  font-size: 20px;
   margin: 1%;
-  border: 2px solid #ddd;
-  border-radius: 15px;
+  background-color: #cccccc49;
+  border-radius: 25px;
+  border:3px solid #ddd;
   padding: 20px;
 }
 
@@ -27,16 +27,42 @@
 }
 
 #myBtn2{
-  width: 30%;
+  width: 20%;
 }
 #myBtn3{
-  width: 30%;
+  width: 20%;
 }
 
 th{
   background-color: #DC6803;
 }
-
+.filterSection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filtersTableDiv{
+  font-size: 15px;
+  margin-bottom: 10px;
+  background-color: #cccccc49;
+  border-radius: 25px;
+  border:3px solid #ddd;
+}
+.filtersTableDiv input[type=submit]{
+  background-color: black;
+  font-size: 10px;
+  height: 3vh;
+}
+.infoDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  margin-left: 4%;
+  width: 2%;
+  text-align: center;
+}
 
 @media (orientation: portrait) {
 
