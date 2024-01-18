@@ -233,6 +233,33 @@ table {
     justify-content: center;
     align-items: center;
 }
+.filterSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .filtersTableDiv{
+    font-size: 15px;
+    margin-bottom: 10px;
+    background-color: #cccccc49;
+    border-radius: 25px;
+    border:3px solid #ddd;
+  }
+  .filtersTableDiv input[type=submit]{
+    background-color: black;
+    font-size: 10px;
+    height: 3vh;
+  }
+  .infoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin-left: 4%;
+    width: 2%;
+    text-align: center;
+  }
 
 
 /* PAGINATION  */

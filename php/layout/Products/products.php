@@ -38,7 +38,17 @@
 <!--------------- welcome text -------------->         
   <div class="welcometext"> Produkty </div>
 <!--------------- ^ welcome text ^ -------------->
+<div class="filtersTableDiv">
+      <form method="GET" action="">
+          <label for="search">Wyszukaj:</label>
+            <input type="text" name="search" id="search" placeholder="Nazwę/Nr. Ewidencyjny">
+          <div class="filterTableButtons">
+            <input type="submit" value="Wyszukaj" class="submitFilters">
+            <input type="submit" value="Wyczyść"  class="submitFilters" onclick="clearFilters()">
+          </div>
 
+      </form>
+    </div>
   
 <!--------------- all items in database -------------->
       <div class="ProductsAll">
@@ -51,7 +61,28 @@
           $rowsPerPage = 15;
           $currentPage = $_GET['page'] ?? 1;
           $start = ($currentPage - 1) * $rowsPerPage;
-          $sql = "SELECT * FROM products LIMIT $start, $rowsPerPage";
+          
+          function sanitizeInput($input) {
+            return htmlspecialchars(strip_tags(trim($input)));
+          }
+        
+          // Check if search form is submitted
+          if (isset($_GET['search'])) {
+            $_SESSION['searchTerm'] = sanitizeInput($_GET['search']);
+          }
+        
+          if (isset($_SESSION['searchTerm'])) {
+            $searchTerm = $_SESSION['searchTerm'];
+            $sql = "SELECT idp, namep, categoryp, serialp, registrationp, pricep
+                    FROM products 
+                    WHERE namep LIKE '%$searchTerm%' OR registrationp LIKE '%$searchTerm%'
+                    LIMIT $start, $rowsPerPage";
+          } else {
+            $sql = "SELECT idp, namep, categoryp, serialp, registrationp, pricep
+                    FROM inventorypositions 
+                    LIMIT $start, $rowsPerPage";
+          }
+
           $result = $conn->query($sql);
           echo '<table class="table_products">';
           echo <<<END
@@ -130,7 +161,28 @@ require_once "../../../includes/connect.php";
       $rowsPerPage = 20;
       $currentPage = $_GET['page'] ?? 1;
       $start = ($currentPage - 1) * $rowsPerPage;
-      $sql = "SELECT * FROM products LIMIT $start, $rowsPerPage";
+      
+      function sanitizeInput2($input) {
+        return htmlspecialchars(strip_tags(trim($input)));
+      }
+    
+      // Check if search form is submitted
+      if (isset($_GET['search'])) {
+        $_SESSION['searchTerm'] = sanitizeInput2($_GET['search']);
+      }
+    
+      if (isset($_SESSION['searchTerm'])) {
+        $searchTerm = $_SESSION['searchTerm'];
+        $sql = "SELECT *
+                FROM products 
+                WHERE namep LIKE '%$searchTerm%' OR registrationp LIKE '%$searchTerm%' 
+                LIMIT $start, $rowsPerPage";
+      } else {
+        $sql = "SELECT *
+                FROM products 
+                LIMIT $start, $rowsPerPage";
+      }
+
       $result = $conn->query($sql);
         echo '<table class="table_productsPortrait">';
         echo <<<END
@@ -242,6 +294,10 @@ require_once "../../../includes/connect.php";
     span.onclick = function () { modal.style.display = "none"; } 
     window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none"; }}
 </script>
+        
+<!-- CLEAR TABLE FILTRES -->
+<script src="../../../js/clear_filtres.js"></script>
+
 <script src="../../../js/modals.js"></script>
 <!---------------------- ^ js ^ ---------------------->
 
