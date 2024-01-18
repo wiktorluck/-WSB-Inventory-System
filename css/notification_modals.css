@@ -112,19 +112,25 @@
   font-size: 20px;
 }
 
+/* MODAL EDIT */
 .modal-contentA{
   width: 40%;
-  height: 50%;
-  font-size: 30px;
+  height: 60vh;
+  font-size: 20px;
+  min-height: 620px;
+}
+.modal-contentA input[type=submit]{
+  width: 90%;
 }
 
 .SendButton
 {
-  width: 25%;
+  width: 10%;
   border-radius: 5px;
   text-align: center;
   background-color: #e1ffd9;
 }
+/* --- */
 
 /* MODAL CHECK PRODUCT */
 .modal-contentP{
@@ -210,11 +216,28 @@
 }
 /* --- */
 
-  .modal-contentP{
-    margin-top: -20%;
-    width: 70vw;
-    height: 90%;
-  }
+
+
+
+/* MODAL ADD PRODUCT */
+.modal-contentA{
+  width: 80%;
+  font-size: 10px;
+  min-height: 500px;
+}
+
+.modal-contentA input[type=submit]{
+  width: 90%;
+}
+/* --- */
+
+
+
+.modal-contentP{
+  margin-top: -20%;
+  width: 70vw;
+  height: 90%;
+}
 
 #updateForm {
   display: flex;
