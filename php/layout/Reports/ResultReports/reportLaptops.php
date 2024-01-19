@@ -11,6 +11,7 @@ require_once("../../../../includes/modal_info.php");
     <head>
         <title>INVENTURA</title>
             <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+            <link rel="shortcut icon" href="../../../../favicon.ico">
             <link rel="stylesheet" href="../../../../css/style.css">
             <link rel="stylesheet" href="../../../../css/reports.css">
             <link rel="stylesheet" href="../../../../css/notification_modals.css">

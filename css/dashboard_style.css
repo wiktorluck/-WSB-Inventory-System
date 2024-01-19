@@ -47,11 +47,8 @@ th{
 
   @media (orientation: portrait){
 
-    .tabletext 
-    {
-    font-size: 2.5vh;
-    }
 
+    /* BOXES MOBILE */
     .summaryboxes {
         font-size: 3.5vw;
      	overflow-x:scroll;
@@ -65,7 +62,10 @@ th{
     .boxes p {
         font-size: 5vw;
     }
- 
+    /* --- */
+
+
+    /* TABLE MOBILE */
     .table_last_products {
         display: none;
     }
@@ -80,5 +80,10 @@ th{
         padding: 5px;
         width: 100rem;
     }
-        
+    .tabletext 
+    {
+    font-size: 2.5vh;
+    }
+    /* --- */
+ 
 }

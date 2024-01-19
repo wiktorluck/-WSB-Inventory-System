@@ -21,6 +21,12 @@ $(document).ready(function () {
   });
 });
 
+//OPEN AND CLOSE  TO INFO MODAL
+function openInfoModal() {
+  document.getElementById("infoModal").style.display = "block";
+}
 
-      
+function closeInfoModal() {
+  document.getElementById("infoModal").style.display = "none";
+}
 

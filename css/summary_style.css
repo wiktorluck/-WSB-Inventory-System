@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+p{
+    font-size: 20px;
+}
+
+th{
+    background-color: red;
+}
+button{
+    background-color: red;
+}
+

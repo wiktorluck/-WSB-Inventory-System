@@ -18,6 +18,7 @@
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="stylesheet" href="css/loginform.css">
         <link rel="stylesheet" href="css/notification_modals.css">
+        <link rel="stylesheet" href="css/style.css">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta charset="utf-8">
           <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -27,15 +28,20 @@
 <!---------------------- ^ metainfo ^ ---------------------->
 
 <!---------------------- content ---------------------->
-  <div class="logform">
-    <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300vw" alt="logo inventura"/> </div>
-    <form action="php/auth/signin.php" method="POST">
-      <br> Login <br> <input type="text" name="login" placeholder="wprowadź swój login"> <br>
-      <br> Hasło <br> <input type="password" name="password" placeholder="wprowadź swoje hasło"> <br><br>
-      <div class="loginbutton"><button type="submit">Zaloguj się</button> </div> <br>
-    </form>
-    <div class="footer">INVENTURA @ 2023</div>
+<body>
+  <div class="container">
+    <div class="logform">
+      <div class="corplogo"> <img src="images/inventura_logo_full.png" width="300vw" alt="logo inventura"/> </div>
+      <form action="php/auth/signin.php" method="POST">
+        <br> Login <br> <input type="text" name="login" placeholder="wprowadź swój login"> <br>
+        <br> Hasło <br> <input type="password" name="password" placeholder="wprowadź swoje hasło"> <br><br>
+        <div class="loginbutton"><button type="submit">Zaloguj się</button> </div> <br>
+      </form>
+      <div class="footer">INVENTURA @ 2023</div>
+    </div>
   </div>
+</body>
+
 <!---------------------- ^ content ^ ---------------------->
 
 <!---------------------- js ---------------------->

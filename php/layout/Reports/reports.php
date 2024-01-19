@@ -97,7 +97,7 @@ require_once("../../../includes/dropdown_portrait.php");
         <br><br><div class="ReportText"> Raporty aktualnych stanów </div>
       <div class="summaryboxes">
      
-      <a href="ResultReports/reportLaptops.php">
+      <a href="ResultReports/reportComputers.php">
         <div class="boxes box5"> Raport komputerów
         <p class="count">' . $total_computers . '</p>
         </div>

@@ -2,13 +2,14 @@ body{
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 th {
     background-color: black;
 }
 button {
     background-color: black;
-    width: 30%;
 }
 .summaryform{
     display: flex;
@@ -16,12 +17,20 @@ button {
     text-align: center;
     width: 50%;
 }
+.TableInventoryPortrait{
+    display: none;
+}
 
-@media print {
-    button{
-        display: none;
-    }
-    p{
-        font-size: 50px;
-    }
+
+
+@media (orientation: portrait) {
+.button{
+    width: 90%;
+}
+.TableInventory{
+    display: none;
+}
+.TableInventoryPortrait{
+    display: flex;
+}
 }

@@ -353,3 +353,14 @@ table {
     body, html { font-size: 14px;}
     body, html { font-size: 14px;}
 }
+
+/* PRINT STYLE */
+@media print {
+    button{
+        display: none;
+    }
+    p{
+        font-size: 50px;
+    }
+}
+/* --- */

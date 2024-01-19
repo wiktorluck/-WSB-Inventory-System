@@ -41,12 +41,20 @@ th{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: lightgoldenrodyellow;
   cursor: pointer;
   border: 1px solid #ccc;
+  border-radius: 25px;
   margin-left: 4%;
-  width: 20%;
+  width: 10%;
   height: 5vh;
   text-align: center;
+}
+
+#infoModal p{
+  font-size: 30px;
+  font-weight: 100;
+  font-style:italic;
 }
 
 @media (orientation: portrait) {
@@ -60,14 +68,35 @@ th{
       flex-direction: column;
       justify-content: center;
     }
+    
+    
     /* --- */
+    
+    /* TEXT MOBILE */
     .SummaryDivInventory p{
       font-size: 15px;
     }
+    /* --- */
+
+    /* BUTTONS MOBILE */
     #myBtn2{
       width: 90%;
     }
     #myBtn3{
       width: 90%;
     }
+    /* --- */
+
+    /* MODALS MOBILE */
+    .modal-contentD{
+      height: 70%;
+    }
+    .modal-contentD input{
+      width: 90%;
+      height: 10%;
+    }
+    #infoModal p{
+      font-size: 20px;
+    }
+    /* --- */
 }

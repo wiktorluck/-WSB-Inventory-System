@@ -88,7 +88,6 @@ if (isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
   </script>';
 }
 
-
 //WARNING ABOUT REQUIRED CHANGE PASSWORD
 if (isset($_SESSION['notification']) && $_SESSION['notification'] == 8) {
   echo '

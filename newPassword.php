@@ -10,8 +10,10 @@ require_once("includes/modal_info.php");
     <head>
       <title>INVENTURA</title>
         <link rel="icon" type="image/x-icon" href="images/inventura_logo_small.png">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/loginform.css">
         <link rel="stylesheet" href="css/notification_modals.css">
+
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta charset="utf-8">
           <meta name="description" content="System Inwentaryzacji Sprzętu Komputerowego">
@@ -20,7 +22,8 @@ require_once("includes/modal_info.php");
     </head>
 <!---------------------- ^ metainfo ^ ---------------------->
 <!---------------------- content ---------------------->
-  <div class="logform">
+<div class="container">  
+<div class="logform">
     <form action="php/auth/changePassword.php" method="POST">
         <br>
           <?php echo 'Witaj ' . $_SESSION['login'] . '!' ?>
@@ -32,6 +35,7 @@ require_once("includes/modal_info.php");
       </form>
     <div class="footer">INVENTURA @ 2023</div>
   </div>
+</div>
 <!---------------------- ^ content ^ ---------------------->
 </html>
 

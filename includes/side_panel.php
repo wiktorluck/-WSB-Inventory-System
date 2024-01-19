@@ -7,13 +7,19 @@ echo ' <img src="../../../images/inventura_logo_full.png"/>';
 if ($_SESSION['permission'] == 1) {
 
    echo '
-    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>
-    <a href="../Products/products.php"><button>Produkty</button></a>
+    <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>';
+    // WHEN INVENTORY ISNT ACTIVE
+if($_SESSION['activeInventory'] == 0) {
+   echo '<a href="../Products/products.php"><button>Produkty</button></a>';
+}
+echo '
     <a href="../Users/users.php"><button>Użytkownicy</button></a>
     <a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>
     <a href="../Reports/reports.php"><button>Raporty</button></a>
     ';
 }
+
+
 
 //USER PANEL WHEN ISN'T INVENTORY
 if ($_SESSION['permission'] == 0 && $_SESSION['activeInventory'] == 0) {

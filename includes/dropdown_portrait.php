@@ -4,12 +4,19 @@
         <span> <img src="../../../images/more.png"> </span>
         <div class="dropdown-content">
           <ul> <a href="../Dashboard/dashboard.php">Strona główna</a> </ul>
-          <ul> <a href="../Products/products.php">Produkty</a> </ul>
+          
+          
+          <?php if($_SESSION['activeInventory'] == 0){
+            echo '<ul> <a href="../Products/products.php">Produkty</a> </ul>';
+          }?>
+          
+          
           <ul>
             <?php if ($_SESSION['permission'] == 1) {
               echo '<a href="../Users/users.php">   Użytkownicy</a>';
             } ?>
           </ul>
+          
           <ul>
             <?php if ($_SESSION['permission'] == 1) {
               echo '<a href="../Inventory/inventory.php">   Inwentaryzacja</a>';
