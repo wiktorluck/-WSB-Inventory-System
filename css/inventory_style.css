@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap');
-.InventoryAllPortrait{
-    display: none;
-}
+
+
+/* Summary Field */
 .SummaryDivInventory{
   display: flex;
   justify-content: center;
@@ -19,7 +19,10 @@
   border:3px solid #ddd;
   padding: 20px;
 }
+/* --- */
 
+
+/* Buttons */
 .myBtns{
   display: flex;
   justify-content: center;
@@ -30,13 +33,24 @@
 #myBtn3{
   width: 30%;
 }
+/* --- */
 
+
+
+/* Tables */
+.InventoryAllPortrait{
+  display: none;
+}
 th{
   background-color: #DC6803;
 }
 .tableOfProducts{
   align-items: center;
 }
+/* --- */
+
+
+/* Modals */
 .infoDiv {
   display: flex;
   justify-content: center;
@@ -56,6 +70,7 @@ th{
   font-weight: 100;
   font-style:italic;
 }
+/* --- */
 
 @media (orientation: portrait) {
 
@@ -68,9 +83,8 @@ th{
       flex-direction: column;
       justify-content: center;
     }
-    
-    
     /* --- */
+    
     
     /* TEXT MOBILE */
     .SummaryDivInventory p{

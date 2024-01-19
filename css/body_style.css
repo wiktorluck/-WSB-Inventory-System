@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap');
 
-
+/* DEFAULT BODY CSS */
 body, html
 {
     font-family: 'Roboto', sans-serif;
@@ -9,5 +9,6 @@ body, html
     padding: 0;
     background-color: #f5F6F8;
 }
+/* --- */
 
 

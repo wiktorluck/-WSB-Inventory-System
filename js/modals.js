@@ -29,4 +29,3 @@ function openInfoModal() {
 function closeInfoModal() {
   document.getElementById("infoModal").style.display = "none";
 }
-

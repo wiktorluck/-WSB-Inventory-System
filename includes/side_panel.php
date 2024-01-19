@@ -8,11 +8,11 @@ if ($_SESSION['permission'] == 1) {
 
    echo '
     <a href="../Dashboard/dashboard.php"><button>Strona główna</button></a>';
-    // WHEN INVENTORY ISNT ACTIVE
-if($_SESSION['activeInventory'] == 0) {
-   echo '<a href="../Products/products.php"><button>Produkty</button></a>';
-}
-echo '
+   // WHEN INVENTORY ISNT ACTIVE
+   if ($_SESSION['activeInventory'] == 0) {
+      echo '<a href="../Products/products.php"><button>Produkty</button></a>';
+   }
+   echo '
     <a href="../Users/users.php"><button>Użytkownicy</button></a>
     <a href="../Inventory/Inventory.php"><button>Inwentaryzacja</button></a>
     <a href="../Reports/reports.php"><button>Raporty</button></a>

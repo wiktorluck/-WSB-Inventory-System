@@ -7,33 +7,39 @@ require_once("../../../includes/dropdown_portrait.php");
 
 <!doctype html>
 <html lang="pl">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
-<title>INVENTURA</title>
-<link rel="stylesheet" href="../../../css/style.css">
-<link rel="stylesheet" href="../../../css/reports.css">
-<link rel="stylesheet" href="../../../css/notification_modals.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../../../images/inventura_logo_small.png">
+  <title>INVENTURA</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/reports.css">
+  <link rel="stylesheet" href="../../../css/notification_modals.css">
 </head>
 
 <header>
   <?php
-      if ($_SESSION['activeInventory'] == 0) { echo 'Obecnie nie rozpoczęto Inwentaryzacji!'; }
-      if ($_SESSION['activeInventory'] == 1) { echo 'Inwentaryzacja w toku...'; }
+  if ($_SESSION['activeInventory'] == 0) {
+    echo 'Obecnie nie rozpoczęto Inwentaryzacji!';
+  }
+  if ($_SESSION['activeInventory'] == 1) {
+    echo 'Inwentaryzacja w toku...';
+  }
   ?>
 </header>
 
 <body>
-<!--------------- welcome text -------------->
-    <div class="welcometext">
-      <?php echo "Co chcesz sprawdzić, " . $_SESSION['login'] . '?'; ?>
-    </div>
-<!--------------- ^ welcome text ^ -------------->
+  <!--------------- welcome text -------------->
+  <div class="welcometext">
+    <?php echo "Co chcesz sprawdzić, " . $_SESSION['login'] . '?'; ?>
+  </div>
+  <!--------------- ^ welcome text ^ -------------->
 
-<!---------------------- report boxes ---------------------->
-<div class="BoxReportsPortraitAll">
+  <!---------------------- report boxes ---------------------->
+  <div class="BoxReportsPortraitAll">
 
-<br><div class="ReportText"> Raporty Inwentaryzacji </div>
+    <br>
+    <div class="ReportText"> Raporty Inwentaryzacji </div>
     <?php
     if ($_SESSION['activeInventory'] == 1) {
       echo '
@@ -62,13 +68,13 @@ require_once("../../../includes/dropdown_portrait.php");
     }
 
     ?>
-</div>
-<!---------------------- ^ report boxes ^ ---------------------->
+  </div>
+  <!---------------------- ^ report boxes ^ ---------------------->
 
-<!---------------------- inventura in proccesss ---------------------->
-<div class="BoxReportsPortraitInv">
+  <!---------------------- inventura in proccesss ---------------------->
+  <div class="BoxReportsPortraitInv">
 
-<?php
+    <?php
     require_once "../../../includes/connect.php";
 
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -81,7 +87,7 @@ require_once("../../../includes/dropdown_portrait.php");
   COUNT(CASE WHEN categoryp = 'Laptop' THEN 1 END) as totalLaptops,
   COUNT(CASE WHEN categoryp != 'Komputer PC' AND categoryp != 'Laptop' THEN 1 END) as totalOthers
   FROM products;";
-  
+
 
       $result = $conn->query($sql_count);
 
@@ -91,7 +97,7 @@ require_once("../../../includes/dropdown_portrait.php");
         $total_laptops = $row['totalLaptops'];
         $total_others = $row['totalOthers'];
 
-        
+
 
         echo '
         <br><br><div class="ReportText"> Raporty aktualnych stanów </div>
@@ -116,14 +122,14 @@ require_once("../../../includes/dropdown_portrait.php");
       </a>';
 
 
-        
+
 
         $conn->close();
       }
     }
     ?>
-</div>
-<!---------------------- ^ inventura in proccesss ^ ---------------------->
+  </div>
+  <!---------------------- ^ inventura in proccesss ^ ---------------------->
   </div>
   <script src="../../../js/modals.js"></script>
 </body>

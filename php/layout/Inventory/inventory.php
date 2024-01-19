@@ -447,7 +447,8 @@ require_once("../../../includes/dropdown_portrait.php");
     <div id="infoModal" class="modalI">
       <div class="modal-contentI">
         <span class="closeI" onclick="closeInfoModal()">&times;</span>
-        <p>Funkcja inwentaryzacji pozwala na sprawdzenie wszystkich produktów wprowadzonych do bazy danych, po zakończeniu baza produktów zostanie poprawiona, zostaną usunięte brakujące pozycje</p>
+        <p>Funkcja inwentaryzacji pozwala na sprawdzenie wszystkich produktów wprowadzonych do bazy danych, po
+          zakończeniu baza produktów zostanie poprawiona, zostaną usunięte brakujące pozycje</p>
       </div>
     </div>
 

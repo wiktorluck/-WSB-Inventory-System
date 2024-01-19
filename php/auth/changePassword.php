@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $newPassword = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
 
-        // Sprawdzenie, czy oba pola formularza zostały wypełnione
+        // Check both form fields have been completed
         if (!empty($newPassword) && !empty($confirmPassword)) {
             if ($newPassword === $confirmPassword) {
                 $userId = $_SESSION['id'];

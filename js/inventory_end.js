@@ -15,30 +15,29 @@ window.onclick = function (event) {
   }
 };
 
-
 //Checked unchecked positions
 
 var modal4 = document.getElementById("myModal4");
 var btn4 = document.getElementById("myBtn4");
 var span4 = document.getElementsByClassName("clodeD")[0];
 
-$(document).ready(function() {
-   $('#sumujBtn').on('click', function(e) {
-      e.preventDefault();
+$(document).ready(function () {
+  $("#sumujBtn").on("click", function (e) {
+    e.preventDefault();
 
-      $.ajax({
-         url: 'checkUncheckedPositions.php',
-         type: 'GET',
-         success: function(response) {
-            if (response === 'true') {
-                  window.location.href = 'summaryinventory.php';
-            } else {
-               $('#endInventoryForm').submit();
-            }
-         },
-         error: function() {
-           console.error('AJAX Error:', status, error);
-         }
-      });
-   });
+    $.ajax({
+      url: "checkUncheckedPositions.php",
+      type: "GET",
+      success: function (response) {
+        if (response === "true") {
+          window.location.href = "summaryinventory.php";
+        } else {
+          $("#endInventoryForm").submit();
+        }
+      },
+      error: function () {
+        console.error("AJAX Error:", status, error);
+      },
+    });
+  });
 });

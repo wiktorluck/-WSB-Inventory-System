@@ -73,7 +73,7 @@ if (isset($_SESSION['notification']) && $_SESSION['notification'] == 7) {
   echo '<button type="button" onclick="copyToClipboard()">Skopiuj nowe hasło</button>';
   echo '  </div>
   </div>';
-  
+
   echo '
   <script>
     function copyToClipboard() {
